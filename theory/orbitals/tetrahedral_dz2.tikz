@@ -1,0 +1,26 @@
+\begingroup
+\tikzset{
+  orbital/.style={
+    fill=blue!50,draw=blue!75!black,thick,
+  }
+}
+\begin{tikzpicture}
+\setlength\scale{1cm}
+\begin{scope}[x={(1\scale,0\scale)},y={(0.4\scale,0.2\scale)},z={(0\scale,1\scale)}]
+\draw (-1,+1,-1) -- (+1,+1,-1) -- (+1,+1,+1) -- (-1,+1,+1) -- cycle;
+\node[circle,fill=yellow!50,draw=yellow!75!black,thick] at (+1.0,+1.0,-1.0) {};
+\node[circle,fill=yellow!50,draw=yellow!75!black,thick] at (-1.0,+1.0,+1.0) {};
+\draw (-1,+1,-1) -- (-1,-1,-1);
+\draw (+1,+1,-1) -- (+1,-1,-1);
+\draw (-1,+1,+1) -- (-1,-1,+1);
+\draw (+1,+1,+1) -- (+1,-1,+1);
+\node (A) at (0,0,0) {};
+\draw[orbital] (A) .. controls (-0.3,+0.0,+0.6) and (-0.3,+0.0,+1.0) .. (+0.0,+0.0,+1.0) .. controls (+0.3,+0.0,+1.0) and (+0.3,+0.0,+0.6) .. (A);
+\draw[orbital] (A) .. controls (-0.3,+0.0,-0.6) and (-0.3,+0.0,-1.0) .. (+0.0,+0.0,-1.0) .. controls (+0.3,+0.0,-1.0) and (+0.3,+0.0,-0.6) .. (A);
+\node[orbital,circle] at (A) {};
+\draw (-1,-1,-1) -- (+1,-1,-1) -- (+1,-1,+1) -- (-1,-1,+1) -- cycle;
+\node[circle,fill=yellow!50,draw=yellow!75!black,thick] at (+1.0,-1.0,+1.0) {};
+\node[circle,fill=yellow!50,draw=yellow!75!black,thick] at (-1.0,-1.0,-1.0) {};
+\end{scope}
+\end{tikzpicture}
+\endgroup

@@ -1,0 +1,43 @@
+\begin{tikzpicture}[centered]
+\def\angle{2}
+\def\radone{1.5}
+\def\radtwo{2.0}
+
+
+\draw (90: \radtwo) -- (0,+2.25) -- (-3,+2.25) -- (-3,+0.05);
+\draw (270:\radtwo) -- (0,-2.25) -- (-3,-2.25) -- (-3,-0.05);
+\draw (-3,0)++(-0.25,+0.05) -- ++(0.5,0) %
+ node[midway,label={[label distance=-0.5em]+45:\tiny{+}}] {};
+\draw (-3,0)++(-0.1,-0.05) -- ++(0.2,0) %
+ node[midway,label={[label distance=-0.5em]-45:\tiny{-}}] {};
+\node at (-3.5,0) {$V_a$};
+\node[circle,fill=white,draw] at (-3,1) {A};
+
+
+\draw[blue,fill=blue!50] (0,0) circle (\radtwo);
+\draw[blue,fill=white]   (0,0) circle (\radone);%
+\foreach \startangle in {0,180}{
+\draw[red,fill=red!50] %
+  (0,0)++(\startangle+\angle:\radone) %
+  arc (\startangle+\angle:\startangle-\angle:\radone) -- %
+  (\startangle-\angle:\radtwo) %
+  arc (\startangle-\angle:\startangle+\angle:\radtwo) -- cycle;
+}
+\node[anchor=east] at (180:\radtwo) {1};
+\node[anchor=west] at (0  :\radtwo) {2};
+\node[circle,draw=green!50!black] %
+ at (0,0) {\color{green!50!black}{$\bullet$}};
+\node[green!50!black] at (-0.5,0) {$\vec B$};
+
+\foreach \theta in {7.5,37.5,...,360} {
+  \draw[-latex,purple,ultra thick] (\theta:1.75) arc (\theta:\theta+15:1.75);
+}
+\node[purple] at (45:2.25) {$\vec A$};
+
+\draw[-latex,ultra thick] (-80:2.125) arc (-80:-10:2.125) %
+  node[midway,label=right:$I_2$] {};
+
+\draw[-latex,ultra thick] (-100:2.125) arc (-100:-170:2.125) %
+  node[midway,label=left:$I_1$] {};
+
+\end{tikzpicture}

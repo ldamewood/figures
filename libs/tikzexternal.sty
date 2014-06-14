@@ -1,0 +1,25 @@
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\usetikzlibrary{external}
+\usepgfplotslibrary{external}
+\tikzexternalize[mode=list and make]
+% Pretend we didn't call tikzexternalize
+%\def\tikzexternalize@hasbeencalled{0}
+%\newcommand{\inputtikz}[1]{%
+%  \tikzset{/tikz/external/export=true}%
+%  \tikzsetnextfilename{#1}%
+%  \tikzpicturedependsonfile{#1.tikz}%
+%  \tikzsetnextfilename{#1}%
+%  \input{#1.tikz}%
+%  \tikzset{/tikz/external/export=false}%
+%}
+\tikzset{
+  external/system call={
+    lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+  }
+}
+\makeatletter
+\newcommand{\useexternalfile}[1]{%
+    \tikzsetnextfilename{#1}%
+    \input{\tikzexternal@filenameprefix#1.tikz}}
+\makeatother

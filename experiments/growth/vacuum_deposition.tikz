@@ -1,0 +1,27 @@
+\begin{tikzpicture}[centered]
+% Leads
+\draw (+0.2,0) -- ++(0,-1);
+\draw (-0.2,0) -- ++(0,-1);
+% Power supply
+\draw (-0.5,-1) rectangle (0.5,-1.25);
+\node[label=below:Power supply] at (0,-1.25) {};
+% Ion source
+\draw[ions] (-0.25,-0.25) rectangle (0.25,0.00);
+\node[pin={right:Ion source}] at (0.25,-0.125) {};
+\foreach \i in {60,80,100,120} {
+  \draw[gray,-latex] (\i:0.25) -- (\i:1.75);
+}
+\foreach \i in {1,2,...,20}{
+  \pgfmathsetmacro{\y}{0.75*(rand+1)+0.25}
+  \pgfmathsetmacro{\x}{0.5*rand*\y}
+  \typeout{\x}
+  \typeout{\y}
+  \node[ions,circle,inner sep=1pt] at (\x,\y) {};
+}
+% Target
+\draw[target] (-1,2) rectangle (1,2.25);
+\node[pin=right:Target] at (1,2.125) {};
+% Vacuum chamber
+\draw (-1.5,-0.5) rectangle (1.5,2.5);
+\node[pin=right:Vacuum chamber] at (1.5,1) {};
+\end{tikzpicture}

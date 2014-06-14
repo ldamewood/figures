@@ -1,0 +1,84 @@
+\begingroup
+\newlength\slw
+\setlength\slw{0.3pt}
+\tikzset{
+  state 1/.style={
+    draw,
+    line width=\slw,
+  },
+  state 2/.style={
+    draw,
+    line width=\slw,
+    postaction={draw,line width=3\slw,shorten <= 0.5pt,shorten >= 0.5pt},
+    postaction={draw,line width=1\slw,white},
+  },
+  state 3/.style={
+    draw,
+    line width=\slw,
+    preaction={draw,line width=5\slw,shorten <= 0.5pt,shorten >= 0.5pt},
+    preaction={draw,line width=3\slw,white},
+  },
+  state 4/.style={
+    draw,
+    line width=\slw,
+    postaction={draw,line width=7\slw,shorten <= 1.0pt,shorten >= 1.0pt},
+    postaction={draw,line width=5\slw,white},
+    postaction={draw,line width=3\slw,shorten <= 0.5pt,shorten >= 0.5pt},
+    postaction={draw,line width=1\slw,white},
+  },
+  state 5/.style={
+    draw,
+    line width=\slw,
+    preaction={draw,line width=9\slw,shorten <= 1pt,shorten >= 1pt},
+    preaction={draw,line width=7\slw,white},
+    preaction={draw,line width=5\slw,shorten <= 0.5pt,shorten >= 0.5pt},
+    preaction={draw,line width=3\slw,white},
+  },
+  state label/.style={
+    midway,below,font=\scriptsize
+  },
+  interaction/.style={
+    dashed,
+  }
+}
+\begin{tikzpicture}[scale=0.75]
+
+\node at (1,0) {3d Atom};
+\node at (4,0) {Crystal Field};
+\node at (7,0) {Bond};
+\node at (10,0) {Hybrid};
+\node at (13,0) {3p Atom};
+
+\draw[state 5] (0,3) -- ++(2,0) node[state label] {3d};
+
+\draw[interaction] (2,3) -- (3,2);
+\draw[interaction] (2,3) -- (3,4);
+
+\draw[state 3] (3,4) -- ++(2,0) node[state label] {t$_{2g}$};
+\draw[state 2] (3,2) -- ++(2,0) node[state label] {e$_{g}$};
+
+\draw[interaction] (5,2) -- (6,2);
+\draw[interaction] (5,4) -- (6,1);
+\draw[interaction] (5,4) -- (6,6);
+
+\draw[state 3] (6,1) -- ++(2,0) node[state label] {bonding};
+\draw[state 2] (6,2) -- ++(2,0) node[state label] {non-bonding};
+\draw[state 3] (6,6) -- ++(2,0) node[state label] {anti-bonding};
+
+\draw[interaction] (8,6) -- (9,3);
+\draw[interaction] (8,1) -- (9,3);
+
+\draw[blue!80!black,latex-latex] (8,1)++(1em,0) -- ++(0,5) node[very near end,right] {$\Delta_{\mathrm{bond}}$};
+\draw[shorten <= 0.25em,shorten >= 0.25em,blue!80!black] (8,1) -- ++(2em,0);
+\draw[shorten <= 0.25em,shorten >= 0.25em,blue!80!black] (8,6) -- ++(2em,0);
+
+\draw[state 4] (9,3) -- ++(2,0) node[state label] {sp$^3$};
+
+\draw[interaction] (11,3) -- (12,3);
+\draw[interaction] (11,3) -- (12,2);
+
+\draw[state 3] (12,3) -- ++(2,0) node[state label] {3p};
+\draw[state 1] (12,2) -- ++(2,0) node[state label] {3s};
+
+\end{tikzpicture}
+\endgroup

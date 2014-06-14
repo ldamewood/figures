@@ -1,0 +1,11 @@
+\begingroup
+\begin{tikzpicture}
+\input{andreev.tikz}
+\def\bias{0.5}
+\interface[N/HM]{(b) $V_b \gg \Delta_s$\\$G=G_0$}
+\draw[vector] (-1.0,\bias) node[electron] {} -- +(0.5,0);
+\draw[vector] (1.0,\bias) node[electron] {} -- +(0.5,0);
+\node at (-1.0,\bias) {\tiny{$\mathbf\uparrow$}};
+\node at (1,\bias) {\tiny{$\mathbf{\uparrow}$}};
+\end{tikzpicture}
+\endgroup

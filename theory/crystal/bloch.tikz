@@ -1,0 +1,48 @@
+\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{groupplot}[
+	width=4.5in,
+	height=1.5in,
+	group style={
+		group size=1 by 3,
+		vertical sep=0.25cm,
+	},
+	xmin = -4,
+	xmax = 4,
+	ytick = \empty,
+	axis y line=left,
+	xticklabel=\empty,
+	axis x line=middle,
+	samples = 300,
+	xlabel={$x$},
+	ylabel={$y$},
+	ylabel style={yshift=0pt},
+    enlarge y limits=0.1,
+]
+\nextgroupplot[ylabel={$e^{ikx}$}]
+\addplot[mark=none] {-sin(0.5*deg(x-0.5))};
+\node at (axis cs: -3.5,0.6) {(a)};
+\nextgroupplot[ylabel={$u_E(x)$}]
+\addplot[mark=none] {
+	((x-3)*exp(-75*(x-3)*(x-3))+
+	(x-2)*exp(-75*(x-2)*(x-2))+
+	(x-1)*exp(-75*(x-1)*(x-1))+
+	(x-0)*exp(-75*(x-0)*(x-0))+
+	(x+1)*exp(-75*(x+1)*(x+1))+
+	(x+2)*exp(-75*(x+2)*(x+2))+
+	(x+3)*exp(-75*(x+3)*(x+3)))*20.193
+};
+\node at (axis cs: -3.5,0.6) {(b)};
+\nextgroupplot[ylabel={$\Psi_k(x)$}]
+\addplot[mark=none,dashed] {-sin(0.5*deg(x-0.5))};
+\addplot[mark=none] {
+	((x-3)*exp(-75*(x-3)*(x-3))+
+	(x-2)*exp(-75*(x-2)*(x-2))+
+	(x-1)*exp(-75*(x-1)*(x-1))+
+	(x-0)*exp(-75*(x-0)*(x-0))+
+	(x+1)*exp(-75*(x+1)*(x+1))+
+	(x+2)*exp(-75*(x+2)*(x+2))+
+	(x+3)*exp(-75*(x+3)*(x+3))) * -sin(0.5*deg(x-0.5)) * 20.193
+};
+\node at (axis cs: -3.5,0.6) {(c)};
+\end{groupplot}
+\end{tikzpicture}

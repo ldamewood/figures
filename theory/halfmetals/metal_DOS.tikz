@@ -1,0 +1,69 @@
+\begingroup
+\def\DOS{\mathrm{DOS}}
+\def\fermi{0}
+\def\fadewidth{0.15}
+\tikzset{
+  dim/.style = {
+    help lines,
+    latex-latex,
+    shorten <= 0,
+    shorten >= 0,
+  },
+  left dim/.style = {
+    dim,
+    -latex,
+  },
+  right dim/.style = {
+    dim,
+    -latex,
+  },
+  help lines/.append style = {
+    thin,
+    color=black,
+    shorten <= 3,
+    shorten >= 3,
+  },
+}
+
+\begin{tikzpicture}[scale=0.75]
+% Spin down fill
+\begin{scope}
+\clip (0,\fermi) rectangle (-2,-2.5);
+\fill[blue!20] (2,0) circle (3);
+\end{scope}
+% temperature fading
+\begin{scope}
+\clip (2,0) circle (3);
+\shade[top color=white,bottom color=blue!20]
+  (0,-\fadewidth) rectangle (-2,\fadewidth);
+\end{scope}
+% Spin down circle
+\begin{scope}
+\clip (0,2.5) rectangle (-2,-2.5);
+\draw (2,0) circle (3);
+\end{scope}
+% Spin up occupied fill and circle
+\begin{scope}
+\clip (0,0) rectangle (2,-2.5);
+\fill[blue!20] (-2,-1.75) circle (3);
+\end{scope}
+% temperature fading
+\begin{scope}
+\clip (-2,-1.75) circle (3);
+\shade[top color=white,bottom color=blue!20]
+  (0,-\fadewidth) rectangle (2,\fadewidth);
+\end{scope}
+\begin{scope}
+\clip (0,2.5) rectangle (2,-2.5);
+\draw (-2,-1.75) circle(3);
+\end{scope}
+% Spin up unoccupied circle
+\begin{scope}
+\clip (0,0) rectangle (2,2.5);
+\draw (-2,3.5) circle (3);
+\end{scope}
+\draw[-latex,thick] (0,-3) -- (0,2.5) node[above] {$E$};
+\draw[thick] (-1.5,\fermi) -- (1.5,\fermi) node[right] {$E_F$};
+\draw[latex-latex,thick] (-2,-2.5) node[below] {$\DOS_\downarrow(E)$} -- (2,-2.5) node[below] {$\DOS_\uparrow(E)$};
+\end{tikzpicture}
+\endgroup

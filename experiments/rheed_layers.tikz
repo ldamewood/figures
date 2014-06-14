@@ -1,0 +1,88 @@
+\begin{tikzpicture}[centered]
+\begin{scope}[xshift=-1in,yshift=+1.125in]
+\node[below,anchor=north] at (0,-0.375) {(a) $t=0$};
+\foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
+                 0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
+{
+    \draw[substrate] (\x,-0.25) circle (0.125);
+}
+\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\end{scope}
+
+\begin{scope}[xshift=-1in,yshift=+0.375in]
+\node[below,anchor=north] at (0,-0.375) {(b) $t=0.2$};
+\foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
+                 0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
+{
+    \draw[substrate] (\x,-0.25) circle (0.125);
+}
+\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(20:2);
+\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
+\foreach \x in {-1.875,-0.625,1.125}{
+    \draw[target] (\x,0.0) circle (0.125);
+}
+\end{scope}
+
+\begin{scope}[xshift=-1in,yshift=-0.375in]
+\node[below,anchor=north] at (0,-0.375) {(c) $t=0.6$};
+\foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
+                 0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
+{
+    \draw[substrate] (\x,-0.25) circle (0.125);
+}
+\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
+\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\foreach \x in {-2.00, -1.75, -1.25, -1.00, -0.75, -0.50, -0.25,%
+                 0.00,  0.50,  1.00,  1.25,  1.50}%
+{
+    \draw[target] (\x+0.125,0.0) circle (0.125);
+}
+\end{scope}
+
+\begin{scope}[xshift=-1in,yshift=-1.125in]
+\node[below,anchor=north] at (0,-0.375) {(d) $t=1.0$};
+\foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
+                 0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
+{
+    \draw[substrate] (\x,-0.25) circle (0.125);
+}
+\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(11:2);
+\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25,%
+                 0.00,  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75}%
+{
+    \draw[target] (\x+0.125,0.0) circle (0.125);
+}
+\end{scope}
+
+\begin{scope}[xshift=0.5in,yshift=-0.5in]
+\begin{axis}[
+    samples=100,
+    enlargelimits=0.2,
+    domain=0:2,
+    ylabel={Intensity [arb. units.]},
+    xlabel={Time [arb. units.]},
+    ytick=\empty,
+    width=0.4\textwidth,
+    height=2in,
+]
+\addplot[
+    scatter,mark=*,nodes near coords,only marks,
+    point meta=explicit symbolic
+] coordinates
+{
+    (0.0,1.00) [(a)]
+    (0.2,0.60) [(b)]
+    (0.6,0.15) [(c)]
+    (1.0,0.90) [(d)]
+};
+\addplot[no marks] {0.5+0.5*exp(-0.2*x)*cos(deg(x*2*pi))};
+\end{axis}
+\end{scope}
+
+\end{tikzpicture}

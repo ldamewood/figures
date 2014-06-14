@@ -1,0 +1,61 @@
+\makeatother
+\tikzset{
+  dim/.style = {
+    help lines,
+    latex-latex,
+    shorten <= 0,
+    shorten >= 0,
+  },
+  left dim/.style = {
+    dim,
+    -latex,
+  },
+  right dim/.style = {
+    dim,
+    -latex,
+  },
+  help lines/.append style = {
+    thin,
+    color=black,
+    shorten <= 3,
+    shorten >= 3,
+  },
+}
+\begin{tikzpicture}
+\def\fermi{0}
+\begin{scope}[xshift=4*\fermi cm]
+\begin{scope}
+\clip (0,\fermi) rectangle (-2,-2.5);
+\fill[blue!20] (2,0) circle (3);
+\end{scope}
+\begin{scope}
+\clip (0,2.5) rectangle (-2,-2.5);
+\draw (2,0) circle (3);
+\end{scope}
+\begin{scope}
+\clip (0,0) rectangle (2,-2.5);
+\fill[blue!20] (-2,-2.5) circle (3);
+\draw (-2,-2.5) circle (3);
+\end{scope}
+\begin{scope}
+\clip (0,0) rectangle (2,2.5);
+\draw (-2,3.5) circle (3);
+\end{scope}
+\draw[-latex,thick] (0,-3) -- (0,2.5) node[above] {$E$};
+\draw[thick] (-1.5,\fermi) -- (1.5,\fermi) node[right] {$E_F$};
+\node at (-0.75,-3) {$D_{\downarrow}(E)$};
+\node at (0.75,-3) {$D_{\uparrow}(E)$};
+\draw[help lines] (0,-0.25) -- (1,-0.25);
+\draw[help lines] (0,1.25) -- (1,1.25);
+\draw[dim] (0.5,-0.25) -- (0.5,1.25) node[fill=white,midway] {$\Delta$};
+\draw[help lines] (0,1.25) -- (-1,1.25);
+\ifdim\fermi pt<0.5pt
+\draw[dim] (-0.5,\fermi) -- (-0.5,1.25) node[fill=white,midway] {$\delta$};
+\else
+\draw[left dim] (-0.5,1.50)--(-0.5,1.25);
+\draw[right dim] (-0.5,0.75) node[below] {$\delta$} --(-0.5,1);
+\fi
+\node at (1,2) {CB};
+\node at (1,-1) {VB};
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,44 @@
+\begin{figure}
+\centering
+\begin{tabular}{m{0.2\textwidth}|>{\centering}m{0.2\textwidth} >{\centering}m{0.2\textwidth} >{\centering}m{0.2\textwidth} >{\centering\arraybackslash}m{0.2\textwidth}}
+\toprule
+             & P & C & I & F \\
+\midrule
+Cubic &
+	\useexternalfile{bravais_cubic_P} &
+	&
+	\useexternalfile{bravais_cubic_I} &
+	\useexternalfile{bravais_cubic_F} \\
+Tetragonal &
+	\useexternalfile{bravais_tetragonal_P} &
+	&
+	\useexternalfile{bravais_tetragonal_I} &
+	\\
+Orthorhombic &
+	\useexternalfile{bravais_orthorhombic_P} &
+	\useexternalfile{bravais_orthorhombic_C} &
+	\useexternalfile{bravais_orthorhombic_I} &
+	\useexternalfile{bravais_orthorhombic_F} \\
+Hexagonal &
+	\useexternalfile{bravais_hexagonal_P} &
+	&
+	&
+	\\
+Rhombohedral &
+	\useexternalfile{bravais_rhombohedral_P} &
+	&
+	&
+	\\
+Monoclinic   &
+	\useexternalfile{bravais_monoclinic_P} &
+	\useexternalfile{bravais_monoclinic_C} &
+	&
+	\\
+Triclinic    &
+	\useexternalfile{bravais_triclinic_P} &
+	&
+	&
+	\\
+\bottomrule
+\end{tabular}
+\end{figure}

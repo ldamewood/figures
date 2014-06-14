@@ -1,0 +1,18 @@
+\begin{tikzpicture}[domain=0:5,centered]
+
+\node at (-3,2.5) {(a)};
+\draw[latex-latex] (-2.5,1.5) -- ++(1,0) node[midway,fill=white] {$c$};
+\draw (-2.5,1.5)++(0,0.5em) -- ++(0,-1em);
+\draw (-1.5,1.5)++(0,0.5em) -- ++(0,-1em);
+
+\node at (-3,0.5) {(b)};
+\draw (-2.5,2) rectangle (-1.5,3);
+\draw[color=blue,samples=100,domain=0:1] plot ({\x-2.5},{0.25*sin(sqrt(2)*2*pi*\x r)+2.5}) node[right] {$\lambda=\sqrt{2} c$};
+
+\draw (-2.5,0) rectangle (2.5,1);
+\foreach \x in {-1.5,-0.5,0.5,1.5}{
+  \draw (\x,0) -- ++(0,1);
+}
+\draw[color=blue,samples=100] plot ({\x-2.5},{0.25*sin(7*2*pi/5*\x r)+0.5}) node[right] {$\lambda=\frac{7}{5} c$};
+
+\end{tikzpicture}

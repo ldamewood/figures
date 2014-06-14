@@ -1,0 +1,48 @@
+%\if@dos@color
+%\def\@dos@up@linecolor{blue!75}
+%\def\@dos@up@fillcolor{blue!25}
+%\def\@dos@dn@linecolor{red!75}
+%\def\@dos@dn@fillcolor{red!25}
+%\else
+\def\@dos@up@linecolor{black}
+\def\@dos@up@fillcolor{white}
+\def\@dos@dn@linecolor{black}
+\def\@dos@dn@fillcolor{white}
+%\fi
+\pgfplotsset{
+  dos/label/.style={
+    inner sep=1em,
+  },
+  dos/.style={
+    yticklabel={%
+      \pgfmathparse{\tick < 0 ? -\tick : \tick}%
+      $\pgfmathprintnumber{\pgfmathresult}$
+    },
+    enlarge x limits=false,
+%    xminorticks=true,
+%    yminorticks=true,
+    axis on top=true,
+    xlabel={$E-E_{\mathrm{F}}$ [eV]},
+    ylabel={DOS [states/eV-unit-cell]},
+    extra description/.code={
+      \node[\@dos@up@linecolor] at (axis description cs:0,1) [anchor=north west] {Spin Up};
+      \node[\@dos@dn@linecolor] at (axis description cs:0,0) [anchor=south west] {Spin Down};
+      \draw (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+      \draw (axis cs:0,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:0,\pgfkeysvalueof{/pgfplots/ymax});
+    },
+    cycle list={%
+      {
+        draw=\@dos@up@linecolor,
+        fill=\@dos@up@fillcolor,
+        line join=bevel,
+        y filter/.code=\pgfmathparse{abs(\pgfmathresult)},
+      },
+      {
+        draw=\@dos@dn@linecolor,
+        fill=\@dos@dn@fillcolor,
+        line join=bevel,
+        y filter/.code=\pgfmathparse{-abs(\pgfmathresult)},
+      },
+    },
+  },
+}

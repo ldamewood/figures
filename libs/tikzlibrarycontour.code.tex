@@ -1,0 +1,201 @@
+\newif\ifpgfplotsplothandlercontour@labels                                      
+\newif\ifpgfplotsplothandlercontour@filled                                                                                                   
+\pgfplotsplothandlercontour@labelsfalse                                         
+\pgfplotsplothandlercontour@filledfalse
+\pgfplotsset{                                                                   
+        contour/.code={%                                               
+                \let\tikz@plot@handler=\pgfplotsplothandlercontourprepared      
+                \pgfqkeys{/pgfplots/contour}{%                                  
+                        #1,%                                                    
+                }%                                                              
+        },
+}
+\def\pgfplotsplothandlercontourprepared{%
+	\pgfplotsresetplothandler
+	\pgfplotsset{empty line=jump}%
+	\let\pgf@plotstreamstart=\pgfplotsplothandlervisstart@contour
+	\let\pgfplotsplothandlersurveyend=\pgfplotsplothandlersurveyend@contour
+	\if m\pgfplotsplothandlercontourprepared@format
+		\let\pgfplotsplothandlersurveystart=\pgfplotsplothandlersurveystart@contourmatlabformat
+		\let\pgfplotsplothandlersurveypoint=\pgfplotsplothandlersurveypoint@contourmatlabformat
+		\pgfplotsaxisifhaspointmeta{}{%
+			\pgfplotsset{/pgfplots/point meta=explicit}%
+		}%
+	\fi
+	\pgfplotsplothandlercontour@prepare@point@meta
+}%
+\def\pgfplotsplothandlercontour@prepare@point@meta{%
+	\ifpgfplots@curplot@threedim
+		\pgfplotsset{/pgfplots/set point meta if empty=z}%
+	\else
+		\pgfplotsaxisifhaspointmeta{}{%
+			\pgfkeysgetvalue{/pgfplots/table/meta index}\pgfplots@loc@TMPa
+			\ifx\pgfplots@loc@TMPa\pgfutil@empty
+% FIXME : this here is reasonable, but it should be sanity checked!
+				\pgfkeyssetvalue{/pgfplots/table/meta index}{2}%
+			\fi
+			\pgfplotsset{/pgfplots/set point meta if empty=explicit}%
+		}%
+		%\pgfplots@error{Sorry, 'contour external' requires \string\addplot3 (or a non-empty `point meta' used as label data)}%
+	\fi
+	\def\pgfplotsplothandlercontour@empty@pointmeta@error@@{0}%
+}%
+\def\pgfplotsplothandlercontour@empty@pointmeta@error{%
+	\if0\pgfplotsplothandlercontour@empty@pointmeta@error@@
+		\def\pgfplotsplothandlercontour@empty@pointmeta@error@@{1}%
+		\def\pgfplots@current@point@meta{0}%
+		\pgfplotsthrow{invalid argument}{\pgfplots@current@point@meta}{Sorry, contour plots require non--empty `point meta'. Please use '\string\addplot3[contour ...] together with 'view={0}{90}' or provide a valid 'point meta=<value>' (for example `<value>=z'?)}\pgfeov%
+	\fi
+}%
+
+\def\pgfplotsplothandlersurveystart@contourmatlabformat{%
+	\def\c@pgfplotsplothandlercontourprepared@matlabformat@cur{0}%
+	\def\c@pgfplotsplothandlercontourprepared@matlabformat@count{0}%
+	\pgfmathfloatparsenumber{nan}%
+	\let\pgfplotsplothandlercontourprepared@matlabformat@meta=\pgfmathresult
+}
+\def\pgfplotsplothandlersurveypoint@contourmatlabformat{%
+	\ifnum\c@pgfplotsplothandlercontourprepared@matlabformat@cur=\c@pgfplotsplothandlercontourprepared@matlabformat@count\relax
+		\pgfmathfloatparsenumber{\pgfplots@current@point@y}%
+		\pgfmathfloattoint\pgfmathresult
+		\let\c@pgfplotsplothandlercontourprepared@matlabformat@count=\pgfmathresult
+		\def\c@pgfplotsplothandlercontourprepared@matlabformat@cur{0}%
+		%
+		\pgfmathfloatparsenumber{\pgfplots@current@point@x}%
+		\let\pgfplots@loc@TMPa=\pgfplotsplothandlercontourprepared@matlabformat@meta
+		\let\pgfplotsplothandlercontourprepared@matlabformat@meta=\pgfmathresult
+		%
+		\ifx\pgfplots@loc@TMPa\pgfplotsplothandlercontourprepared@matlabformat@meta
+			% oh. We have two successive segments of the SAME contour
+			% level. Call the jump handler:
+			\pgfplotsscanlinecomplete
+		\fi
+		%
+	\else
+		\let\pgfplots@current@point@z=\pgfplotsplothandlercontourprepared@matlabformat@meta
+		\let\pgfplots@current@point@meta=\pgfplotsplothandlercontourprepared@matlabformat@meta
+		\pgfplotsplothandlersurveypoint@default
+		\pgfplotsutil@advancestringcounter\c@pgfplotsplothandlercontourprepared@matlabformat@cur
+	\fi
+}%
+\def\pgfplotsplothandlersurveyend@contour{%
+	\pgfplotsplothandlercontour@init@limits
+	\ifx\pgfplotsplothandlercontour@limits@low@meta\pgfutil@empty
+	\else
+		\pgfplotsaxisupdatelimitsforpointmeta\pgfplotsplothandlercontour@limits@low@meta
+	\fi
+}%
+
+\def\pgfplotsplothandlervisstart@contour{%
+	%
+	\def\pgfplotsplothandlercontour@handlesplinesegment##1##2##3{}%
+	%
+	%
+	\pgfplotsresetplothandler
+	\pgfplotsset{/pgfplots/contour/handler}%
+	\tikz@plot@handler
+	%
+	\def\pgfplotsplothandlercontour@haspendingjump{0}%
+	\let\pgfplotsplothandlervisualizejump=\pgfplotsplothandlercontour@jump
+	%
+	\let\pgfplotsplothandlercontour@handler@start=\pgf@plotstreamstart
+	\let\pgfplotsplothandlercontour@lastcontour=\pgfutil@empty
+	\global\let\pgf@plotstreampoint=\pgfplotsplothandlercontour@streampoint
+	\global\let\pgf@plotstreamend=\pgfplotsplothandlercontour@streamend
+}%
+
+\def\pgfplotsplothandlercontour@jump{%
+	\def\pgfplotsplothandlercontour@haspendingjump{1}%
+}%
+
+\def\pgfplotsplothandlercontour@streamend{%
+	\ifx\pgfplotsplothandlercontour@lastcontour\pgfutil@empty
+	\else
+		%
+		\def\pgfplotsplothandlercontour@haspendingjump{0}% important! (this is a different case than a jump)
+		\pgfplotsplothandlercontour@finishcontourline
+		%
+		%
+	\fi
+}%
+\def\pgfplotsplothandlercontour@streampoint#1{%
+	\pgf@process{#1}%
+	% remember point:
+	\edef\pgfplotsplothandlercontour@act@canvas{\pgf@x=\the\pgf@x\space\pgf@y=\the\pgf@y\space}%
+	%
+	\let\pgfplotsplothandlercontour@act@contour=\pgfplots@current@point@meta
+	\ifx\pgfplotsplothandlercontour@act@contour\pgfutil@empty
+		% oh. No Z data!? That should not happen!
+		\pgfplotsplothandlercontour@empty@pointmeta@error
+	\fi
+	\ifx\pgfplotsplothandlercontour@lastcontour\pgfutil@empty
+		% oh. its the very first point.
+		\def\pgfplotsplothandlercontour@haspendingjump{0}% important! (this is a different case than a jump)
+		\pgfplotsplothandlercontour@preparenewcontourline
+	\else
+		\ifx\pgfplotsplothandlercontour@lastcontour\pgfplotsplothandlercontour@act@contour
+			% belongs to the same contour.
+			\if1\pgfplotsplothandlercontour@haspendingjump
+				\pgfplotsplothandlercontour@finishcontourline
+				\pgfplotsplothandlercontour@preparenewcontourline
+			\fi
+		\else
+			% oh, a new contour line.
+			\def\pgfplotsplothandlercontour@haspendingjump{0}% important! (this is a different case than a jump)
+			\pgfplotsplothandlercontour@finishcontourline
+			\pgfplotsplothandlercontour@check@bbcontour
+			\pgfplotsplothandlercontour@preparenewcontourline
+		\fi
+	\fi
+	%
+	%
+	% handle difference vector for label placement:
+	\ifx\pgfplotsplothandlercontour@lastcanvas\pgfutil@empty
+	\else
+		\pgfplotsplothandlercontour@handlesplinesegment
+			{\pgfplotsplothandlercontour@lastcanvas}
+			{\pgfplotsplothandlercontour@act@canvas}%
+			{\pgfplotsplothandlercontour@act@contour}%
+	\fi
+	%
+	\pgfplotsplothandlercontour@handler@streampoint{\pgfplotsplothandlercontour@act@canvas}%
+	\let\pgfplotsplothandlercontour@lastlastcanvas=\pgfplotsplothandlercontour@lastcanvas
+	\let\pgfplotsplothandlercontour@lastcanvas=\pgfplotsplothandlercontour@act@canvas
+	\let\pgfplotsplothandlercontour@lastcontour=\pgfplotsplothandlercontour@act@contour
+	%
+	%
+	\ifx\pgf@plotstreampoint\pgfplotsplothandlercontour@streampoint
+	\else
+		\let\pgfplotsplothandlercontour@handler@streampoint=\pgf@plotstreampoint
+	\fi
+	\global\let\pgf@plotstreampoint=\pgfplotsplothandlercontour@streampoint
+	\global\let\pgf@plotstreamend=\pgfplotsplothandlercontour@streamend
+	% ATTENTION : if the low level plot handler introduces extra
+	% levels of scopes, this *will* fail!
+}%
+
+%
+\def\pgfplotsplothandlercontour@preparenewcontourline{%
+	\if0\pgfplotsplothandlercontour@haspendingjump
+		% a completely new level has been
+		% started, not due to jumps inside of one level.
+		%
+		\let\pgfplotspointmetatransformed@lastcontour=\pgfplotspointmetatransformed
+		% thus, we need to compute 'mapped color':
+		\pgfplotsaxisvisphasetransformpointmeta
+		\pgfplotscolormapdefinemappedcolor{\pgfplotspointmetatransformed}%
+		\pgfsetstrokecolor{\pgfkeysvalueof{/pgfplots/contour/draw color}}%
+	\fi
+	\let\pgfplotsplothandlercontour@lastcanvas=\pgfutil@empty
+	\let\pgfplotsplothandlercontour@lastlastcanvas=\pgfutil@empty
+	\def\pgfplotsplothandlercontour@haspendingjump{0}%
+	\pgfplotsplothandlercontour@handler@start
+	\let\pgfplotsplothandlercontour@handler@end=\pgf@plotstreamend
+	\let\pgfplotsplothandlercontour@handler@streampoint=\pgf@plotstreampoint
+}%
+\def\pgfplotsplothandlercontour@finishcontourline{%
+	\pgfplotsplothandlercontour@handler@end
+	\if0\pgfplotsplothandlercontour@haspendingjump
+	%		\pgfusepath{stroke}%
+	\fi
+}%

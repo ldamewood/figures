@@ -1,0 +1,52 @@
+\begingroup
+\newlength\radius
+\setlength\radius{2em}
+\def\segments{10}
+\begin{tikzpicture}
+\tikzset{
+  polarization/.style={
+    -latex,blue,
+    shorten <= 0.1em,shorten >= 0.1em
+  },
+  screen/.style={
+    decorate,
+    decoration={
+      snake,
+      pre length=\radius,
+      post length=\radius,
+    },
+    shorten <= \radius,
+    shorten >= \radius,
+    color=red,
+  },
+}
+\draw (-4,-2) rectangle (4,2);
+\node (A) [draw,circle,inner sep=0em,red,] at (-2.5,-0.75) {$+$};
+\draw[dashed,blue] (A) circle(\radius);
+\foreach \i in {1,2,...,\segments}%
+{
+  \pgfmathdivide{360}{\segments}
+  \pgfmathmultiply{\pgfmathresult}{\i}
+  \edef\angle{\pgfmathresult}
+  \pgfmathsin{\angle}
+  \edef\myx{\pgfmathresult}
+  \pgfmathcos{\angle}
+  \edef\myy{\pgfmathresult}
+  \draw[polarization] (A) edge ++(\myx\radius,\myy\radius);
+}
+\node (B) [draw,circle,inner sep=0em,red] at (1,0.25) {$+$};
+\draw[dashed,blue] (B) circle(\radius) node[below=0.5em,right=\radius,black] {$\vec P$};
+\foreach \i in {1,2,...,\segments}%
+{
+  \pgfmathdivide{360}{\segments}
+  \pgfmathmultiply{\pgfmathresult}{\i}
+  \edef\angle{\pgfmathresult}
+  \pgfmathsin{\angle}
+  \edef\myx{\pgfmathresult}
+  \pgfmathcos{\angle}
+  \edef\myy{\pgfmathresult}
+  \draw[polarization] (B) edge ++(\myx\radius,\myy\radius);
+}
+\draw[screen] (A) -- (B) node[midway,black,above=1em] {$W$};
+\end{tikzpicture}
+\endgroup

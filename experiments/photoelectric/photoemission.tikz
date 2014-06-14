@@ -1,0 +1,89 @@
+\begingroup
+\usetikzlibrary{snakes}
+\tikzset{
+  dim/.style = {
+    help lines,
+    latex-latex,
+    shorten <= 0,
+    shorten >= 0,
+  },
+  left dim/.style = {
+    dim,
+    -latex,
+  },
+  right dim/.style = {
+    dim,
+    -latex,
+  },
+  help lines/.append style = {
+    thin,
+    color=black,
+    shorten <= 1ex,
+    shorten >= 1ex,
+  },
+  photon/.style={
+    snake=coil,line after snake=2ex,shorten >=1.5ex,segment aspect=0,color=red,-latex,
+  },
+  vector/.style={thick,-latex},
+  electron/.style={fill=blue!20,draw,circle},
+  axis/.style={thick,shorten <= -3,shorten >=-3},
+}
+\begin{tikzpicture}
+\begin{scope}[xshift=-0.5in]
+% -deepelectronE + -fermiE + ejectE
+\def\photonE{1.5}
+\def\ejectE{0.5}
+\def\vacuumE{0.0}
+\def\conductionE{-1.0}
+\def\fermiE{-2.0}
+\def\valenceE{-2.5}
+\def\deepelectronE{-3.5}
+\def\verydeepE{-4.5}
+\def\photonx{0.25}
+\def\deepelectronx{1.0}
+\def\ejectelectronx{2.5}
+\def\lineendx{3.0}
+\def\stoponex{3.5}
+\def\stoptwox{4.5}
+\fill[blue!20]
+  (0,\fermiE) rectangle (\lineendx,\verydeepE);
+\shade[bottom color=blue!20,top color=white]
+%\fill[blue!20,path fading=south]
+  (0,\fermiE)+(0,-0.25) rectangle +(\lineendx,0.5);
+
+% axis and energies
+\draw[axis,-latex] (0,\verydeepE)
+  -- (0,0.9) 
+  -- (0.1,1.0)
+  -- (-0.1,1.1)
+  -- (0.0,1.2)
+  -- (0.0,1.8) node[above] {$E$};
+\draw[axis] (0,\vacuumE) node[left] {$0$} -- +(\lineendx,0);
+%\draw (0,\conductionE) node[left] {$E_c$} -- +(\lineendx,0);
+\draw[dashed] (0,\fermiE) node[left] {$E_{\mathrm{F}}$} -- +(\lineendx,0);
+%\draw (0,\valenceE) node[left] {$E_v$} -- +(\lineendx,0);
+\draw (0,\deepelectronE) node[left] {$E_i$} -- +(+3pt,0);
+\draw (0,\ejectE) node[left] {$T_f$} -- +(+3pt,0);
+\draw (0,\photonE) node[left] {$h\nu$} -- +(+3pt,0);
+
+% electrons and photon
+\draw[photon] (\photonx,\photonE) -- (\deepelectronx,\deepelectronE);
+\draw[vector] (\deepelectronx,\deepelectronE) node[electron] {}
+  -- +(0.5,0) node[below] {$\hbar\vec k_i$};
+\node at (\deepelectronx,\deepelectronE) {\footnotesize{$\uparrow$}};
+\draw[vector] (\ejectelectronx,\ejectE) node[electron] {}
+  -- +(0.5,0) node[right] {$\hbar\vec k_f$};
+\node at (\ejectelectronx,\ejectE) {\footnotesize{$\uparrow$}};
+\draw[shorten <= 1.5ex,shorten >=1.5ex,-latex] (\deepelectronx,\deepelectronE)
+  to[bend right=30] (\ejectelectronx,\ejectE);
+
+% help lines
+\draw[help lines] (\lineendx,\vacuumE) -- +(2.0,0);
+\draw[help lines] (\lineendx,\deepelectronE) -- +(2.0,0);
+\draw[help lines] (\lineendx,\fermiE) -- +(1.0,0);
+
+\draw[dim] (\stoponex,\fermiE) -- (\stoponex,\vacuumE) node[fill=white,midway] {$\Phi$};
+\draw[dim] (\stoptwox,\deepelectronE) -- (\stoptwox,\vacuumE) node[fill=white,midway] {$E_{\mathrm{B}}$};
+\end{scope}
+\end{tikzpicture}
+\endgroup

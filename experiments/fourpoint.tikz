@@ -1,0 +1,23 @@
+\begin{tikzpicture}[centered]
+\path (-3,-1.1) rectangle (3,1);
+\path[draw,dashed,use Hobby shortcut,closed=true,drop shadow,fill=yellow!25,]
+(-3,-1) .. (-1,-1) .. (2,-1) .. (3,1) .. (1,1) .. (-2,1);
+%\path[draw] (-3,-1) -- (-1,-1) -- (2,-1) -- (3,1) -- (1,1) -- (-2,1);
+%\draw[drop shadow,fill=yellow!25] (-4,-1) -- (3,-1) -- (4,1) -- (-3,1) --cycle;
+
+\draw[arrows={<->}] (-0.5,0) -- ++(0,2) -- ++(1,0) -- ++(0,-2);
+
+\node[circle,draw,fill=white] at (0,2) {$V$};
+
+\draw[arrows={o->}] (-0.25,3) -- (-1.5,3) -- (-1.5,0);
+\draw[arrows={o->}] (+0.25,3) -- (+1.5,3) -- (+1.5,0);
+
+\node[circle,draw,fill=white] at (1.5,2) {$A$};
+\node[label=Current Source] at (0,3) {};
+
+\foreach \x in {-1.5,-0.5,0.5} {
+\draw[arrows={|<->|}] (\x,-0.25) -- ++(1,0) %
+ node[midway,fill=yellow!25] {$d$};
+}
+
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\begingroup
+\begin{tikzpicture}[trim axis left,trim axis right=0]
+\pgfplotsset{
+  data/.style={
+    scatter,
+    mark=*,
+    only marks,
+    nodes near coords,
+    point meta=explicit symbolic,
+    every node near coord/.append style={
+      font=\scriptsize,
+      anchor=0,
+    },
+  },
+}
+\begin{axis}[
+  xlabel={Magnetic valence per atom},
+  ylabel={Magnetic moment per atom [\si{\bohrmagneton\per\unitcell}]},
+  xmin=4,
+  xmax=11,
+  ymin=-0.5,
+  ymax=2.5,
+  domain=4:12,
+]
+\addplot[no marks,black] {x-6};
+\addplot[no marks,black] {10.6-x};
+\addplot[data] coordinates
+{
+  (10,0.6) [Ni]
+  (9.0,1.6) [Co]
+  (8,2.2) [Fe]
+};
+\addplot[data,every node near coord/.append style={anchor=180}] coordinates
+{
+  (6.0,0.0) [Cr]
+  (20/3,2/3) [FeMnSb]
+  (19/3,0.976/3) [FeMnSi]
+  (16/3,1.0) [VMnSi]
+};
+\end{axis}
+\end{tikzpicture}
+\endgroup

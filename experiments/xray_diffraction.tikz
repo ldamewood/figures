@@ -1,0 +1,17 @@
+\begin{tikzpicture}[centered]
+% Substrate
+\draw (-1,0.5) rectangle (1,-1.5);
+\node at (0,-1) {Substrate};
+% Films
+\draw[pattern=horizontal lines] (-1,0.5) rectangle (1,-0.5);
+\node[pin=left:Thin films] at (-1,0) {};
+% X-ray
+\draw[-latex] (150:3) node[above] {Incident x-ray} -- (0,0) -- (30:3) node [label=left:Reflected x-ray] {};
+% Detector
+\draw[ultra thick] (0,0)+(35:3) arc (35:25:3);
+\node[label=right:Detector] at (25:3) {};
+% Angle
+\draw[dashed] (0,0) -- (-30:3);
+\draw[latex-latex] (0,0) + (30:1.5) arc (30:-30:1.5);
+\node[fill=white] at (1.5,0) {$2\theta$};
+\end{tikzpicture}

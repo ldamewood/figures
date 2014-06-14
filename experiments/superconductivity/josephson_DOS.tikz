@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+\draw[white] (-1.1in,0) -- (1.1in,0);
+\newlength{\dv}
+\setlength\dv{0.0in}
+\draw[-latex] (0,-2.6) -- (0,2.6) node[pos=1.01,anchor=south] {$E$};
+\draw[dashed] (-2.0,-0.5\dv) -- (-0.25,-0.5\dv);
+\draw[dashed] (+2.0,+0.5\dv) -- (+0.25,+0.5\dv);
+\node[pin=above right:Insulator] at (0,1) {};
+\draw[latex-latex] %
+ (-2,-2.5) node[below,anchor=north west] {DOS SC1} -- %
+ (+2,-2.5) node[below,anchor=north east] {DOS SC2};
+% SC1
+\path[fill=blue!50] (-0.25,-0.25)++(0,-0.5\dv) to ++(-1.75,0) to ++(0,-0.05) %
+ to[rounded corners=30pt] ++(+1.5,0) to (-0.5,-2.5) to (-0.25,-2.5) to cycle;
+\draw (-0.25,-2.5) -- (-0.25,2.5);
+\draw (-2,-0.30)++(0,-0.5\dv) to[rounded corners=30pt] ++(1.5,0) -- (-0.5,-2.5);
+\draw (-2,-0.25)++(0,-0.5\dv) -- ++(1.75,0);
+\draw (-2,+0.30)++(0,-0.5\dv) to[rounded corners=30pt] ++(1.5,0) -- (-0.5,+2.5);
+\draw (-2,+0.25)++(0,-0.5\dv) -- ++(1.75,0);
+\draw[latex-latex] (-2,-0.25)++(0,-0.5\dv) -- ++(0,0.5) %
+     node[midway,fill=white] {\tiny{$2\Delta$}};
+% SC2
+\path[fill=blue!50] (+0.25,-0.25)++(0,+0.5\dv) to ++(+1.75,0) to ++(0,-0.05) %
+ to[rounded corners=30pt] ++(-1.5,0) to (+0.5,-2.5) to (+0.25,-2.5) to cycle;
+\draw (+0.25,-2.5) -- (+0.25,2.5);
+\draw (+2,-0.30)++(0,+0.5\dv) to[rounded corners=30pt] ++(-1.5,0) -- (0.5,-2.5);
+\draw (+2,-0.25)++(0,+0.5\dv) -- ++(-1.75,0);
+\draw (+2,+0.30)++(0,+0.5\dv) to[rounded corners=30pt] ++(-1.5,0) -- (0.5,+2.5);
+\draw (+2,+0.25)++(0,+0.5\dv) -- ++(-1.75,0);
+\draw[latex-latex] (+2,-0.25)++(0,+0.5\dv) -- ++(0,0.5) %
+     node[midway,fill=white] {\tiny{$2\Delta$}};
+\end{tikzpicture}

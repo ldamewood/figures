@@ -1,0 +1,17 @@
+\begingroup 
+\begin{tikzpicture}
+\setlength{\scale}{0.4in}
+\def\labelx{$a$}
+\def\labely{$a$}
+\def\labelz{$c$}
+\def\xx{+1.0}
+\def\xy{+0.0}
+\def\yx{-0.2}
+\def\yy{+0.4}
+\def\zx{+0.0}
+\def\zy{+1.25}
+\let\bravaisclass1
+\let\bravaisangle0
+\bravais
+\end{tikzpicture}
+\endgroup

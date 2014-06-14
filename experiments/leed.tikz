@@ -1,0 +1,32 @@
+\begin{tikzpicture}[centered]
+
+% Screen
+\draw[ultra thick] (0,0)++(0:2.00) arc (0:180:2.00);
+\node[right,anchor=south west] at (45:2.00) {Screen};
+
+% Mesh
+\draw[dashed,thin] (0,0)++(0:1.75) arc (0:180:1.75);
+\draw[dashed,thin] (0,0)++(0:1.50) arc (0:180:1.50);
+\node[right,anchor=south west] at (45:2.00) {Screen};
+
+% Opening
+\path[fill=white] (-0.125,1.375) rectangle (+0.125,2.125);
+
+% Ebeam gun
+\draw (-0.25,2.25) rectangle (0.25,3.25) %
+    node[right,anchor=north west] {Electron gun};
+
+% Ebeam
+\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (30:2);
+\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (60:2);
+\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (120:2);
+\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (150:2);
+
+% Target
+\draw[target] (-0.25,-0.125) rectangle (0.25,0) %
+    node[right,anchor=north west,black] {Target};
+
+% Viewing port
+\draw[glass] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
+
+\end{tikzpicture}

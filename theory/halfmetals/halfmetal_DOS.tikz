@@ -1,0 +1,115 @@
+\begingroup
+\def\DOS{\mathrm{DOS}}
+\def\fermi{0}
+\def\fadewidth{0.15}
+\tikzset{
+  dim/.style = {
+    help lines,
+    latex-latex,
+    shorten <= 0,
+    shorten >= 0,
+  },
+  left dim/.style = {
+    dim,
+    -latex,
+  },
+  right dim/.style = {
+    dim,
+    -latex,
+  },
+  help lines/.append style = {
+    thin,
+    color=black,
+    shorten <= 3,
+    shorten >= 3,
+  },
+}
+
+\begin{tikzpicture}[centered,scale=0.75]
+\begin{scope}[xshift=-1.25in]
+  \node at (-2.5,3) {(a)};
+  % Spin down fill
+  \begin{scope}
+    \clip (0,\fermi) rectangle (-2,-2.5);
+    \fill[blue!20] (2,0)++(90:3) arc (90:270:3);
+  \end{scope}
+  % temperature fading
+  \begin{scope}
+    \clip (2,0)++(90:3) arc (90:270:3);
+    \shade[top color=white,bottom color=blue!20]
+      (0,-\fadewidth) rectangle (-2,\fadewidth);
+  \end{scope}
+  % Spin down circle
+  \begin{scope}
+    \clip (0,2.5) rectangle (-2,-2.5);
+    \draw (2,0)++(90:3) arc (90:270:3);
+  \end{scope}
+  % Spin up occupied fill and circle
+  \begin{scope}
+    \clip (0,0) rectangle (2,-2.5);
+    \fill[blue!20] (-2,-2.5)++(60:3) arc (60:0:3) -- (-2,-2.5);
+    \draw (-2,-2.5)++(90:3) arc (90:0:3);
+  \end{scope}
+  % Spin up unoccupied circle
+  \begin{scope}
+    \clip (0,0) rectangle (2,2.5);
+    \draw (-2,3.5)++(90:3) arc (90:-90:3);
+  \end{scope}
+  \draw[-latex,thick] (0,-3) -- (0,2.5) node[above] {$E$};
+  \draw[thick] (-1.5,\fermi) -- (1.5,\fermi) node[right] {$E_F$};
+  \draw[latex-latex,thick] (-2,-2.5) node[below] {$\DOS_\downarrow(E)$} -- %
+                           (+2,-2.5) node[below] {$\DOS_\uparrow(E)$};
+  \draw[help lines] (0,-0.25) -- (1,-0.25);
+  \draw[help lines] (0,1.25) -- (1,1.25);
+  \draw[dim] (0.5,-0.25) -- (0.5,1.25) node[fill=white,midway] {$\Delta$};
+  \draw[help lines] (0,1.25) -- (-1,1.25);
+  \draw[dim] (-0.5,\fermi) -- (-0.5,1.25) node[fill=white,midway] {$\delta$};
+  \node at (1,2) {CB};
+  \node at (1,-1) {VB};
+\end{scope}
+
+\begin{scope}[xshift=1.25in]
+\node at (-2.5,3) {(b)};
+% Spin down fill
+\begin{scope}
+\clip (0,\fermi) rectangle (-2,-2.5);
+\fill[blue!20] (2,0)++(90:3) arc (90:270:3);
+\end{scope}
+% temperature fading
+\begin{scope}
+\clip (2,0)++(90:3) arc (90:270:3);
+\shade[top color=white,bottom color=blue!20]
+  (0,-\fadewidth) rectangle (-2,\fadewidth);
+\end{scope}
+% Spin down circle
+\begin{scope}
+\clip (0,2.5) rectangle (-2,-2.5);
+\draw (2,0)++(90:3) arc (90:270:3);
+\end{scope}
+% Spin up occupied fill and circle
+\begin{scope}
+\clip (0,0) rectangle (2,-2.5);
+\fill[blue!20] (-2,-1.75)++(90:3) arc (90:-30:3) -- (-2,-1.75);
+\end{scope}
+% temperature fading
+\begin{scope}
+\clip (-2,-1.75)++(90:3) arc (90:0:3) -- (-2,-1.75);
+\shade[top color=white,bottom color=blue!20]
+  (0,-\fadewidth) rectangle (2,\fadewidth);
+\end{scope}
+\begin{scope}
+\clip (0,2.5) rectangle (2,-2.5);
+\draw (-2,-1.75) circle(3);
+\end{scope}
+% Spin up unoccupied circle
+\begin{scope}
+\clip (0,0) rectangle (2,2.5);
+\draw (-2,3.5) circle (3);
+\end{scope}
+\draw[-latex,thick] (0,-3) -- (0,2.5) node[above] {$E$};
+\draw[thick] (-1.5,\fermi) -- (1.5,\fermi) node[right] {$E_F$};
+  \draw[latex-latex,thick] (-2,-2.5) node[below] {$\DOS_\downarrow(E)$} -- %
+                           (+2,-2.5) node[below] {$\DOS_\uparrow(E)$};
+\end{scope}
+\end{tikzpicture}
+\endgroup

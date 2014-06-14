@@ -1,0 +1,14 @@
+\begingroup
+\begin{tikzpicture}
+\input{andreev.tikz}
+\def\bias{0.25}
+\interface[N]{(a) Normal metal $V_b \ll \Delta_s$\\$G=2G_0$}
+\draw[vector] (-1.0,\bias) node[electron] {} -- +(0.5,0);
+\draw[vector] (-0.5,-\bias) node[hole] {} -- +(-0.5,0);
+\draw[vector] (1.0,0) node[draw,circle,fill=green!20] {} -- +(0.5,0);
+\node at (-1.0,\bias) {\tiny{$\mathbf\uparrow$}};
+\node at (-0.5,-\bias) {\tiny{$\mathbf\uparrow$}};
+\node at (1,0) {\tiny{$\mathbf{\downarrow\uparrow}$}};
+\node[left] at (-1.5,0) {$E_{\mathrm{F}}$};
+\end{tikzpicture}
+\endgroup

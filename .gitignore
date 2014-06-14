@@ -52,3 +52,41 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# LaTeX
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdf
+*.bak
+*.fls
+*.fdb_latexmk
+*.md5
+*.dep
+*.dpth
+*.figlist
+*.makefile
+*.bak
+
+# Mac finder files and hidden folders
+.DS_Store

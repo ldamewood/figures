@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\path (-0.667in,0) -- (+0.667in,0);
+\draw[-latex] (0,0) -- (1.5,0) node[below] {$k_x$};
+\draw[-latex] (0,0) -- (0,1.5) node[right] {$k_y$};
+\draw[target,opacity=0.5] (0,0) circle (1);
+\draw[-latex,target,shorten >=2pt] (0,0) -- (45:1) %
+  node[draw,target,circle,inner sep=2pt,label=right:$\vec k$] {};
+\draw[-latex,target,shorten >=2pt] (0,0) -- (225:1) %
+  node[draw,target,circle,inner sep=2pt,label=left:$-\vec k$] {};
+\end{tikzpicture}

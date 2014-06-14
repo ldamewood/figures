@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+\begin{axis}
+[
+  width=3in,
+  height=3in,
+  xmin=0,
+  xmax=2,
+  ymin=0,
+  ymax=1.5,
+  ytick=\empty,
+  xtick=\empty,
+  ylabel={$\Psi(r)$ [arb. unit]},
+  xlabel={$r$ [arb. unit]},
+  axis y line=left,
+  axis x line=bottom,
+  extra x ticks={0,1.25},
+  extra x tick labels={0,$R_c$},
+]
+\addplot[domain=0:2,samples=100,dashed] {x*exp(-x*x)};
+\addplot[domain=0:2,samples=100] {x*exp(-x*x) + 5*x*exp(-5*x*x)};
+\draw[dotted] (axis cs:1.25,0) -- (axis cs:1.25,0.262);
+\end{axis}
+\end{tikzpicture}

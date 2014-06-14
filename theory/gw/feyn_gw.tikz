@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+\node[label=below:$1$,circle,fill,inner sep=0.1em] (A) at (-1,0) {};
+\node[label=below:$2$,circle,fill,inner sep=0.1em] (B) at (1,0) {};
+\draw (A) to (B) node[midway,below] {$G$};
+\draw[decorate,decoration={snake}] (180:1) arc (180:0:1);
+\node[ultra thick] at (1.5,0.5) {$W$};
+\end{tikzpicture}

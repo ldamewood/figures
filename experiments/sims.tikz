@@ -1,0 +1,26 @@
+\begin{tikzpicture}[centered]
+% Target
+\draw[target] (-1,-0.25) rectangle (1,0);
+\node[below,anchor=north] at (0,-0.25) {Target};
+
+% Primary ions
+\draw[ions,-latex] (-1.5,1) -- (0,0) %
+    node[near start,left,anchor=north east,black] {Primary ions};
+
+% Secondary ions
+\draw[target,-latex] (0,0) -- (0.5,0.5);
+\draw[target,-latex] (0,0) -- (0.75,0.5);
+\draw[target,-latex] (0,0) -- (0.5,0.25);
+\node[above,anchor=south] at (0.5,1.0) {Secondary ions};
+
+% Mass selector
+\draw (1.25,0.25)++(135:0.5) arc (135:0 :0.5) -- 
+               ++(0 :0.25) arc (0 :135:0.75);
+\draw[blue,-latex] (1.25,0.25)++(135:0.625) arc (135:5 :0.625);
+\node[right,anchor=south west] at (1.78,0.78) {Mass selector};
+
+% Mass spectrometer
+\draw (1.5,-0.25) rectangle (2.25,0.25);
+\node[right,anchor=west] at (2.25,0) {Mass spectrometer};
+
+\end{tikzpicture}

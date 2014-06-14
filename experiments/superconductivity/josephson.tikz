@@ -1,0 +1,38 @@
+\begin{tikzpicture}[centered]
+%\usetikzlibrary{shadows}
+
+% \draw[blue,thick] (-5.0,-1.4) rectangle( 0.0, 1.4);
+% \node at (-2.5,0.0) {Superconductor 1};
+% \draw[blue,thick] ( 0.0,-1.4) rectangle( 5.0, 1.4);
+% \node at ( 2.5,0.0) {Superconductor 2};
+% \draw[red,fill=red!50,thick,] (-0.25,-1.5) rectangle( 0.25, 1.5);
+% \draw[thick,-latex] (-1,-1) -- ++(2,0);
+% \node[draw=blue,fill=blue!50,shape=rounded rectangle,] (C) at (-1.00,-1.00) {$\uparrow\downarrow$};
+
+
+\draw (0,1)++(+0.05,-0.25) -- ++(0,0.5) %
+ node[midway,label={[label distance=-0.5em]-45:\tiny{+}}] {};
+\draw (0,1)++(-0.05,-0.1) -- ++(0,0.2) %
+ node[midway,label={[label distance=-0.5em]-135:\tiny{-}}] {};
+\node at (0,1.5) {$V_a$};
+
+\draw (0.05,1) -- (2,1) -- (2,0) -- (-2,0) -- (-2,1) -- (-0.05,1);
+
+\node[draw,fill=white,circle] at (1,1) {A};
+
+\draw[target] (-1.5,-0.25) rectangle (1.5,0.25);
+\draw[ions] (-0.05,-0.25) rectangle (0.05,0.25);
+\node at (-0.75,0) {SC1};
+\node at (+0.75,0) {SC2};
+\node[pin=below:{Insulating layer}] at (0,0) {};
+
+% \node[fill=white,circle,draw=black] at (-1.125,2.25) {$A$};
+% \draw (0,0) rectangle (2.25,-2.25);
+% \node[fill=white,circle,draw=black] at (2.25,-1.5) {$V$};
+% \draw[target,drop shadow] (-1.5,-0.5) rectangle (1.5,0.5);
+% \node at (-1,0) {SC1};
+% \draw[ions,drop shadow] (-0.6,-0.6) rectangle (0.6,0.6) %
+%  node[pin=above right:{Insulating layer}] {};
+% \draw[target,drop shadow] (-0.5,-1.5) rectangle (0.5,1.5);
+% \node at (0,-1) {SC2};
+\end{tikzpicture}

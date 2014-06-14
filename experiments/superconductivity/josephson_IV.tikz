@@ -1,0 +1,20 @@
+\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{axis}[
+  clip=false,
+  enlargelimits=false,
+  xlabel=$V$ ($2\Delta/e$),
+  ylabel={$I$ (arb. units.)},
+  xmin=-2,
+  xmax=2,
+  ymin=-1,
+  ymax=1,
+  samples=100,
+  domain=-2:2,
+  ytick=\empty,
+]
+\addplot[no marks,gray,dashed,domain=-1:1] {0.5*x};
+\addplot[no marks] {0.5*x*(sigmoid(50*(x-1))+sigmoid(50*(-1-x)))};
+\draw (axis cs:0,-0.3) -- (axis cs:0,+0.3) node[left] {$I_s$};
+\path (axis cs:0,0)++(-2.2in,0) rectangle ++(4.4in,1in);
+\end{axis}
+\end{tikzpicture}

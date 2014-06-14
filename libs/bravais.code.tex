@@ -1,0 +1,124 @@
+\newcommand{\bravais}
+{
+\begin{scope}[
+  x={(\xx\scale,\xy\scale)},
+  y={(\yx\scale,\yy\scale)},
+  z={(\zx\scale,\zy\scale)},
+  point/.style={fill,line width=0},
+  shape=circle,
+  inner sep=0.03\scale,
+  thick,
+]
+	\node[point] (C1) at (0,0,0) {};
+	\node[point] (C2) at (0,0,1) {};
+	\node[point] (C3) at (0,1,0) {};
+	\node[point] (C5) at (1,0,0) {};
+	
+	\path (C2)++(C3) node[point] (C4) {};
+	\path (C2)++(C5) node[point] (C6) {};
+	\path (C2)++(C3)++(C5) node[point] (C8) {};
+	\begin{scope}[gray!50]
+	  \path (C3)++(C5) node[point] (C7) {};
+	  \draw (C7) -- (C5);
+	  \draw (C7) -- (C8);
+	  \draw (C7) -- (C3);
+	  \ifx\bravaisclass1
+	    \node[point] (C9) at (0.5,0.5,0) {};
+	    \draw (C9) -- (C1);
+	    \draw (C9) -- (C7);
+	    \draw (C9) -- (C5);
+	    \draw (C9) -- (C3);
+	  \fi
+	  \ifx\bravaisclass2
+	    \node[point] (C9) at (0.5,0.5,0.5) {};
+	    \draw (C9) -- (C1);
+	    \draw (C9) -- (C2);
+	    \draw (C9) -- (C3);
+	    \draw (C9) -- (C4);
+	    \draw (C9) -- (C5);
+	    \draw (C9) -- (C6);
+	    \draw (C9) -- (C7);
+	    \draw (C9) -- (C8);
+	  \fi
+	  \ifx\bravaisclass3
+	    \node[point] (C9) at (0.5,0.5,0) {};
+	    \draw (C9) -- (C1);
+	    \draw (C9) -- (C7);
+	    \draw (C9) -- (C5);
+	    \draw (C9) -- (C3);
+	    \node[point] (C10) at (1.0,0.5,0.5) {};
+	    \draw (C10) -- (C5);
+	    \draw (C10) -- (C7);
+	    \draw (C10) -- (C6);
+	    \draw (C10) -- (C8);
+	    \node[point] (C11) at (0.5,1.0,0.5) {};
+	    \draw (C11) -- (C3);
+	    \draw (C11) -- (C7);
+	    \draw (C11) -- (C8);
+	    \draw (C11) -- (C4);
+	  \fi
+	\end{scope}
+	\draw (C1) -- 
+	      (C5) node[midway,below] {\scriptsize{\labely}} -- 
+	      (C6) node[midway,right] {\scriptsize{\labelz}} -- 
+	      (C8) -- (C4) -- (C3) -- 
+	      (C1) node[midway,left] {\scriptsize{\labelx}};
+	\draw (C2) -- (C1);
+	\draw (C2) -- (C6);
+	\draw (C2) -- (C4);
+	\ifx\bravaisclass1
+	  \node[point] (C10) at (0.5,0.5,1) {};
+	  \draw (C10) -- (C2);
+	  \draw (C10) -- (C8);
+	  \draw (C10) -- (C6);
+	  \draw (C10) -- (C4);
+	\fi
+	\ifx\bravaisclass3
+	  \node[point] (C12) at (0.5,0.0,0.5) {};
+	  \draw (C12) -- (C1);
+	  \draw (C12) -- (C2);
+	  \draw (C12) -- (C5);
+	  \draw (C12) -- (C6);
+	  \node[point] (C13) at (0.0,0.5,0.5) {};
+	  \draw (C13) -- (C1);
+	  \draw (C13) -- (C2);
+	  \draw (C13) -- (C3);
+	  \draw (C13) -- (C4);
+	  \node[point] (C14) at (0.5,0.5,1.0) {};
+	  \draw (C14) -- (C2);
+	  \draw (C14) -- (C4);
+	  \draw (C14) -- (C6);
+	  \draw (C14) -- (C8);
+	\fi
+\end{scope}
+\ifx\bravaisangle1
+\begin{scope}[blue!50!black]
+\begin{scope}[ % xz-plane
+  x={(\xx\scale,\xy\scale)},
+  y={(\zx\scale,\zy\scale)},
+  z={(\yx\scale,\yy\scale)},
+]
+  \draw (0,0,0)++(0.25,0) arc (0:90:0.25);
+  \node at (0.3,0.3,0) {\scriptsize{\labela}};
+\end{scope}
+
+\begin{scope}[ % xy-plane
+  x={(\xx\scale,\xy\scale)},
+  y={(\yx\scale,\yy\scale)},
+  z={(\zx\scale,\zy\scale)},
+]
+  \draw (1,0,0)++(0,0.25) arc (90:180:0.25);
+  \node at (0.8,0.4,0) {\scriptsize{\labelc}};
+\end{scope}
+
+\begin{scope}[ % yz-plane
+  x={(\yx\scale,\yy\scale)},
+  y={(\zx\scale,\zy\scale)},
+  z={(\xx\scale,\xy\scale)},
+]
+  \draw (0.3,0) arc (0:90:0.3);
+  \node at (0.4,0.3,0) {\scriptsize{\labelb}};
+\end{scope}
+\end{scope}
+\fi
+}

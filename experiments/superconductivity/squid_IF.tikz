@@ -1,0 +1,12 @@
+\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{axis}[
+  domain=0:2,
+  samples=50,
+  clip=false,
+  ylabel={Max. Current ($I_0$)},
+  xlabel={Magnetic flux ($\Phi_B/\phi_0$)}
+]
+\addplot[no marks] {2*abs(cos(deg(pi*x)))};
+\path (axis cs:1,0)++(-2.2in,0) -- ++ (4.4in,0);
+\end{axis}
+\end{tikzpicture}

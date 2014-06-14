@@ -1,0 +1,52 @@
+\usetikzlibrary{decorations,decorations.markings}
+\tikzset{
+    -o/.style={
+        shorten >=#1,
+        decoration={
+            markings,
+            mark={
+                at position 1
+                with {
+                    \draw circle [radius=#1];
+                }
+            }
+        },
+        postaction=decorate
+    },
+    -o/.default=2pt,
+    o-/.style={
+        shorten <=#1,
+        decoration={
+            markings,
+            mark={
+                at position 0
+                with {
+                    \draw circle [radius=#1];
+                }
+            }
+        },
+        postaction=decorate,
+    },
+    o-/.default=2pt,
+    o-o/.style={
+        shorten >=#1,
+        shorten <=#1,
+        decoration={
+            markings,
+            mark={
+                at position 0
+                with {
+                    \draw circle [radius=#1];
+                }
+            },
+            mark={
+                at position 1
+                with {
+                    \draw circle [radius=#1];
+                }
+            },
+        },
+        postaction=decorate,
+    },
+    o-o/.default=2pt,
+}

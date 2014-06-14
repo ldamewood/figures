@@ -1,0 +1,56 @@
+\begin{tikzpicture}[centered]
+\usetikzlibrary{snakes}
+\tikzset{
+  photon/.style={
+    snake=coil,
+    line after snake=2ex,
+    shorten >=1.5ex,
+    segment aspect=0,
+    color=red,
+    -latex,
+  },
+  electron cloud/.style={target,opacity=0.5},
+  electron/.style={target,inner sep=0.2em,circle},
+  hole/.style={electron,fill=white},
+  energy level/.style={dashed,thin,gray},
+  nucleus/.style={ions,circle,inner sep=0.25em},
+  electron transition/.style={blue,-latex,thick},
+}
+
+\begin{scope}[xshift=-1in]
+\draw[electron cloud] (0,0) circle(2);
+\node[nucleus] at (0,0) {};
+\node at (0,0) {$+$};
+
+\draw[energy level] (0,0) circle (0.5);
+
+\node[hole] (A) at (45:0.5) {};
+\node at (0,-1) {$E_{\mathrm{core}}$};
+
+\draw[photon] (-2,2) node[left] {$h\nu$} -- (A);
+\draw[electron transition] (A) -- (2,2) node[right] {$T_f$};
+
+\node at (-90:2.5) {(a) Photoemission};
+
+\end{scope}
+
+\begin{scope}[xshift=1in]
+\draw[electron cloud] (0,0) circle(2);
+\node[nucleus] at (0,0) {};
+\node at (0,0) {$+$};
+
+\draw[energy level] (0,0) circle (0.5);
+\draw[energy level] (0,0) circle (1.0);
+\draw[energy level] (0,0) circle (1.5);
+
+\node[label=above:(A),electron] (A) at (90:1.0) {};
+\node[label=right:(B),hole] (B) at (45:0.5) {};
+\node[label=below:(C),hole] (C) at (-30:1.5) {};
+
+\draw[electron transition] (A) edge (B);
+\draw[electron transition] (C) -- (2,2) node[right] {$T_f$};
+
+\node at (-90:2.5) {(b) Auger relaxation};
+\end{scope}
+
+\end{tikzpicture}

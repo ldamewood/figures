@@ -1,0 +1,17 @@
+\usetikzlibrary{shapes.geometric}
+\begin{tikzpicture}
+% Axis
+\draw[gray,thin,-latex] (-2.5,0) -- (2.5,0) node[below] {$\hat x$};
+\draw[gray,thin,-latex] (0,-2) -- (0,2) node[right] {$\hat y$};
+% W--S cell
+\draw[thick] (30:1.155) \foreach \x in {30,90,...,359} { -- (\x:1.155) } --cycle;
+%\node [draw, thick, minimum size=1in, regular polygon, regular polygon sides=6, rotate=-90] at (0,0) {} node [above left] {W--S};
+%\node [draw, thin, minimum size=1in, regular polygon, regular polygon sides=6, rotate=-90] at (+1.0,-1.732) {};
+% Mirrored vectors
+\draw[thick,dashed] (-1.0,+1.732) -- (+1.0,-1.732);
+\draw[thick,dashed] (+1.0,+1.732) -- (-1.0,-1.732);
+\draw[thick,dashed] (-2.0,+0.000) -- (+2.0,0.0000);
+% Primitive vectors
+\draw[thick,-latex] (0,0) -- (+1.0,+1.732) node[right] {$\vec a_1$};
+\draw[thick,-latex] (0,0) -- (+1.0,-1.732) node[right] {$\vec a_2$};
+\end{tikzpicture}

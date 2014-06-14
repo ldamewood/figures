@@ -1,0 +1,48 @@
+\usetikzlibrary{fadings}
+\tikzset{
+  dim/.style = {
+    help lines,
+    latex-latex,
+    shorten <= 0,
+    shorten >= 0,
+  },
+  left dim/.style = {
+    dim,
+    -latex,
+  },
+  right dim/.style = {
+    dim,
+    -latex,
+  },
+  help lines/.append style = {
+    thin,
+    color=black,
+    shorten <= 1ex,
+    shorten >= 1ex,
+  },
+  photon/.style={
+    snake=coil,
+    line after snake=2ex,
+    shorten >=1.5ex,
+    segment aspect=0,
+    color=red,
+    -latex,
+  },
+  vector/.style={thick,-latex},
+  electron/.style={fill=blue!20,draw,circle},
+  hole/.style={fill=white,draw,circle},
+  axis/.style={thick,shorten <= -3,shorten >=-3},
+}
+
+\def\scgap{0.25}
+\def\interface[#1]#2{
+  \fill[blue!20] (-1.5,0) rectangle (1.5,-2);
+  \path[fill=white] (0,-\scgap) rectangle (1.5,\scgap);
+  \shade[top color=white,bottom color=blue!20] (0,-\scgap) rectangle (-1.5,\scgap);
+  \draw[axis,-latex] (0,-1.5) -- (0,1.5) node[right] {$E$};
+  \draw[dashed] (-1.5,0) -- (1.5,0);
+  \draw (0,\scgap) -- +(1.5,0);
+  \draw (0,-\scgap) -- +(1.5,0);
+  \node at (-0.75,-1.5) {#1};
+  \node at (0.75,-1.5) {SC};
+}

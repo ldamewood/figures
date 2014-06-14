@@ -1,0 +1,30 @@
+\begin{tikzpicture}[domain=-4:4,centered]
+\begin{scope}
+\draw[-latex] (-4,0) -- (4,0) node[right] {$\hat x$};
+\draw (-2,0)+(0,2pt) -- +(0,-4pt) node[below] {$-a$};
+\draw (+0,0)+(0,2pt) -- +(0,-4pt) node[below] {$0$};
+\draw (+2,0)+(0,2pt) -- +(0,-4pt) node[below] {$a$};
+\draw[samples=100] plot (\x,{cos(32*\x)});
+%\node[right] at (3,0.5) {$k < \pi/a$, $\lambda > 2a$};
+\node[left] at (-4,0) {(a)};
+\end{scope}
+\begin{scope}[yshift=-1in]
+\draw[-latex] (-4,0) -- (4,0) node[right] {$\hat x$};
+\draw (-2,0)+(0,2pt) -- +(0,-4pt) node[below] {$-a$};
+\draw (+0,0)+(0,2pt) -- +(0,-4pt) node[below] {$0$};
+\draw (+2,0)+(0,2pt) -- +(0,-4pt) node[below] {$a$};
+\draw[samples=100] plot (\x,{cos(92*\x)});
+%\node[right] at (1,0.5) {$k = \pi/a$, $\lambda = 2a$};
+\node[left] at (-4,0) {(b)};
+\end{scope}
+\begin{scope}[yshift=-2in]
+\draw[-latex] (-4,0) -- (4,0) node[right] {$\hat x$};
+\draw (-2,0)+(0,2pt) -- +(0,-4pt) node[below] {$-a$};
+\draw (+0,0)+(0,2pt) -- +(0,-4pt) node[below] {$0$};
+\draw (+2,0)+(0,2pt) -- +(0,-4pt) node[below] {$a$};
+\draw[thin,dashed,samples=100] plot (\x,{cos(92*\x)});
+\draw[samples=100] plot (\x,{cos(278*\x)});
+%\node[right] at (1,0.5) {$k = \pi/a$, $\lambda = 2a$};
+\node[left] at (-4,0) {(c)};
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[centered]
+\draw (90:1.0) -- (0,+2) -- (-2,+2) -- (-2,+0.05);
+\draw (270:-0.25) -- (0,-0.5) -- (-2,-0.5) -- (-2,-0.05);
+\draw (-2,0)++(-0.25,+0.05) -- ++(0.5,0) %
+ node[midway,label={[label distance=-0.5em]+45:\tiny{+}}] {};
+\draw (-2,0)++(-0.1,-0.05) -- ++(0.2,0) %
+ node[midway,label={[label distance=-0.5em]-45:\tiny{-}}] {};
+\node at (-2.5,0) {$V_b$};
+\node[circle,fill=white,draw] at (-2,1) {A};
+
+\draw[target] (0,0.25) -- (0.25,0.5) -- (0.25,1.0) -- (-0.25,1.0) %
+ -- (-0.25,0.5) -- cycle;
+\node at (0,0.75) {Nb};
+\draw[substrate] (-1,-0.25) rectangle (1,+0.25);
+\node at (0,0) {Sample};
+
+\end{tikzpicture}

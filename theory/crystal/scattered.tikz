@@ -1,0 +1,11 @@
+\usepgflibrary{arrows} 
+\begin{tikzpicture}
+\foreach \x in {1,2,3}{
+  \draw[thick,-latex] (-3,\x) -- +(2,-0.5);
+  \draw[thick] (-3,\x)++(2,-0.5) -- +(2,-0.5)
+  	node[draw,dashed,circle,minimum size=0.25in] {}
+	node[draw,dashed,circle,minimum size=0.50in] {};
+}
+\draw (1,3)++(0.25in,0) -- +(0,-4);
+\node[below,rotate=90] at (2,1) {scattered wave front};
+\end{tikzpicture}

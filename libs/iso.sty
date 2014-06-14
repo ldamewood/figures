@@ -1,0 +1,78 @@
+\makeatletter
+
+% Euler's constant
+\providecommand*{\eu}%
+	{\ensuremath{\mathrm{e}}}
+
+% Imaginary constant
+\providecommand*{\iu}%
+	{\ensuremath{\mathrm{i}}}
+
+% Operator commands
+\providecommand{\newoperator}[3]%
+	{\newcommand*{#1}{\mathop{#2}#3}}
+\providecommand{\renewoperator}[3]%
+	{\renewcommand*{#1}{\mathop{#2}#3}}
+
+% Real Part
+\renewoperator{\Re}%
+	{\mathrm{Re}}{\nolimits}
+
+% Imaginary Part
+\renewoperator{\Im}%
+	{\mathrm{Im}}{\nolimits}
+
+% Trace
+\newoperator{\Tr}%
+	{\mathrm{Tr}}{\nolimits}
+
+% Differential
+\providecommand*{\diff}{\@ifnextchar^{\DIfF}{\DIfF^{}}}
+\providecommand*{\vdiff}{\@ifnextchar^{\vDIfF}{\vDIfF^{}}}
+\def\DIfF^#1{\mathop{\mathrm{\mathstrut d}}\nolimits^{#1}\gobblespace}
+\def\vDIfF^#1{\mathop{\mathstrut \delta}\nolimits^{#1}\gobblespace}
+\def\gobblespace{\futurelet\diffarg\opspace}
+\def\opspace{%
+	\let\DiffSpace\!%
+	\ifx\diffarg(%
+		\let\DiffSpace\relax
+	\else
+		\ifx\diffarg[%
+			\let\DiffSpace\relax
+		\else
+			\ifx\diffarg\{%
+				\let\DiffSpace\relax
+			\fi
+		\fi
+	\fi
+\DiffSpace}
+
+
+% Full Derivitive
+\providecommand*{\deriv}[3][]{%
+  \mathchoice%
+    {\frac{\diff^{#1}{#2}}{{\diff #3}^{#1}}}
+    {\diff^{#1}{#2}/{\diff #3}^{#1}}
+    {\diff^{#1}{#2}/{\diff #3}^{#1}}
+    {\diff^{#1}{#2}/{\diff #3}^{#1}}
+}
+
+% Partial Derivitive
+\providecommand*{\pderiv}[3][]{%
+  \mathchoice%
+    {\frac{\partial^{#1}{#2}}{{\partial #3}^{#1}}}
+    {\partial^{#1}{#2}/{\partial #3}^{#1}}
+    {\partial^{#1}{#2}/{\partial #3}^{#1}}
+    {\partial^{#1}{#2}/{\partial #3}^{#1}}
+  }
+
+% Variational Derivitive
+\providecommand*{\vderiv}[3][]{%
+  \mathchoice%
+    {\frac{\vdiff^{#1}{#2}}{{\vdiff #3}^{#1}}}
+    {\vdiff^{#1}{#2}/{\vdiff #3}^{#1}}
+    {\vdiff^{#1}{#2}/{\vdiff #3}^{#1}}
+    {\vdiff^{#1}{#2}/{\vdiff #3}^{#1}}
+}
+
+\makeatother

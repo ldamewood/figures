@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={%
+      group size={2 by 1},%
+      ylabels at={edge left},%
+  },
+  no marks,
+  xlabel={$V$ [$\Delta$]},
+  ylabel={$I$ [arb. unit.]},
+  ytick={0},
+  width=0.4\textwidth,
+]
+\nextgroupplot
+\addplot[domain=-2:-0.5] {x-0.5};
+\addplot[domain=-0.5:0.5] {2*x};
+\addplot[domain=0.5:2] {x+0.5};
+\nextgroupplot
+\addplot[domain=-2:-1] {x+1};
+\addplot[domain=-1:1] {0};
+\addplot[domain=1:2] {x-1};
+\end{groupplot}
+\end{tikzpicture}

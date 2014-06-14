@@ -1,0 +1,22 @@
+\begingroup
+\setlength\scale{0.75cm}
+\begin{tikzpicture}
+\begin{scope}[x={(0.9\scale,0.05\scale)},y={(-0.3\scale,0.05\scale)},z={(0\scale,1\scale)}]]
+\node[atom=Si,label=right:Si(3)] at (4.500000,4.500000,1.500000) {};
+\path[atom/bond <=Si] (4.500000,4.500000,1.500000) to (3.750000,3.750000,2.250000);
+\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (3.750000,3.750000,2.250000);
+\node[atom=Si,label=above:Si(1)] at (1.500000,4.500000,4.500000) {};
+\path[atom/bond <=Si] (1.500000,4.500000,4.500000) to (2.250000,3.750000,3.750000);
+\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (2.250000,3.750000,3.750000);
+\node[atom=Mn,label=right:Mn] at (3.000000,3.000000,3.000000) {};
+\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (2.250000,2.250000,2.250000);
+\path[atom/bond <=Si] (1.500000,1.500000,1.500000) to (2.250000,2.250000,2.250000);
+\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (3.750000,2.250000,3.750000);
+\path[atom/bond <=Si] (4.500000,1.500000,4.500000) to (3.750000,2.250000,3.750000);
+\node[atom=Si,label=left:Si(2)] at (1.500000,1.500000,1.500000) {};
+\node[atom=Si,label=right:nn Si] at (4.500000,1.500000,4.500000) {};
+\path[atom/bond=Si] (4.500000,1.500000,4.500000) to (6.000000,0.000000,6.000000);
+\node[atom=Si,label=above:sn Si] at (6.000000,0.000000,6.000000) {};
+\end{scope}
+\end{tikzpicture}
+\endgroup

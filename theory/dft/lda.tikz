@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\begin{axis}[
+  domain=0:2,
+  samples=100,
+  xmin=0,
+  xmax=2,
+  ymin=-1,
+]
+\addplot[no marks] {-0.4582/x};
+\addplot[no marks,domain=1:2] {-0.1423/(1+1.0529*sqrt(x)+0.3334*x)};
+\addplot[no marks,domain=0:1] {-0.048+0.311*ln(x)-0.0116*x+0.002*x*ln(x)};
+\end{axis}
+\end{tikzpicture}

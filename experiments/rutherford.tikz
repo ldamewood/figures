@@ -1,0 +1,42 @@
+\begin{tikzpicture}[centered]
+\begin{scope}[xshift=-1.5in]
+\draw (-2.25,-3) rectangle (2.25,0);
+\foreach \y in {-0.25,-0.75,...,-2.75} {
+    \foreach \x in {-2,-1.5,...,2} {
+        \node[target,draw,circle,inner sep=3pt] at (\x,\y) {};
+    }
+}
+\node[ions,draw,circle,inner sep=5pt] at (-0.5,-0.25) {};
+\node[ions,draw,circle,inner sep=5pt] at (1.5,-2.25) {};
+\node[ions,draw,circle,inner sep=5pt] at (-1,-1.25) {};
+\draw[red,-latex,ultra thick,rounded corners] (-0.5,2) %
+  node[black,above]{(c)} -- (+0.5,0) -- (1.5,2);
+\draw[red,-latex,ultra thick,rounded corners] (-1,2) %
+  node[black,above]{(b)} -- (0.5,-1) -- (2.0,2);
+\draw[red,-latex,ultra thick,rounded corners] (-1.5,2) %
+  node[black,above]{(a)} -- (-0.5,0) -- (0.5,2);
+\end{scope}
+
+\begin{scope}[xshift=-2.25in,yshift=-1in]
+\begin{axis}[
+  no marks,
+  xtick=\empty,
+  ytick=\empty,
+  xlabel={$E$},
+  ylabel={$N$ [arb. unit.]},
+  domain=0:12,
+  clip=false,
+  enlargelimits=0.2,
+  width=0.45\textwidth,
+  axis lines=left,
+  axis line style={-latex},
+]
+\addplot {0.9*exp(-10*(x-10)*(x-10))) %
+        + 0.3*sigmoid(-4*(x-5)) %
+        + 0.3*sigmoid(-4*(x-2))};
+\node at (axis cs:10,1) {(a)};
+\node at (axis cs:1,0.7) {(b)};
+\node at (axis cs:3.25,0.4) {(c)};
+\end{axis}
+\end{scope}
+\end{tikzpicture}

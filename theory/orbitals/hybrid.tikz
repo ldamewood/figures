@@ -1,0 +1,31 @@
+\begingroup
+\tikzset{
+  every label/.append style={font=\normalsize},
+}
+\setlength\scale{1cm}
+\begin{tikzpicture}[label distance=0.25cm,scale=0.75]
+\begin{scope}[x={(1\scale,0\scale)},y={(0.4\scale,0.2\scale)},z={(0\scale,1\scale)},yshift=1\scale]
+\coordinate (A)  at (+0.00,+0.00,+0.00) {};
+\coordinate (A1) at (+0.80,+0.80,+0.80) {};
+\coordinate[pin=135:sp$^3$] (A2) at (-0.75,-0.75,+0.75) {};
+\coordinate (A3) at (-0.80,+0.80,-0.80) {};
+\coordinate (A4) at (+0.80,-0.80,-0.80) {};
+\coordinate (B)  at (+1.50,+1.50,+1.50) {};
+\coordinate (B1) at (+0.70,+0.70,+0.70) {};
+\coordinate (B2) at (+2.30,+2.30,+0.70) {};
+\coordinate (B3) at (+2.30,+0.70,+2.30) {};
+\coordinate[pin=135:d$_{xy}$-type] (B4) at (+0.70,+2.30,+2.30) {};
+\draw[fill=yellow!50,draw=yellow!75!black,thick] (A) to[bend left,in=90] (A1) to[bend left,out=90] (A);
+\draw[fill=yellow!50,draw=yellow!75!black,thick] (A) to[bend left,in=90] (A2) to[bend left,out=90] (A);
+\draw[fill=yellow!50,draw=yellow!75!black,thick] (A) to[bend left,in=90] (A3) to[bend left,out=90] (A);
+\draw[fill=yellow!50,draw=yellow!75!black,thick] (A) to[bend left,in=90] (A4) to[bend left,out=90] (A);
+\draw[fill=blue!50,draw=blue!75!black,thick] (B) to[bend left,in=90] (B1) to[bend left,out=90] (B);
+\draw[fill=blue!50,draw=blue!75!black,thick] (B) to[bend left,in=90] (B2) to[bend left,out=90] (B);
+\draw[fill=blue!50,draw=blue!75!black,thick] (B) to[bend left,in=90] (B3) to[bend left,out=90] (B);
+\draw[fill=blue!50,draw=blue!75!black,thick] (B) to[bend left,in=90] (B4) to[bend left,out=90] (B);
+\node[inner sep=0,minimum size=0.25\scale,circle,fill=yellow!50,draw=yellow!75!black,thick,label=0:Si] at (A) {};
+\node[inner sep=0,minimum size=0.25\scale,circle,fill=blue!50,draw=blue!75!black,thick,label=3:Mn] at (B) {};
+\node[pin=-60:d-p hybridized bond] at (0.75,0.75,0.75) {};
+\end{scope}
+\end{tikzpicture}
+\endgroup
