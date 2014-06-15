@@ -1,3 +1,4 @@
+\usepgfplotslibrary{groupplots}
 \begin{tikzpicture}[trim axis left,trim axis right]
 \begin{groupplot}[
 	width=4.5in,

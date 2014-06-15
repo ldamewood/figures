@@ -1,4 +1,4 @@
-\begingroup
+\usetikzlibrary{atoms}
 \setlength\scale{0.5cm}
 \begin{tikzpicture} 
 \begin{scope}[x={(1\scale,0\scale)},y={(0.4\scale,0.2\scale)},z={(0\scale,1\scale)}]]
@@ -112,4 +112,3 @@
 \draw[latex-latex] (-1.7,0,0) -- (-1.7,0,4.37) node[midway,fill=white] {$c_{\mathrm{Mn}}$};
 \end{scope}
 \end{tikzpicture}
-\endgroup

@@ -1,4 +1,4 @@
-\begingroup
+\usetikzlibrary{atoms}
 \setlength\scale{0.5cm}
 \tikzset{
   atom/edge/.append style={
@@ -134,4 +134,3 @@
 \draw[latex-latex] (-0.7,0,0) -- (-0.7,0,2.51) node[midway,fill=white] {$c_{\mathrm{Si}}$};
 \end{scope}
 \end{tikzpicture}
-\endgroup

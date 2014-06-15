@@ -1,14 +1,15 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 \begin{scope}[xshift=-1in,yshift=+1.125in]
 \node[below,anchor=north] at (0,-0.375) {(a) $t=0$};
 \foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
                  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
 {
-    \draw[substrate] (\x,-0.25) circle (0.125);
+    \draw[material/insulator] (\x,-0.25) circle (0.125);
 }
-\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
-\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
-\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
 \end{scope}
 
 \begin{scope}[xshift=-1in,yshift=+0.375in]
@@ -16,13 +17,13 @@
 \foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
                  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
 {
-    \draw[substrate] (\x,-0.25) circle (0.125);
+    \draw[material/insulator] (\x,-0.25) circle (0.125);
 }
-\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(20:2);
-\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
-\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
+\draw[-latex,material/electron beam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(20:2);
+\draw[-latex,material/electron beam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
 \foreach \x in {-1.875,-0.625,1.125}{
-    \draw[target] (\x,0.0) circle (0.125);
+    \draw[material/metal] (\x,0.0) circle (0.125);
 }
 \end{scope}
 
@@ -31,15 +32,15 @@
 \foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
                  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
 {
-    \draw[substrate] (\x,-0.25) circle (0.125);
+    \draw[material/insulator] (\x,-0.25) circle (0.125);
 }
-\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
-\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
-\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(30:2);
+\draw[-latex,material/electron beam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
 \foreach \x in {-2.00, -1.75, -1.25, -1.00, -0.75, -0.50, -0.25,%
                  0.00,  0.50,  1.00,  1.25,  1.50}%
 {
-    \draw[target] (\x+0.125,0.0) circle (0.125);
+    \draw[material/metal] (\x+0.125,0.0) circle (0.125);
 }
 \end{scope}
 
@@ -48,15 +49,15 @@
 \foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, % 
                  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75,  2.00}%
 {
-    \draw[substrate] (\x,-0.25) circle (0.125);
+    \draw[material/insulator] (\x,-0.25) circle (0.125);
 }
-\draw[-latex,ebeam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
-\draw[-latex,ebeam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(11:2);
-\draw[-latex,ebeam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (-1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
+\draw[-latex,material/electron beam] (+0.0,0)++(170:2) -- ++(-10:2) -- ++(11:2);
+\draw[-latex,material/electron beam] (+1.0,0)++(170:2) -- ++(-10:2) -- ++(10:2);
 \foreach \x in {-2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25,%
                  0.00,  0.25,  0.50,  0.75,  1.00,  1.25,  1.50,  1.75}%
 {
-    \draw[target] (\x+0.125,0.0) circle (0.125);
+    \draw[material/metal] (\x+0.125,0.0) circle (0.125);
 }
 \end{scope}
 

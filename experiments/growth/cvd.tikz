@@ -1,7 +1,8 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
 \usetikzlibrary{shapes}
+\usetikzlibrary{material}
 % Target
-\draw[target] (-1,-2) rectangle (1,-2.25);
+\draw[material/metal] (-1,-2) rectangle (1,-2.25);
 \node[pin=right:Target] at (1,-2.125) {};
 % Heating element
 \draw (-1,-2.25) rectangle (1,-2.5);

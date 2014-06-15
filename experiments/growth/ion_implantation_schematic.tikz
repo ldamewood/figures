@@ -1,4 +1,5 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 % Mass selector
 \draw (0,0.25) -- (0,-0.25) arc (90:0:1.75) -- ++(0.5,0) arc (0:90:2.25);
 \node[label=left:$\vec B$,circle,draw=green!50!black] %
@@ -6,7 +7,7 @@
 \node at (1.5,0.5) {Mass selection};
 
 % Ion source
-\draw[ions] (-2,1.8pt) -- %
+\draw[material/insulator] (-2,1.8pt) -- %
             (-2,0.25) -- (-3,0.25) -- (-3,-0.25) -- (-2,-0.25) -- %
             (-2,-1.8pt);
 
@@ -23,11 +24,11 @@
 \draw[ultra thick] (1.75,-2.9) -- (2.25,-2.9) node[pin=30:Focusing device] {};
 
 % Ion beam
-\draw[ions,fill=none,thick,draw=white,double=red!50,double distance=1.6pt] (-2,0) -- (0,0) arc (90:0:2) -- (2,-3);
+\draw[material/ion beam,draw=white,double=red!50,double distance=1.6pt] (-2,0) -- (0,0) arc (90:0:2) -- (2,-3);
 \draw[draw=red!50,thick] (0,0) arc (90:0:2.2 and 2.0);
 \draw[draw=red!50,thick] (0,0) arc (90:0:1.8 and 2.0);
 
 % Target
-\draw[target] (2.5,-3) -- (2.5,-3.2) -- (1.5,-3.2) -- (1.5,-3) -- cycle;
+\draw[material/metal] (2.5,-3) -- (2.5,-3.2) -- (1.5,-3.2) -- (1.5,-3) -- cycle;
 \node at (2,-3.5) {Target};
 \end{tikzpicture}

@@ -1,4 +1,5 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 %\usetikzlibrary{shadows}
 
 % \draw[blue,thick] (-5.0,-1.4) rectangle( 0.0, 1.4);
@@ -20,8 +21,8 @@
 
 \node[draw,fill=white,circle] at (1,1) {A};
 
-\draw[target] (-1.5,-0.25) rectangle (1.5,0.25);
-\draw[ions] (-0.05,-0.25) rectangle (0.05,0.25);
+\draw[material/metal] (-1.5,-0.25) rectangle (1.5,0.25);
+\draw[material/insulator] (-0.05,-0.25) rectangle (0.05,0.25);
 \node at (-0.75,0) {SC1};
 \node at (+0.75,0) {SC2};
 \node[pin=below:{Insulating layer}] at (0,0) {};

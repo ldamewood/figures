@@ -1,4 +1,4 @@
-\begingroup
+\usetikzlibrary{atoms}
 \setlength\scale{0.75cm}
 \begin{tikzpicture}
 \begin{scope}[x={(0.9\scale,0.05\scale)},y={(-0.3\scale,0.05\scale)},z={(0\scale,1\scale)}]]
@@ -19,4 +19,3 @@
 \node[atom=Si,label=above:sn Si] at (6.000000,0.000000,6.000000) {};
 \end{scope}
 \end{tikzpicture}
-\endgroup

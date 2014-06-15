@@ -1,6 +1,7 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 % Ion source
-\draw[ions] (-0.25,-0.25) rectangle (0.25,0.00);
+\draw[material/insulator] (-0.25,-0.25) rectangle (0.25,0.00);
 \node[pin={right:Ion source}] at (0.25,-0.125) {};
 % Plume
 \draw[fill=red!0!yellow  ] (0,0.05) to[in=0] (0,1.75) to[out=180] (0,0.05);
@@ -9,7 +10,7 @@
 \path[fill=red!75!yellow ] (0,0.05) to[in=0] (0,1.00) to[out=180] (0,0.05);
 \path[fill=red!100!yellow] (0,0.05) to[in=0] (0,0.75) to[out=180] (0,0.05);
 % Target
-\draw[target] (-1,2) rectangle (1,2.25);
+\draw[material/metal] (-1,2) rectangle (1,2.25);
 \node[pin=right:Target] at (1,2.125) {};
 % Vacuum chamber
 \draw (-1.5,-0.5) rectangle (1.5,2.5);
@@ -20,11 +21,11 @@
 
 % Laser
 \draw (-3,0.125) node[above] {Laser} rectangle (-2.5,-0.125);
-\draw[laser] (-2.5,0) -- (0,0);
+\draw[material/laser] (-2.5,0) -- (0,0);
 
 % Window
-\draw[glass,ultra thick] (-1.735,-0.125)++(+0.125,0) -- ++(0,0.25);
-\path[glass] (-1.732,-0.125)++(-0.125,0) %
+\draw[material/glass,ultra thick] (-1.735,-0.125)++(+0.125,0) -- ++(0,0.25);
+\path[material/glass] (-1.732,-0.125)++(-0.125,0) %
  to[out=60,in=-60] ++(0,+0.25) %
  to[out=-120,in=120] ++(0,-0.25);
 \draw (-1.732,-0.125)++(-0.125,0) -- ++(0.25,0);

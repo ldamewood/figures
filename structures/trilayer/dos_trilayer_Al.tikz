@@ -1,4 +1,4 @@
-\begingroup
+\usepgfplotslibrary{dos}
 \begin{tikzpicture}[trim axis left,trim axis right]
 \begin{axis}[dos,xmin=-1.000000,xmax=+1.000000,ymin=-6.000000,ymax=+6.000000]
 \addplot coordinates{
@@ -2009,4 +2009,3 @@
 } \closedcycle;
 \end{axis}
 \end{tikzpicture}
-\endgroup

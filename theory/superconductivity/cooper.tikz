@@ -6,7 +6,7 @@
     draw,red,inner sep=0pt,circle,pos=0,fill=red!50,minimum size=3pt,
   },
 }
-\begin{tikzpicture}[domain=-4.5:4.5,centered]
+\begin{tikzpicture}[domain=-4.5:4.5]
 \draw[-latex] (-4.5,-1.1) -- ++(0.0,2.2) node[at end,anchor=east] {$v_x$};
 \draw[-latex] (-4.6, 0.0) -- ++(9.3,0.0) node[at end,anchor=west] {$x$};
 \draw[samples=150,blue] plot (\x,{sin((\x+4.5)*40*5)});

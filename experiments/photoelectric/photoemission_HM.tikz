@@ -1,3 +1,6 @@
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{morefunctions}
 \begin{tikzpicture}
 \begin{groupplot}[
   group style={%

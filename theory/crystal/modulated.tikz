@@ -1,4 +1,4 @@
-\begin{tikzpicture}[domain=0:5,centered]
+\begin{tikzpicture}[domain=0:5]
 
 \node at (-3,2.5) {(a)};
 \draw[latex-latex] (-2.5,1.5) -- ++(1,0) node[midway,fill=white] {$c$};

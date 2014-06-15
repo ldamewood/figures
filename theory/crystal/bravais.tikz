@@ -1,44 +1,138 @@
-\begin{figure}
-\centering
-\begin{tabular}{m{0.2\textwidth}|>{\centering}m{0.2\textwidth} >{\centering}m{0.2\textwidth} >{\centering}m{0.2\textwidth} >{\centering\arraybackslash}m{0.2\textwidth}}
-\toprule
-             & P & C & I & F \\
-\midrule
-Cubic &
-	\useexternalfile{bravais_cubic_P} &
-	&
-	\useexternalfile{bravais_cubic_I} &
-	\useexternalfile{bravais_cubic_F} \\
-Tetragonal &
-	\useexternalfile{bravais_tetragonal_P} &
-	&
-	\useexternalfile{bravais_tetragonal_I} &
-	\\
-Orthorhombic &
-	\useexternalfile{bravais_orthorhombic_P} &
-	\useexternalfile{bravais_orthorhombic_C} &
-	\useexternalfile{bravais_orthorhombic_I} &
-	\useexternalfile{bravais_orthorhombic_F} \\
-Hexagonal &
-	\useexternalfile{bravais_hexagonal_P} &
-	&
-	&
-	\\
-Rhombohedral &
-	\useexternalfile{bravais_rhombohedral_P} &
-	&
-	&
-	\\
-Monoclinic   &
-	\useexternalfile{bravais_monoclinic_P} &
-	\useexternalfile{bravais_monoclinic_C} &
-	&
-	\\
-Triclinic    &
-	\useexternalfile{bravais_triclinic_P} &
-	&
-	&
-	\\
-\bottomrule
-\end{tabular}
-\end{figure}
+\usetikzlibrary{bravais}
+\begin{tikzpicture}
+\tikzset{
+    label/.style={anchor=south,align=center},
+}
+
+\node (L) at (0.2in,0.5in) {};
+\path (L)++(0.00in,0.00in) node[label] {P};
+\path (L)++(0.75in,0.00in) node[label] {C};
+\path (L)++(1.50in,0.00in) node[label] {I};
+\path (L)++(2.25in,0.00in) node[label] {F};
+
+\def\labelx{-0.75in}
+% Cubic
+\def\y{0.00}
+\node[label] at (\labelx,\y) {Cubic};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$a$}},
+    class={P}
+](0.00in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$a$}},
+    class={I}
+](1.50in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$a$}},
+    class={F}
+](2.25in,\y){};
+% Tetragonal
+\def\y{-0.75in}
+\node[label] at (\labelx,\y) {Tetragonal\\$a\neq c$};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$c$}},
+    lattice/c={1.1},
+    class={P},
+](0.00in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$c$}},
+    lattice/c={1.1},
+    class={I}
+](1.50in,\y){};
+% Orthorhombic
+\def\y{-1.50in}
+\node[label] at (\labelx,\y) {Orthorhombic\\$a\neq b\neq c$};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/b={1.05},
+    lattice/c={1.1},
+    class={P}
+](0.00in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/b={1.05},
+    lattice/c={1.1},
+    class={C}
+](0.75in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/b={1.05},
+    lattice/c={1.1},
+    class={I}
+](1.50in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/b={1.05},
+    lattice/c={1.1},
+    class={F}
+](2.25in,\y){};
+% Hexagonal
+\def\y{-2.25in}
+\node[label] at (\labelx,\y) {Hexagonal};
+\bravaishex[](0.00in,\y){};
+% Rhombohedral
+\def\y{-3.00in}
+\node[label] at (\labelx,\y) {Rhombohedral\\$\alpha=\beta=\gamma\neq 90^\circ$};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$a$}},
+    c label={\scriptsize{$a$}},
+    lattice/alpha={80},
+    lattice/beta={80},
+    lattice/gamma={80},
+    class={P}
+](0.00in,\y){};
+% Monoclinic
+\def\y{-3.75in}
+\node[label] at (\labelx,\y)
+  {Monoclinic\\$\alpha=\gamma=90^\circ$\\$\beta\neq 90^\circ$};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/alpha={90},
+    lattice/beta={80},
+    lattice/gamma={90},
+    class={P}
+](0.00in,\y){};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/alpha={90},
+    lattice/beta={80},
+    lattice/gamma={90},
+    class={C}
+](0.75in,\y){};
+% Triclinic
+\def\y{-4.50in}
+\node[label] at (\labelx,\y)
+    {Triclinic\\$\alpha\neq \beta\neq \gamma\neq 90^\circ$};
+\bravais[
+    a label={\scriptsize{$a$}},
+    b label={\scriptsize{$b$}},
+    c label={\scriptsize{$c$}},
+    lattice/alpha={80},
+    lattice/beta={70},
+    lattice/gamma={85},
+    class={P}
+](0.00in,\y){};
+\end{tikzpicture}

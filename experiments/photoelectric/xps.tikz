@@ -1,4 +1,4 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
 \usetikzlibrary{snakes}
 \tikzset{
   photon/.style={
@@ -9,11 +9,11 @@
     color=red,
     -latex,
   },
-  electron cloud/.style={target,opacity=0.5},
-  electron/.style={target,inner sep=0.2em,circle},
+  electron cloud/.style={blue,fill=blue!50,opacity=0.5},
+  electron/.style={blue,fill=blue!50,inner sep=0.2em,circle},
   hole/.style={electron,fill=white},
   energy level/.style={dashed,thin,gray},
-  nucleus/.style={ions,circle,inner sep=0.25em},
+  nucleus/.style={red,fill=red!50,circle,inner sep=0.25em},
   electron transition/.style={blue,-latex,thick},
 }
 

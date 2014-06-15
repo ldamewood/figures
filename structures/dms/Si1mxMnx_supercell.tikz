@@ -1,4 +1,4 @@
-\begingroup
+\usetikzlibrary{atoms}
 \setlength\scale{0.25cm}
 \definecolor{Chartreuse}{rgb}{0.498,1.000,0.000}
 \tikzset{atom/edge/.style={}}
@@ -1712,4 +1712,3 @@
 \draw[-latex,shorten >=0.5889\scale] (2,21,21) node[below] {sn Si} -- (-15.000000,15.000000,15.000000);
 \end{scope}
 \end{tikzpicture}
-\endgroup

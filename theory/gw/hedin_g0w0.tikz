@@ -1,5 +1,18 @@
-\begingroup
 \begin{tikzpicture}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.markings}
+\tikzset{
+    clabel/.style={draw,circle,fill=white},
+    hlabel/.style={clabel,draw=lightgray},
+    arrowline/.style={
+        postaction={decorate},
+        decoration={
+            markings,
+            mark=at position 0.55 with {\arrow{latex}}
+        }
+    },
+    hiddenline/.style={draw=lightgray},
+}
 \path (-2in,0) -- (2in,0);
 \node[
   name=gw,
@@ -13,17 +26,16 @@
 \draw[arrowline] (gw.corner 3) -- (gw.corner 2);
 \draw[arrowline] (gw.corner 2) -- (gw.corner 1);
 \draw[arrowline] (gw.corner 5) -- (gw.corner 3)
-  node[anchor=north west,midway] {$P_0=\iu G_0G_0$};
+  node[anchor=north west,midway] {$P_0=\mathrm{i} G_0G_0$};
 %\node[anchor=south west] at (gw.side 5) {$G=G_0 + G_0\Sigma G$};
 %\node[right=1ex,anchor=west] at (gw.side 4)
 %  {$\Gamma = 1 + \left(\frac{\delta\Sigma}{\delta G}\right)GG\Gamma$};
 %\node[below=2ex,anchor=north] at (gw.side 3) {$P = \iu GG\Gamma$};
 \node[left=1ex,anchor=east] at (gw.side 2) {$W_0 = v + vP_0v$};
-\node[anchor=south east] at (gw.side 1) {$\Sigma = \iu G_0 W_0$};
+\node[anchor=south east] at (gw.side 1) {$\Sigma = \mathrm{i} G_0 W_0$};
 \node[clabel] at(gw.corner 1) {$\Sigma$};
 \node[clabel] at(gw.corner 2) {$W_0$};
 \node[clabel] at(gw.corner 3) {$P_0$};
 \node[hlabel] at(gw.corner 4) {};
 \node[clabel] at(gw.corner 5) {$G_0$};
 \end{tikzpicture}
-\endgroup

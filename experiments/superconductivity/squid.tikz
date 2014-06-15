@@ -1,4 +1,4 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
 \def\angle{2}
 \def\radone{1.5}
 \def\radtwo{2.0}

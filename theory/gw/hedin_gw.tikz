@@ -1,4 +1,18 @@
 \begin{tikzpicture}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.markings}
+\tikzset{
+    clabel/.style={draw,circle,fill=white},
+    hlabel/.style={clabel,draw=lightgray},
+    arrowline/.style={
+        postaction={decorate},
+        decoration={
+            markings,
+            mark=at position 0.55 with {\arrow{latex}}
+        }
+    },
+    hiddenline/.style={draw=lightgray},
+}
 \path (-2in,0) -- (2in,0);
 \begin{scope}
 \node[
@@ -15,9 +29,9 @@
 \node[anchor=south west] at (gw.side 5) {$G=G_0 + G_0\Sigma G$};
 \node[right=1ex,anchor=west] at (gw.side 4)
   {$\Gamma = 1 + \left(\frac{\delta\Sigma}{\delta G}\right)GG\Gamma$};
-\node[below=2ex,anchor=north] at (gw.side 3) {$P = \iu GG\Gamma$};
+\node[below=2ex,anchor=north] at (gw.side 3) {$P = \mathrm{i} GG\Gamma$};
 \node[left=1ex,anchor=east] at (gw.side 2) {$W = v + vPW$};
-\node[anchor=south east] at (gw.side 1) {$\Sigma = \iu G W \Gamma$};
+\node[anchor=south east] at (gw.side 1) {$\Sigma = \mathrm{i} G W \Gamma$};
 \node[clabel] at(gw.corner 1) {$\Sigma$};
 \node[clabel] at(gw.corner 2) {$W$};
 \node[clabel] at(gw.corner 3) {$P$};

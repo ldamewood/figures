@@ -1,4 +1,5 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 
 % Screen
 \draw[ultra thick] (0,0)++(0:2.00) arc (0:180:2.00);
@@ -17,16 +18,15 @@
     node[right,anchor=north west] {Electron gun};
 
 % Ebeam
-\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (30:2);
-\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (60:2);
-\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (120:2);
-\draw[-latex,ebeam] (0,2.25) -- (0,0) -- (150:2);
+\foreach \theta in {30,60,120,150}{
+  \draw[material/electron beam,-latex] (0,2.25) -- (0,0) -- (\theta:2);
+}
 
 % Target
-\draw[target] (-0.25,-0.125) rectangle (0.25,0) %
+\draw[material/metal] (-0.25,-0.125) rectangle (0.25,0) %
     node[right,anchor=north west,black] {Target};
 
 % Viewing port
-\draw[glass] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
+\draw[material/glass] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
 
 \end{tikzpicture}

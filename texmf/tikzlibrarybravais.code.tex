@@ -1,0 +1,311 @@
+\makeatletter
+
+\newlength{\bravais@scale}
+\setlength\bravais@scale{0.4in}
+\usetikzlibrary{calc}
+\usetikzlibrary{3d}
+\usetikzlibrary{shapes.geometric}
+\def\bravais@class@primitive{P}
+\def\bravais@class@basecentered{C}
+\def\bravais@class@bodycentered{I}
+\def\bravais@class@facecentered{F}
+
+\pgfkeys{
+    /bravais/.cd,
+    point/.style={
+        fill,
+        draw,
+        line width=0,
+        shape=circle,
+        inner sep=0.03,
+        thick,
+    },
+    lattice/a/.initial={1},
+    lattice/b/.initial={1},
+    lattice/c/.initial={1},
+    lattice/alpha/.initial={90},
+    lattice/beta/.initial={90},
+    lattice/gamma/.initial={90},
+    a label/.initial={\scriptsize{$a$}},
+    b label/.initial={\scriptsize{$b$}},
+    c label/.initial={\scriptsize{$c$}},
+    alpha label/.initial={\scriptsize{$\alpha$}},
+    beta label/.initial={\scriptsize{$\beta$}},
+    gamma label/.initial={\scriptsize{$\gamma$}},
+    class/.initial={P},
+    line/.style={black},
+    hidden/.style={thin,gray!50},
+    angle label/.style={blue!50!black},
+}
+
+\def\bravais[#1](#2,#3)#4;{
+    \pgfkeys{/bravais/.cd,#1}
+    \begin{scope}[
+        shift={(#2,#3)},
+        x={(+1.0\bravais@scale,+0.0\bravais@scale)},
+        y={(+0.2\bravais@scale,-0.4\bravais@scale)},
+        z={(+0.0\bravais@scale,+1.0\bravais@scale)}
+    ]
+        \pgfmathsetmacro{\bravais@ax}{\pgfkeysvalueof{/bravais/lattice/a}}
+        \pgfmathsetmacro{\bravais@ay}{0}
+        \pgfmathsetmacro{\bravais@az}{0}
+        
+        \pgfmathsetmacro{\bravais@bx}{
+            \pgfkeysvalueof{/bravais/lattice/b} *%
+            cos(\pgfkeysvalueof{/bravais/lattice/gamma})
+        }
+        \pgfmathsetmacro{\bravais@by}{
+            \pgfkeysvalueof{/bravais/lattice/b} * %
+            sin(\pgfkeysvalueof{/bravais/lattice/gamma})
+        }
+        \pgfmathsetmacro{\bravais@bz}{0}
+        
+        \pgfmathsetmacro{\bravais@cx}{
+            \pgfkeysvalueof{/bravais/lattice/c} * %
+            cos(\pgfkeysvalueof{/bravais/lattice/beta})
+        }
+        \pgfmathsetmacro{\bravais@cy}{
+            (\pgfkeysvalueof{/bravais/lattice/c} * %
+            cos(\pgfkeysvalueof{/bravais/lattice/alpha}) - %
+            \bravais@cx*cos(\pgfkeysvalueof{/bravais/lattice/gamma})) / %
+            (sin(\pgfkeysvalueof{/bravais/lattice/gamma}))
+        }
+        \pgfmathsetmacro{\bravais@cz}{
+            sqrt(\pgfkeysvalueof{/bravais/lattice/c} * %
+            \pgfkeysvalueof{/bravais/lattice/c} -%
+            \bravais@cx*\bravais@cx - \bravais@cy*\bravais@cy)
+        }
+        
+        \node[/bravais/point] (P1) at ( 0, 0, 0 ) {};
+        \path (P1) ++ ( \bravais@ax, \bravais@ay, \bravais@az ) %
+            node[/bravais/point,/bravais/hidden] (P2) {};
+
+        \path (P1) ++ ( \bravais@bx, \bravais@by, \bravais@bz ) %
+            node[/bravais/point] (P4) {};
+        \path (P1) ++ (P2) ++ (P4) node[/bravais/point] (P3) {};
+
+        \path (P1) ++ ( \bravais@cx, \bravais@cy, \bravais@cz ) %
+            node[/bravais/point] (P5) {};
+        \path (P1) ++ (P5) ++ (P2) node[/bravais/point] (P6) {};
+        \path (P1) ++ (P5) ++ (P4) node[/bravais/point] (P8) {};
+        \path (P1) ++ (P5) ++ (P2) ++ (P4) node[/bravais/point] (P7) {};
+        
+        \draw[/bravais/line,/bravais/hidden] (P1) -- (P2) -- (P6);
+        \draw[/bravais/line,/bravais/hidden] (P2) -- (P3);
+        
+        \pgfkeysgetvalue{/bravais/class}\bravais@class
+
+        % Base-centered
+        \ifx\bravais@class\bravais@class@basecentered
+        \node[/bravais/point,/bravais/hidden] (C1) at ($(P1)!0.5!(P3)$) {};
+        \node[/bravais/point] (C2) at ($(P5)!0.5!(P7)$) {};
+        \draw[/bravais/line,/bravais/hidden] (P1) edge (C1);
+        \draw[/bravais/line,/bravais/hidden] (P2) edge (C1);
+        \draw[/bravais/line,/bravais/hidden] (P3) edge (C1);
+        \draw[/bravais/line,/bravais/hidden] (P4) edge (C1);
+        \draw[/bravais/line] (P5) edge (C2);
+        \draw[/bravais/line] (P6) edge (C2);
+        \draw[/bravais/line] (P7) edge (C2);
+        \draw[/bravais/line] (P8) edge (C2);
+        \fi
+        
+        % Body-centered
+        \ifx\bravais@class\bravais@class@bodycentered
+        \node[/bravais/point,/bravais/hidden] (I1) at ($(P1)!0.5!(P7)$) {};
+        \draw[/bravais/line,/bravais/hidden] (P1) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P2) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P3) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P4) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P5) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P6) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P7) edge (I1);
+        \draw[/bravais/line,/bravais/hidden] (P8) edge (I1);
+        \fi
+        
+        % Face-centered
+        \ifx\bravais@class\bravais@class@facecentered
+        \node[/bravais/point,/bravais/hidden] (F1) at ($(P1)!0.5!(P3)$) {};
+        \node[/bravais/point,/bravais/hidden] (F2) at ($(P2)!0.5!(P7)$) {};
+        \node[/bravais/point,/bravais/hidden] (F3) at ($(P1)!0.5!(P6)$) {};
+        \node[/bravais/point] (F4) at ($(P1)!0.5!(P8)$) {};
+        \node[/bravais/point] (F5) at ($(P4)!0.5!(P7)$) {};
+        \node[/bravais/point] (F6) at ($(P5)!0.5!(P7)$) {};
+        \draw[/bravais/line,/bravais/hidden] (P1) edge (F1);
+        \draw[/bravais/line,/bravais/hidden] (P2) edge (F1);
+        \draw[/bravais/line,/bravais/hidden] (P3) edge (F1);
+        \draw[/bravais/line,/bravais/hidden] (P4) edge (F1);
+        \draw[/bravais/line,/bravais/hidden] (P2) edge (F2);
+        \draw[/bravais/line,/bravais/hidden] (P3) edge (F2);
+        \draw[/bravais/line,/bravais/hidden] (P6) edge (F2);
+        \draw[/bravais/line,/bravais/hidden] (P7) edge (F2);
+        \draw[/bravais/line,/bravais/hidden] (P1) edge (F3);
+        \draw[/bravais/line,/bravais/hidden] (P2) edge (F3);
+        \draw[/bravais/line,/bravais/hidden] (P5) edge (F3);
+        \draw[/bravais/line,/bravais/hidden] (P6) edge (F3);
+        \draw[/bravais/line] (P1) edge (F4);
+        \draw[/bravais/line] (P4) edge (F4);
+        \draw[/bravais/line] (P5) edge (F4);
+        \draw[/bravais/line] (P8) edge (F4);
+        \draw[/bravais/line] (P3) edge (F5);
+        \draw[/bravais/line] (P4) edge (F5);
+        \draw[/bravais/line] (P7) edge (F5);
+        \draw[/bravais/line] (P8) edge (F5);
+        \draw[/bravais/line] (P5) edge (F6);
+        \draw[/bravais/line] (P6) edge (F6);
+        \draw[/bravais/line] (P7) edge (F6);
+        \draw[/bravais/line] (P8) edge (F6);
+        \fi
+        
+        \draw[/bravais/line] (P4) -- (P3) %
+            node[midway,below] {\pgfkeysvalueof{/bravais/a label}} %
+            -- (P7) %
+            node[midway,right] {\pgfkeysvalueof{/bravais/c label}} %
+            -- (P6) %
+            -- (P5) -- (P1) -- (P4) %
+            node[midway,left] {\pgfkeysvalueof{/bravais/b label}} %
+            -- (P8) -- (P7);
+        \draw[/bravais/line] (P5) -- (P8);
+        
+        \newif\ifbravais@angle@labels
+        \bravais@angle@labelsfalse
+        \ifnum\pgfkeysvalueof{/bravais/lattice/alpha}<90
+            \bravais@angle@labelstrue
+        \fi
+        \ifnum\pgfkeysvalueof{/bravais/lattice/beta}<90
+            \bravais@angle@labelstrue
+        \fi
+        \ifnum\pgfkeysvalueof{/bravais/lattice/gamma}<90
+            \bravais@angle@labelstrue
+        \fi
+        
+        \ifbravais@angle@labels
+        \foreach\theta in {0,5,10,...,90}{
+            \pgfmathsetmacro{\vx}
+              {\bravais@ax/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@bx/\pgfkeysvalueof{/bravais/lattice/b}*sin(\theta)}
+            \pgfmathsetmacro{\vy}
+              {\bravais@ay/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@by/\pgfkeysvalueof{/bravais/lattice/b}*sin(\theta)}
+            \pgfmathsetmacro{\vz}
+              {\bravais@az/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@bz/\pgfkeysvalueof{/bravais/lattice/b}*sin(\theta)}
+            \path (P3)++(-0.25*\vx,-0.25*\vy,-0.25*\vz) node (gamma\theta) {};
+        }
+        \foreach \theta[remember=\theta as \last (initially 0)] in {0,5,...,90}
+        {
+            \draw[/bravais/angle label] %
+                (gamma\last.center) -- (gamma\theta.center);
+        };
+        \node[anchor=south,/bravais/angle label] at (gamma0.center) %
+            {\pgfkeysvalueof{/bravais/gamma label}};
+        
+        \foreach\theta in {0,5,10,...,90}{
+            \pgfmathsetmacro{\vx}
+              {\bravais@ax/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@cx/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \pgfmathsetmacro{\vy}
+              {\bravais@ay/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@cy/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \pgfmathsetmacro{\vz}
+              {\bravais@az/\pgfkeysvalueof{/bravais/lattice/a}*cos(\theta) + %
+               \bravais@cz/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \path (P4)++(0.25*\vx,0.25*\vy,0.25*\vz) node (beta\theta) {};
+        }
+        \foreach \theta[remember=\theta as \last (initially 0)] in {0,5,...,90}
+        {
+            \draw[/bravais/angle label] %
+                (beta\last.center) -- (beta\theta.center);
+        };
+        \node[anchor=south,/bravais/angle label] at (beta30.center) %
+            {\pgfkeysvalueof{/bravais/beta label}};
+        
+        \foreach\theta in {0,5,10,...,90}{
+            \pgfmathsetmacro{\vx}
+              {-\bravais@bx/\pgfkeysvalueof{/bravais/lattice/b}*cos(\theta) + %
+               \bravais@cx/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \pgfmathsetmacro{\vy}
+              {-\bravais@by/\pgfkeysvalueof{/bravais/lattice/b}*cos(\theta) + %
+               \bravais@cy/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \pgfmathsetmacro{\vz}
+              {-\bravais@bz/\pgfkeysvalueof{/bravais/lattice/b}*cos(\theta) + %
+               \bravais@cz/\pgfkeysvalueof{/bravais/lattice/c}*sin(\theta)}
+            \path (P4)++(+0.3*\vx,+0.3*\vy,+0.3*\vz) node (alpha\theta) {};
+        }
+        \foreach \theta[remember=\theta as \last (initially 0)] in {0,5,...,90}
+        {
+            \draw[/bravais/angle label] %
+                (alpha\last.center) -- (alpha\theta.center);
+        };
+        \node[anchor=south,/bravais/angle label] at (alpha30.center) %
+            {\pgfkeysvalueof{/bravais/alpha label}};
+        \fi
+        
+    \end{scope}
+}
+
+\def\bravaishex[#1](#2,#3)#4;{
+    \pgfkeys{/bravais/.cd,#1}
+    \begin{scope}[
+        shift={(#2,#3)},
+        x={(+1.0\bravais@scale,+0.0\bravais@scale)},
+        y={(+0.2\bravais@scale,-0.4\bravais@scale)},
+        z={(+0.0\bravais@scale,+1.0\bravais@scale)},
+    ]
+        \node[
+            name=back,
+            regular polygon,
+            regular polygon sides=6,
+            minimum size=0.5in,
+            shape border rotate=30,
+        ] at (0.6,0,0.4) {};
+        \node[
+            name=front,
+            regular polygon,
+            regular polygon sides=6,
+            minimum size=0.5in,
+            shape border rotate=30,
+        ] at (0.6,0.5,0.4) {};
+        
+        \node[/bravais/point,/bravais/hidden] (BC) at (back.center) {};
+        \node[/bravais/point] (BC1) at (back.corner 1) {};
+        \node[/bravais/point] (BC2) at (back.corner 2) {};
+        \node[/bravais/point] (BC3) at (back.corner 3) {};
+        \node[/bravais/point,/bravais/hidden] (BC4) at (back.corner 4) {};
+        \node[/bravais/point,/bravais/hidden] (BC5) at (back.corner 5) {};
+        \node[/bravais/point] (BC6) at (back.corner 6) {};
+        \node[/bravais/point] (FC) at (front.center) {};
+        \node[/bravais/point] (FC1) at (front.corner 1) {};
+        \node[/bravais/point] (FC2) at (front.corner 2) {};
+        \node[/bravais/point] (FC3) at (front.corner 3) {};
+        \node[/bravais/point] (FC4) at (front.corner 4) {};
+        \node[/bravais/point] (FC5) at (front.corner 5) {};
+        \node[/bravais/point] (FC6) at (front.corner 6) {};
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC1);
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC2);
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC3);
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC4);
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC5);
+        \draw[/bravais/line,/bravais/hidden] (BC) -- (BC6);
+        \draw[/bravais/line,/bravais/hidden] (BC3) -- (BC4) %
+            -- (BC5) -- (BC6);
+        \draw[/bravais/line,/bravais/hidden] (BC4) -- (FC4);
+        \draw[/bravais/line,/bravais/hidden] (BC5) -- (FC5);        
+
+        \draw[/bravais/line] (FC) -- (FC1);
+        \draw[/bravais/line] (FC) -- (FC2);
+        \draw[/bravais/line] (FC) -- (FC3);
+        \draw[/bravais/line] (FC) -- (FC4);
+        \draw[/bravais/line] (FC) -- (FC5);
+        \draw[/bravais/line] (FC) -- (FC6);
+        \draw[/bravais/line] (FC1) -- (FC2) -- (FC3) -- (FC4) %
+            node[midway,below] {\scriptsize{$a$}} -- (FC5) -- (FC6) -- (FC1);
+        \draw[/bravais/line] (FC6) -- (BC6) -- (BC1) -- (BC2) -- (BC3) -- (FC3);
+        \draw[/bravais/line] (BC1) -- (FC1);
+        \draw[/bravais/line] (BC2) -- (FC2);
+        \draw[/bravais/line] (BC3) -- (FC3);
+        \draw[/bravais/line] (BC6) -- (FC6) %
+            node[midway,right] {\scriptsize{$c$}};
+    \end{scope}
+}
+
+\makeatother

@@ -1,3 +1,4 @@
+\makeatletter
 %\if@dos@color
 %\def\@dos@up@linecolor{blue!75}
 %\def\@dos@up@fillcolor{blue!25}
@@ -25,10 +26,14 @@
     xlabel={$E-E_{\mathrm{F}}$ [eV]},
     ylabel={DOS [states/eV-unit-cell]},
     extra description/.code={
-      \node[\@dos@up@linecolor] at (axis description cs:0,1) [anchor=north west] {Spin Up};
-      \node[\@dos@dn@linecolor] at (axis description cs:0,0) [anchor=south west] {Spin Down};
-      \draw (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
-      \draw (axis cs:0,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:0,\pgfkeysvalueof{/pgfplots/ymax});
+      \node[\@dos@up@linecolor] at (axis description cs:0,1) %
+          [anchor=north west] {Spin Up};
+      \node[\@dos@dn@linecolor] at (axis description cs:0,0) %
+          [anchor=south west] {Spin Down};
+      \draw (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) %
+         -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+      \draw (axis cs:0,\pgfkeysvalueof{/pgfplots/ymin}) %
+         -- (axis cs:0,\pgfkeysvalueof{/pgfplots/ymax});
     },
     cycle list={%
       {
@@ -46,3 +51,4 @@
     },
   },
 }
+\makeatother

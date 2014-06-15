@@ -1,6 +1,7 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 % Target
-\draw[blue,fill=blue!50] (-1,-0.25) rectangle (1,0);
+\draw[material/metal] (-1,-0.25) rectangle (1,0);
 \node[anchor=north] at (0,-0.5) {Target};
 % Vacuum chamber
 \draw (-1.5,-0.5) rectangle (1.5,1.5);

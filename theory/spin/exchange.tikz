@@ -1,26 +1,42 @@
+\usepgfplotslibrary{groupplots}
+\pgfmathdeclarefunction{gauss}{3}{%
+  \pgfmathparse{pow(#3*2/pi,0.25)*exp(-#3*(#1-#2)*(#1-#2))}%
+}
+\pgfmathdeclarefunction{y1r1}{1}{\pgfmathparse{gauss(x,+0.5,1.0)}}
+\pgfmathdeclarefunction{y1r2}{1}{\pgfmathparse{gauss(x,-0.5,1.0)}}
+\pgfmathdeclarefunction{y2r1}{1}{\pgfmathparse{gauss(x,+0.5,5.0)}}
+\pgfmathdeclarefunction{y2r2}{1}{\pgfmathparse{gauss(x,-0.5,5.0)}}
+\pgfmathdeclarefunction{fsymm}{1}{%
+    \pgfmathparse{pow(y1r1(x)*y2r2(x)+y1r2(x)*y2r1(x),2)}%
+}
+\pgfmathdeclarefunction{fasym}{1}{%
+    \pgfmathparse{pow(y1r1(x)*y2r2(x)-y1r2(x)*y2r1(x),2)}%
+}
 \begin{tikzpicture}
-  \begin{groupplot}[
-      group style={group size=2 by 1},
-      xtick=\empty,
-      ytick=\empty,
-      axis lines=center,
-      height=4cm,
-      width=2.25in,
-      xlabel={$x$},
-      xmin=-1.2,
-      xmax=1.2,
-      ymin=-0.05,
-      ymax=0.4,
-    ]
-    \nextgroupplot[title={$|\Psi_{\mathrm{s}}(x)|^2$}]
-    \addplot[draw] table[x=x,y=fsymm] {exchange.dat};
-    \node at (axis cs:-0.25,0.1) {\Large{$\uparrow$}};
-    \node at (axis cs:+0.25,0.1) {\Large{$\downarrow$}};
-    \node at (axis cs:-1.0,0.3) {(a)};
-    \nextgroupplot[title={$|\Psi_{\mathrm{a}}(x)|^2$}]
-    \addplot[draw] table[x=x,y=fasym] {exchange.dat};
-    \node at (axis cs:-0.4,0.1) {\Large{$\uparrow$}};
-    \node at (axis cs:+0.4,0.1) {\Large{$\uparrow$}};
-    \node at (axis cs:-1.0,0.3) {(b)};
-  \end{groupplot}
+\begin{groupplot}[
+    group style={group size=2 by 1},
+    xtick=\empty,
+    ytick=\empty,
+    axis lines=center,
+    xlabel={$x$},
+    height=4cm,
+    width=2.25in,
+    xmin=-1.2,
+    xmax=1.2,
+    ymin=-0.05,
+    ymax=0.4,
+    samples=100,
+    domain=-1.2:1.2,
+]
+\nextgroupplot[title={$|\Psi_{\mathrm{s}}(x)|^2$}]
+\addplot[no marks] plot {fsymm(x)};
+\node at (axis cs:-0.25,0.1) {\Large{$\uparrow$}};
+\node at (axis cs:+0.25,0.1) {\Large{$\downarrow$}};
+\node at (axis cs:-1.0,0.3) {(a)};
+\nextgroupplot[title={$|\Psi_{\mathrm{a}}(x)|^2$}]
+\addplot[no marks] plot {fasym(x)};
+\node at (axis cs:-0.4,0.1) {\Large{$\uparrow$}};
+\node at (axis cs:+0.4,0.1) {\Large{$\uparrow$}};
+\node at (axis cs:-1.0,0.3) {(b)};
+\end{groupplot}
 \end{tikzpicture}

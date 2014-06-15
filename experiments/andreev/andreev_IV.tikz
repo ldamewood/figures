@@ -1,3 +1,4 @@
+\usepgfplotslibrary{groupplots}
 \begin{tikzpicture}
 \begin{groupplot}[
   group style={%

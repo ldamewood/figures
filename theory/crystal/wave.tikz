@@ -1,4 +1,4 @@
-\begin{tikzpicture}[domain=-4:4,centered]
+\begin{tikzpicture}[domain=-4:4]
 \begin{scope}
 \draw[-latex] (-4,0) -- (4,0) node[right] {$\hat x$};
 \draw (-2,0)+(0,2pt) -- +(0,-4pt) node[below] {$-a$};

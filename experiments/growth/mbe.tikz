@@ -1,4 +1,5 @@
-\begin{tikzpicture}[centered]
+\begin{tikzpicture}
+\usetikzlibrary{material}
 % MBE Chamber
 \draw (0,0) circle (2.25);
 \node[anchor=east] at (-2.375,0) {Vacuum Chamber};
@@ -38,7 +39,7 @@
 \node[anchor=west] at (60:3) {Shuttered effusion cell};
 \node[anchor=west] at (30:3) {Effusion cell};
 
-\draw[substrate] (-0.5,-0.5) rectangle (+0.5,-0.25) %
+\draw[material/insulator] (-0.5,-0.5) rectangle (+0.5,-0.25) %
   node[pin=right:{Cryopanel or heating element},right,anchor=north west] {};
-\draw[target] (-0.5,-0.25) node[left,anchor=east] {Sample} rectangle (+0.5,0.00);
+\draw[material/metal] (-0.5,-0.25) node[left,anchor=east] {Sample} rectangle (+0.5,0.00);
 \end{tikzpicture}
