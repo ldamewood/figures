@@ -1,21 +1,34 @@
 \usetikzlibrary{atoms}
-\setlength\scale{0.75cm}
-\begin{tikzpicture}
-\begin{scope}[x={(0.9\scale,0.05\scale)},y={(-0.3\scale,0.05\scale)},z={(0\scale,1\scale)}]]
-\node[atom=Si,label=right:Si(3)] at (4.500000,4.500000,1.500000) {};
-\path[atom/bond <=Si] (4.500000,4.500000,1.500000) to (3.750000,3.750000,2.250000);
-\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (3.750000,3.750000,2.250000);
-\node[atom=Si,label=above:Si(1)] at (1.500000,4.500000,4.500000) {};
-\path[atom/bond <=Si] (1.500000,4.500000,4.500000) to (2.250000,3.750000,3.750000);
-\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (2.250000,3.750000,3.750000);
-\node[atom=Mn,label=right:Mn] at (3.000000,3.000000,3.000000) {};
-\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (2.250000,2.250000,2.250000);
-\path[atom/bond <=Si] (1.500000,1.500000,1.500000) to (2.250000,2.250000,2.250000);
-\path[atom/bond <=Mn] (3.000000,3.000000,3.000000) to (3.750000,2.250000,3.750000);
-\path[atom/bond <=Si] (4.500000,1.500000,4.500000) to (3.750000,2.250000,3.750000);
-\node[atom=Si,label=left:Si(2)] at (1.500000,1.500000,1.500000) {};
-\node[atom=Si,label=right:nn Si] at (4.500000,1.500000,4.500000) {};
-\path[atom/bond=Si] (4.500000,1.500000,4.500000) to (6.000000,0.000000,6.000000);
-\node[atom=Si,label=above:sn Si] at (6.000000,0.000000,6.000000) {};
-\end{scope}
+\begin{tikzpicture}[
+    every label/.append style={
+        label distance=3.5mm,
+    }
+]
+\begin{unitcell}[
+    color scheme=bytype,
+    x={(0.9cm,0.05cm)},
+    y={(-0.3cm,0.05cm)},
+    z={(0cm,1cm)},
+    scale=0.75,
+]
+\addatom at site (4.50,4.50,1.50) {Si};
+\addbond from (4.50,4.50,1.50) {Si} to (3.75,3.75,2.25) {Si};
+\addatom at site (4.50,4.50,1.50) {Si}; % label=right:Si(3)
+\addbond from (4.50,4.50,1.50) {Si} to (3.00,3.00,3.00) {Mn};
+\addatom at site (1.50,4.50,4.50) {Si}; % label=above=Si(1)
+\addbond from (1.50,4.50,4.50) {Si} to (3.00,3.00,3.00) {Mn};
+\addatom at site (3.00,3.00,3.00) {Mn}; % label=right:Mn
+\addbond from (3.00,3.00,3.00) {Mn} to (1.50,1.50,1.50) {Si};
+\addbond from (3.00,3.00,3.00) {Mn} to (4.50,1.50,4.50) {Si};
+\addatom at site (1.50,1.50,1.50) {Si}; % label=left:Si(2)
+\addatom at site (4.50,1.50,4.50) {Si}; % label=right:nn Si
+\addbond from (4.50,1.50,4.50) {Si} to (6.00,0.00,6.00) {Si};
+\addatom at site (6.00,0.00,6.00) {Si}; % label=above:sn Si
+\node[label=right:Si(3)] at (4.50,4.50,1.50) {};
+\node[label=above:Si(1)] at (1.50,4.50,4.50) {};
+\node[label=right:Mn] at (3.00,3.00,3.00) {};
+\node[label=left:Si(2)] at (1.50,1.50,1.50) {};
+\node[label=right:nn Si] at (4.50,1.50,4.50) {};
+\node[label=above:sn Si] at (6.00,0.00,6.00) {};
+\end{unitcell}
 \end{tikzpicture}

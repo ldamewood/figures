@@ -1,181 +1,124 @@
-\newlength{\scale}
-\setlength\scale{2cm}
-\definecolor{atom-H}{rgb}{1.000000,1.000000,1.000000}
-\definecolor{atom-He}{rgb}{0.850980,1.000000,1.000000}
-\definecolor{atom-Li}{rgb}{0.800000,0.501961,1.000000}
-\definecolor{atom-Be}{rgb}{0.760784,1.000000,0.000000}
-\definecolor{atom-B}{rgb}{1.000000,0.709804,0.709804}
-\definecolor{atom-C}{rgb}{0.564706,0.564706,0.564706}
-\definecolor{atom-N}{rgb}{0.188235,0.313725,0.972549}
-\definecolor{atom-O}{rgb}{1.000000,0.050980,0.050980}
-\definecolor{atom-F}{rgb}{0.564706,0.878431,0.313725}
-\definecolor{atom-Ne}{rgb}{0.701961,0.890196,0.960784}
-\definecolor{atom-Na}{rgb}{0.670588,0.360784,0.949020}
-\definecolor{atom-Mg}{rgb}{0.541176,1.000000,0.000000}
-\definecolor{atom-Al}{rgb}{0.749020,0.650980,0.650980}
-\definecolor{atom-Si}{rgb}{0.941176,0.784314,0.627451}
-\definecolor{atom-P}{rgb}{1.000000,0.501961,0.000000}
-\definecolor{atom-S}{rgb}{1.000000,1.000000,0.188235}
-\definecolor{atom-Cl}{rgb}{0.121569,0.941176,0.121569}
-\definecolor{atom-Ar}{rgb}{0.501961,0.819608,0.890196}
-\definecolor{atom-K}{rgb}{0.560784,0.250980,0.831373}
-\definecolor{atom-Ca}{rgb}{0.239216,1.000000,0.000000}
-\definecolor{atom-Sc}{rgb}{0.901961,0.901961,0.901961}
-\definecolor{atom-Ti}{rgb}{0.749020,0.760784,0.780392}
-\definecolor{atom-V}{rgb}{0.650980,0.650980,0.670588}
-\definecolor{atom-Cr}{rgb}{0.541176,0.600000,0.780392}
-\definecolor{atom-Mn}{rgb}{0.611765,0.478431,0.780392}
-\definecolor{atom-Fe}{rgb}{0.878431,0.400000,0.200000}
-\definecolor{atom-Co}{rgb}{0.941176,0.564706,0.627451}
-\definecolor{atom-Ni}{rgb}{0.313725,0.815686,0.313725}
-\definecolor{atom-Cu}{rgb}{0.784314,0.501961,0.200000}
-\definecolor{atom-Zn}{rgb}{0.490196,0.501961,0.690196}
-\definecolor{atom-Ga}{rgb}{0.760784,0.560784,0.560784}
-\definecolor{atom-Ge}{rgb}{0.400000,0.560784,0.560784}
-\definecolor{atom-As}{rgb}{0.741176,0.501961,0.890196}
-\definecolor{atom-Se}{rgb}{1.000000,0.631373,0.000000}
-\definecolor{atom-Br}{rgb}{0.650980,0.160784,0.160784}
-\definecolor{atom-Kr}{rgb}{0.360784,0.721569,0.819608}
-\definecolor{atom-Rb}{rgb}{0.439216,0.180392,0.690196}
-\definecolor{atom-Sr}{rgb}{0.000000,1.000000,0.000000}
-\definecolor{atom-Y}{rgb}{0.580392,1.000000,1.000000}
-\definecolor{atom-Zr}{rgb}{0.580392,0.878431,0.878431}
-\definecolor{atom-Nb}{rgb}{0.450980,0.760784,0.788235}
-\definecolor{atom-Mo}{rgb}{0.329412,0.709804,0.709804}
-\definecolor{atom-Tc}{rgb}{0.231373,0.619608,0.619608}
-\definecolor{atom-Ru}{rgb}{0.141176,0.560784,0.560784}
-\definecolor{atom-Rh}{rgb}{0.039216,0.490196,0.549020}
-\definecolor{atom-Pd}{rgb}{0.000000,0.411765,0.521569}
-\definecolor{atom-Ag}{rgb}{0.752941,0.752941,0.752941}
-\definecolor{atom-Cd}{rgb}{1.000000,0.850980,0.560784}
-\definecolor{atom-In}{rgb}{0.650980,0.458824,0.450980}
-\definecolor{atom-Sn}{rgb}{0.400000,0.501961,0.501961}
-\definecolor{atom-Sb}{rgb}{0.619608,0.388235,0.709804}
-\definecolor{atom-Te}{rgb}{0.831373,0.478431,0.000000}
-\definecolor{atom-I}{rgb}{0.580392,0.000000,0.580392}
-\definecolor{atom-Xe}{rgb}{0.258824,0.619608,0.690196}
-\definecolor{atom-Cs}{rgb}{0.341176,0.090196,0.560784}
-\definecolor{atom-Ba}{rgb}{0.000000,0.788235,0.000000}
-\definecolor{atom-La}{rgb}{0.439216,0.831373,1.000000}
-\definecolor{atom-Ce}{rgb}{1.000000,1.000000,0.780392}
-\definecolor{atom-Pr}{rgb}{0.850980,1.000000,0.780392}
-\definecolor{atom-Nd}{rgb}{0.780392,1.000000,0.780392}
-\definecolor{atom-Pm}{rgb}{0.639216,1.000000,0.780392}
-\definecolor{atom-Sm}{rgb}{0.560784,1.000000,0.780392}
-\definecolor{atom-Eu}{rgb}{0.380392,1.000000,0.780392}
-\definecolor{atom-Gd}{rgb}{0.270588,1.000000,0.780392}
-\definecolor{atom-Tb}{rgb}{0.188235,1.000000,0.780392}
-\definecolor{atom-Dy}{rgb}{0.121569,1.000000,0.780392}
-\definecolor{atom-Ho}{rgb}{0.000000,1.000000,0.611765}
-\definecolor{atom-Er}{rgb}{0.000000,0.901961,0.458824}
-\definecolor{atom-Tm}{rgb}{0.000000,0.831373,0.321569}
-\definecolor{atom-Yb}{rgb}{0.000000,0.749020,0.219608}
-\definecolor{atom-Lu}{rgb}{0.000000,0.670588,0.141176}
-\definecolor{atom-Hf}{rgb}{0.301961,0.760784,1.000000}
-\definecolor{atom-Ta}{rgb}{0.301961,0.650980,1.000000}
-\definecolor{atom-W}{rgb}{0.129412,0.580392,0.839216}
-\definecolor{atom-Re}{rgb}{0.149020,0.490196,0.670588}
-\definecolor{atom-Os}{rgb}{0.149020,0.400000,0.588235}
-\definecolor{atom-Ir}{rgb}{0.090196,0.329412,0.529412}
-\definecolor{atom-Pt}{rgb}{0.815686,0.815686,0.878431}
-\definecolor{atom-Au}{rgb}{1.000000,0.819608,0.137255}
-\definecolor{atom-Hg}{rgb}{0.721569,0.721569,0.815686}
-\definecolor{atom-Tl}{rgb}{0.650980,0.329412,0.301961}
-\definecolor{atom-Pb}{rgb}{0.341176,0.349020,0.380392}
-\definecolor{atom-Bi}{rgb}{0.619608,0.309804,0.709804}
-\definecolor{atom-Po}{rgb}{0.670588,0.360784,0.000000}
-\definecolor{atom-At}{rgb}{0.458824,0.309804,0.270588}
-\definecolor{atom-Rn}{rgb}{0.258824,0.509804,0.588235}
-\definecolor{atom-Fr}{rgb}{0.258824,0.000000,0.400000}
-\definecolor{atom-Ra}{rgb}{0.000000,0.490196,0.000000}
-\definecolor{atom-Ac}{rgb}{0.439216,0.670588,0.980392}
-\definecolor{atom-Th}{rgb}{0.000000,0.729412,1.000000}
-\definecolor{atom-Pa}{rgb}{0.000000,0.631373,1.000000}
-\definecolor{atom-U}{rgb}{0.000000,0.560784,1.000000}
-\definecolor{atom-Np}{rgb}{0.000000,0.501961,1.000000}
-\definecolor{atom-Pu}{rgb}{0.000000,0.419608,1.000000}
-\definecolor{atom-Am}{rgb}{0.329412,0.360784,0.949020}
-\definecolor{atom-Cm}{rgb}{0.470588,0.360784,0.890196}
-\definecolor{atom-Bk}{rgb}{0.541176,0.309804,0.890196}
-\definecolor{atom-Cf}{rgb}{0.631373,0.211765,0.831373}
-\definecolor{atom-Es}{rgb}{0.701961,0.121569,0.831373}
-\definecolor{atom-Fm}{rgb}{0.701961,0.121569,0.729412}
-\definecolor{atom-Md}{rgb}{0.701961,0.050980,0.650980}
-\definecolor{atom-No}{rgb}{0.741176,0.050980,0.529412}
-\definecolor{atom-Lr}{rgb}{0.780392,0.000000,0.400000}
-\definecolor{atom-Rf}{rgb}{0.800000,0.000000,0.349020}
-\definecolor{atom-Db}{rgb}{0.819608,0.000000,0.309804}
-\definecolor{atom-Sg}{rgb}{0.850980,0.000000,0.270588}
-\definecolor{atom-Bh}{rgb}{0.878431,0.000000,0.219608}
-\definecolor{atom-Hs}{rgb}{0.901961,0.000000,0.180392}
-\definecolor{atom-Mt}{rgb}{0.921569,0.000000,0.149020}
-\definecolor{atom-X}{rgb}{0.000000,0.000000,0.000000}
-\tikzset{
-  atom-size-H/.style={minimum size=1.67\scale},
-  atom-size-Cu/.style={minimum size=1.45\scale},
-  atom-size-Al/.style={minimum size=1.45\scale},
-  atom-size-Sb/.style={minimum size=1.33\scale},
-  atom-size-Li/.style={minimum size=1.67\scale},
-  atom-size-Mn/.style={minimum size=1.61\scale},
-  atom-size-Pb/.style={minimum size=1.61\scale}, %Add
-  atom-size-Se/.style={minimum size=1.61\scale}, %Add
-  atom-size-P/.style={minimum size=0.98\scale},
-  atom-size-As/.style={minimum size=1.14\scale},
-  atom-size-Si/.style={minimum size=1.11\scale},
-  atom-size-N/.style={minimum size=0.56\scale},
-  atom-size-Zn/.style={minimum size=1.42\scale},
-  atom-size-Ni/.style={minimum size=1.49\scale},
-  atom-size-O/.style={minimum size=0.48\scale},
-  atom/.style={
-    circle,
-    draw=black,
-    atom-size-#1,
-    fill=atom-#1!50,
-    inner sep=0pt,
-    ultra thin,
-  },
-  atom/atom/.default={X},
-  atom/edge/.style={draw=black,shorten >= 0.5\scale,shorten <= 0.5\scale},
-  atom/bond/.style={
-    draw=black,
-    shorten >= 0.5\scale,
-    shorten <= 0.5\scale,
-    double=atom-#1!50,
-    double distance=0.1\scale,
-    ultra thin,
-    cap=round,
-  },
-  atom/bond >/.style={atom/bond=#1,shorten <=0},
-  atom/bond </.style={atom/bond=#1,shorten >=0},
+\makeatletter
+\usetikzlibrary{calc}
+\usetikzlibrary{3d}
+\usetikzlibrary{atoms.data}
+\newlength\@atom@scale
+\newlength\@unitcell@temp@x
+\newlength\@unitcell@temp@y
+\newlength\@unitcell@xx
+\newlength\@unitcell@xy
+\newlength\@unitcell@yx
+\newlength\@unitcell@yy
+\newlength\@unitcell@zx
+\newlength\@unitcell@zy
+\newlength\@unitcell@xlen
+\newlength\@unitcell@ylen
+\newlength\@unitcell@zlen
+\setlength\@atom@scale{0.25in}
+\def\useatomscheme#1{\usetikzlibrary{atoms.style.#1}}
+\def\extractxy#1,#2\relax{%
+    \pgfmathsetlength{\@unitcell@temp@x}{#1}%
+    \pgfmathsetlength{\@unitcell@temp@y}{#2}%
 }
-% \pgfplotsset{%
-%   atom classes/.style={
-%     scatter/classes={
-%       Al={atom=Al,mark size=.121\scale},
-%       Mn={atom=Mn,mark size=.161\scale},
-%       Si={atom=Si,mark size=.111\scale},
-%       Se={atom=Si,mark size=.111\scale}, % Add
-%       Pb={atom=Si,mark size=.111\scale} % Add
-%     },
-%   },
-%   unitcell/.style={
-%     3d box,
-%     scale only axis,
-%     clip=false,
-%     %clip marker paths=true,
-%     xtick=\empty,
-%     ytick=\empty,
-%     ztick=\empty,
-%     xmin=0,xmax=1,
-%     ymin=0,ymax=1,
-%     zmin=0,zmax=1,
-%   },
-%   atoms/.style={
-%     scatter,
-%     z buffer=sort,
-%     only marks,
-%     scatter src=explicit symbolic,
-%     point meta=explicit symbolic,
-%     table/meta={type},
-%   },
-% }
+\pgfkeys{
+    /unitcell/.cd,
+    color scheme/.initial={jmol},
+    name/.initial={},
+    atom scale/.initial=1,
+    x/.code={
+        \extractxy#1\relax
+        \setlength\@unitcell@xx{\@unitcell@temp@x}
+        \setlength\@unitcell@xy{\@unitcell@temp@y}
+        \pgfmathsetlength\@unitcell@xlen{%
+            sqrt(\@unitcell@xx*\@unitcell@xx+\@unitcell@xy*\@unitcell@xy)%
+        }
+    },
+    y/.code={
+        \extractxy#1\relax
+        \setlength\@unitcell@yx{\@unitcell@temp@x}
+        \setlength\@unitcell@yy{\@unitcell@temp@y}
+        \pgfmathsetlength\@unitcell@ylen{%
+            sqrt(\@unitcell@yx*\@unitcell@yx+\@unitcell@yy*\@unitcell@yy)%
+        }
+    },
+    z/.code={
+        \extractxy#1\relax
+        \setlength\@unitcell@zx{\@unitcell@temp@x}
+        \setlength\@unitcell@zy{\@unitcell@temp@y}
+        \pgfmathsetlength\@unitcell@zlen{%
+            sqrt(\@unitcell@zx*\@unitcell@zx+\@unitcell@zy*\@unitcell@zy)%
+        }
+    },
+    x/.initial={(1.00cm,0.00cm)},
+    y/.initial={(0.20cm,0.05cm)},
+    z/.initial={(0.00cm,1.00cm)},
+    scale/.initial=1,
+}
+\tikzset{
+    /unitcell/atom/.style={
+        thin,
+        circle,
+        draw=black,
+        fill=atom-#1,
+        /unitcell/atom-style-#1,
+    },
+    /unitcell/atom/.default={X},
+    /unitcell/edge/.style={
+        thin,
+        draw=black,
+        shorten >= 0.375\@atom@scale,
+        shorten <= 0.375\@atom@scale
+    },
+    /unitcell/bond/.style={
+        ultra thin,
+        draw=black,
+        shorten >= 0.5\@atom@scale,
+        shorten <= 0.5\@atom@scale,
+        double=atom-#1,
+        /unitcell/atom-style-#1,
+        minimum size=0pt,
+        double distance=0.125\@atom@scale,
+        cap=round,
+    },
+    /unitcell/bond >/.style={/unitcell/bond=#1,shorten <=0},
+    /unitcell/bond </.style={/unitcell/bond=#1,shorten >=0},
+}
+
+\def\unitcell[#1]{
+    \pgfkeys{/unitcell/.cd,#1}
+    \pgfkeysgetvalue{/unitcell/color scheme}\@unitcell@scheme
+    \pgfkeysgetvalue{/unitcell/atom scale}\@unitcell@atom@scale
+    \pgfkeysgetvalue{/unitcell/name}\@unitcell@name
+    \pgfkeysgetvalue{/unitcell/scale}\@unitcell@scale
+    \useatomscheme{\@unitcell@scheme}
+    \begin{scope}[
+        x={(\@unitcell@xx,\@unitcell@xy)},
+        y={(\@unitcell@yx,\@unitcell@yy)},
+        z={(\@unitcell@zx,\@unitcell@zy)},
+        scale=\@unitcell@scale
+    ]
+    \pgfmathsetlength\@atom@scale{
+        \@unitcell@scale * \@unitcell@xlen * \@unitcell@atom@scale
+    }
+    % \coordinate (\@unitcell@name\space origin) at (0,0,0);
+}
+\def\endunitcell{
+    \end{scope}
+}
+\def\addatom at site (#1,#2,#3)#4;{
+    \node[/unitcell/atom={#4}] at (#1,#2,#3) {};
+}
+\def\addedge from (#1,#2,#3) to (#4,#5,#6);{
+    \draw[/unitcell/edge] (#1,#2,#3) -- (#4,#5,#6);
+}
+\def\addbond from (#1,#2,#3) #4 to (#5,#6,#7) #8;{
+    \edef\@atom@a{#4}\edef\@atom@b{#8}
+    \ifx\@atom@a\@atom@b
+    \draw[/unitcell/bond = {#4}] (#1,#2,#3) -- (#5,#6,#7);
+    \else
+    \draw[/unitcell/bond <= {#4}] (#1,#2,#3) -- ($(#1,#2,#3)!0.5!(#5,#6,#7)$);
+    \draw[/unitcell/bond >= {#8}] ($(#1,#2,#3)!0.5!(#5,#6,#7)$) -- (#5,#6,#7);
+    \fi
+}
+
+\makeatother
