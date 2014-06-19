@@ -56,7 +56,7 @@ def dfh(single = True, defect = False):
 
     return dfh
 
-atoms = dfh(single = False, defect = 1)
+atoms = dfh(single = True)
 atoms_full = fillcell(atoms)
 bondatoms = []
 snsite = numpy.array([0.625,0.625,0.625])

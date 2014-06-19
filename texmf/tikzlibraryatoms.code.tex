@@ -15,7 +15,14 @@
 \newlength\@unitcell@ylen
 \newlength\@unitcell@zlen
 \setlength\@atom@scale{0.25in}
-\def\useatomscheme#1{\usetikzlibrary{atoms.style.#1}}
+\def\@unitcell@colorscheme@loaded{0}
+\def\useatomscheme#1{%
+    \if\@unitcell@colorscheme@loaded1%
+    \else%
+    \def\@unitcell@colorscheme@loaded{1}%
+    \usetikzlibrary{atoms.style.#1}%
+    \fi%
+}
 \def\extractxy#1,#2\relax{%
     \pgfmathsetlength{\@unitcell@temp@x}{#1}%
     \pgfmathsetlength{\@unitcell@temp@y}{#2}%
