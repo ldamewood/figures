@@ -1,0 +1,41 @@
+\usepgfplotslibrary{morefunctions}
+\usetikzlibrary{decorations.markings}
+\begin{tikzpicture}
+\tikzset{
+    arrowline/.style={
+        decoration={
+            markings,
+            mark=between positions 0.5 and 1 step 8em with {\arrow [scale=1.5]{stealth}}
+            }, postaction=decorate
+    },
+}
+\begin{axis}[
+    axis lines=center,
+    clip=false,
+    xlabel={$H$},
+    ylabel={$M$},
+    xtick={-2},
+    xticklabels={$H_c$},
+    ytick={0.76159415595,1},
+    yticklabels={$M_r$,$M_s$},
+    ymin=-1.2,
+    ymax=1.2,
+    xmin=-10,
+    xmax=10,
+    every axis x label/.style={
+        at={(ticklabel* cs:1)},
+        anchor=west,
+    },
+    every axis y label/.style={
+        at={(ticklabel* cs:1)},
+        anchor=south,
+    },
+    samples=100,
+]
+\addplot[arrowline,domain=0:8,no marks,red] {tanh(x/2)};
+\addplot+[arrowline,domain=-8:8,no marks,red] {tanh(x/2-1)};
+\addplot+[arrowline,domain=8:-8,no marks,red] {tanh(x/2+1)};
+\draw[dashed] (axis cs:0,1) -- (axis cs:8,1);
+\path (xticklabel cs:-0.1) -- (xticklabel cs:1.1);
+\end{axis}
+\end{tikzpicture}

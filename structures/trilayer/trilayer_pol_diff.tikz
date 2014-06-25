@@ -327,9 +327,9 @@
 \addplot[contour,point meta={+0.264883}] coordinates {(+7.805160,+2.825029) (+7.782068,+2.818530) (+7.805160,+2.811171) (+7.811504,+2.818530) } -- cycle;
 \addplot[contour,point meta={+0.264883}] coordinates {(+0.000000,+2.841690) (+0.035987,+2.818530) (+0.000000,+2.793149) (-0.035987,+2.818530) } -- cycle;
 \addplot[contour,point meta={+0.264883}] coordinates {(+0.000000,-2.793149) (+0.020567,-2.818530) (+0.000000,-2.841690) (-0.020567,-2.818530) } -- cycle;
-\path[draw] (axis cs:0.000000,0.000000) node[minimum size=0.5em,fill=red!50,pin=225:Al-Si] {}
-         to (axis cs:3.855000,1.374600) node[minimum size=0.5em,fill=yellow!50,pin=above:Si] {}
-         to (axis cs:7.710000,2.833400) node[minimum size=0.5em,fill=blue!50,pin=above:Mn] {};
+\path[draw] (axis cs:0.000000,0.000000) node[minimum size=0.5em,fill=red!50,pin=225:Al-Si,draw=black] {}
+         to (axis cs:3.855000,1.374600) node[minimum size=0.5em,fill=yellow!50,pin=above:Si,draw=black] {}
+         to (axis cs:7.710000,2.833400) node[minimum size=0.5em,fill=blue!50,pin=above:Mn,draw=black] {};
 \node[pin=above:{(i)}] at (axis cs:-5.1,0.6595) {};
 \node[pin=-45:{(ii)}] at (axis cs:1,0.1595) {};
 \end{axis}

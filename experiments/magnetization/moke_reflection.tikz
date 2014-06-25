@@ -1,0 +1,51 @@
+\usepgfplotslibrary{groupplots}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+		group size=2 by 1,
+	},
+    axis lines=center,
+    xmin=-0.5,
+    xmax=0.5,
+    ymin=-0.8,
+    ymax=1,
+    xtick=\empty,
+    ytick=\empty,
+    ylabel={$E_p$},
+    xlabel={$E_s$},
+    axis equal image,
+    disabledatascaling,
+    every axis x label/.style={
+        at={(ticklabel* cs:1)},
+        anchor=west,
+    },
+    % every axis y label/.style={
+%         at={(ticklabel* cs:1)},
+%         anchor=south,
+%     },
+    height=2in,
+    clip=false,
+]
+\nextgroupplot[title=(a) Incident]
+\draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0,0.80);
+\nextgroupplot[title=(b) Reflected]
+% \draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0.200,0.775);
+% \draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0.258,-0.067);
+\begin{scope}[rotate around={-30:(axis cs:0,0)}]
+%\draw[gray] (axis cs:0,0) ellipse (0.3 and 0.8);
+\draw[-latex,thick,red,dashed]
+     (axis cs:0,0)++(45:0.33 and 0.88) arc (45:25:0.33 and 0.88);
+\draw[gray] (axis cs:0,0)++(15:0.3 and 0.8) arc (15:-360+15:0.3 and 0.8);
+\draw[solid,-latex,thin,blue] (axis cs:0,0) -- (axis cs:0,0.8);
+\draw[solid,-latex,thin,blue] (axis cs:0,0) -- (axis cs:0.3,0.0);
+\draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- ++ (45:0.3 and 0.8);
+%-- (axis cs:0.21213203435,0.56568542494);
+\draw[dashed] (axis cs:0,0.8) -- (axis cs:0.3,0);
+\draw[latex-latex,ultra thin] (axis cs:0,0.4) arc (90:120:0.4) %
+    node[midway,above] {$\theta$};
+\draw[latex-latex,ultra thin] (axis cs:0,0.2) arc (270:290:0.6) %
+    node[pos=0.4,below,anchor=north] {$\sim\!\epsilon$};
+\end{scope}
+\end{groupplot}
+\path (group c1r1.center)+(-2,0) -- (group c2r1.center)+(2,0);
+\end{tikzpicture}

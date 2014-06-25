@@ -13,10 +13,10 @@
 % \draw (-1.732,+0.125)++(-0.125,0) -- ++(0.25,0);
 % \draw[blue!30!white,ultra thick] (-1.732,-0.125) -- (-1.732,+0.125);
 \draw (-2,0.125) node[left,anchor=east] {Electron gun} rectangle (-1.5,-0.125);
-\draw[red,thick] (-1.5,0) -- (0,0);
+\draw[material/electron beam,thick] (-1.5,0) -- (0,0);
 \end{scope}
 \begin{scope}[rotate=5]
 \draw (+2,0.125) node[right,anchor=west] {Detector} rectangle (+1.5,-0.125);
-\draw[red,thick,-latex] (0,0) -- (1.5,0);
+\draw[material/electron beam,thick,-latex] (0,0) -- (1.5,0);
 \end{scope}
 \end{tikzpicture}

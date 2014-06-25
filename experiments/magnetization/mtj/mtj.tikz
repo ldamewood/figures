@@ -1,0 +1,35 @@
+\usetikzlibrary{material}
+\begin{tikzpicture}
+%\draw (-2,+0.05) -- (-2,2) -- (0,2) -- (-0,-0.5) -- 
+%\draw (90:1.0) -- (0,+2) -- (-2,+2) -- (-2,+0.05);
+%\draw (270:-0.25) -- (0,-0.5) -- (-2,-0.5) -- (-2,-0.05);
+
+\begin{scope}[shift={(-2,-0.5)},rotate=180]
+\coordinate (VB) at (0,0);
+\coordinate (VBp) at (0,+0.05);
+\coordinate (VBn) at (0,-0.05);
+\coordinate (VBlabel) at (0.5,0);
+\draw (VBp)++(-0.25,0) -- ++(0.5,0);
+\draw (VBn)++(-0.1,0) -- ++(0.2,0);
+\node[anchor=north west] at (VBp) {\tiny{$+$}};
+\node[anchor=south west] at (VBn) {\tiny{$-$}};
+\node at (VBlabel) {$V_b$};
+\end{scope}
+
+\draw (VBn) -- (-2,1) -- (0,1) -- (0,-1) -- (-2,-1) -- (VBp);
+
+\node[circle,fill=white,draw] at (-2,0.5) {A};
+
+\draw[material/metal] (-1,-0.75) rectangle (1,0.75);
+\draw[material/insulator] (-1,-0.25) rectangle (1,0.25);
+\node[anchor=west] at (1,0.5) {Ferromagnetic film 1};
+\node[anchor=west] at (1,0) {Insulating region};
+\node[anchor=west] at (1,-0.5) {Ferromagnetic film 2};
+\path (-2in,0) -- (2in,0);
+\draw[-latex,ultra thick] (0.75,0.5) -- (-0.75,0.5);
+\draw[latex-,ultra thick] (0.75,-0.5) -- (-0.75,-0.5);
+%\node at (0,0.75) {Nb};
+%\draw[material/metal] (-1,-0.25) rectangle (1,+0.25);
+%\node at (0,0) {Sample};
+
+\end{tikzpicture}

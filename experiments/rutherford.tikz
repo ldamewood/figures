@@ -11,15 +11,15 @@
 \node[material/insulator,draw,circle,inner sep=5pt] at (-0.5,-0.25) {};
 \node[material/insulator,draw,circle,inner sep=5pt] at (1.5,-2.25) {};
 \node[material/insulator,draw,circle,inner sep=5pt] at (-1,-1.25) {};
-\draw[material/insulator,-latex,ultra thick,rounded corners] (-0.5,2) %
+\draw[material/electron beam,-latex,ultra thick,rounded corners] (-0.5,2) %
   node[black,above]{(c)} -- (+0.5,0) -- (1.5,2);
-\draw[material/insulator,-latex,ultra thick,rounded corners] (-1,2) %
+\draw[material/electron beam,-latex,ultra thick,rounded corners] (-1,2) %
   node[black,above]{(b)} -- (0.5,-1) -- (2.0,2);
-\draw[material/insulator,-latex,ultra thick,rounded corners] (-1.5,2) %
+\draw[material/electron beam,-latex,ultra thick,rounded corners] (-1.5,2) %
   node[black,above]{(a)} -- (-0.5,0) -- (0.5,2);
 \end{scope}
 
-\begin{scope}[xshift=-2.25in,yshift=-1in]
+\begin{scope}[xshift=0,yshift=-1in]
 \begin{axis}[
   no marks,
   xtick=\empty,

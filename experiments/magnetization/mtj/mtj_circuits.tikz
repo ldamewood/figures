@@ -1,0 +1,51 @@
+\tikzset{
+    resistor/.style={
+        decorate,
+        decoration={
+            zigzag,
+            amplitude=#1,
+            pre length=1mm,
+            post length=1mm,
+            segment length=#1,
+        },
+    },
+}
+
+\usetikzlibrary{material}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\begin{tikzpicture}
+\begin{scope}[shift={(-2,-0.5)},rotate=180]
+\coordinate (VB) at (0,0);
+\coordinate (VBp) at (0,+0.05);
+\coordinate (VBn) at (0,-0.05);
+\coordinate (VBlabel) at (0.5,0);
+\draw (VBp)++(-0.25,0) -- ++(0.5,0);
+\draw (VBn)++(-0.1,0) -- ++(0.2,0);
+\node[anchor=north west] at (VBp) {\tiny{$+$}};
+\node[anchor=south west] at (VBn) {\tiny{$-$}};
+\node at (VBlabel) {$V_b$};
+\end{scope}
+\begin{scope}[opacity=0.5]
+\draw[material/metal] (-1,-0.75) rectangle (1,0.75);
+\draw[material/insulator] (-1,-0.25) rectangle (1,0.25);
+\end{scope}
+\draw (VBn) -- (-2,1) -- (0,1) -- (0,0.875) -- (-0.5,0.875) -- (-0.5,0.75);
+\draw (0,0.875) -- (0.5,0.875) -- (0.5,0.75);
+\draw (0,-0.875) -- (0.5,-0.875) -- (0.5,-0.75);
+\draw (-0.5,-0.25) -- (-0.5,0.25);
+\draw (+0.5,-0.25) -- (+0.5,0.25);
+\draw[resistor=1.5mm] (-0.5,+0.25) -- (-0.5,+0.75);
+\draw[resistor=1mm] (-0.5,-0.25) -- (-0.5,-0.75);
+\draw[resistor=1mm] (+0.5,+0.25) -- (+0.5,+0.75);
+\draw[resistor=1.5mm] (+0.5,-0.25) -- (+0.5,-0.75);
+\draw(VBp) -- (-2,-1) -- (0,-1) -- (0,-0.875) -- (-0.5,-0.875) -- (-0.5,-0.75);
+\node[circle,fill=white,draw] at (-2,0.5) {A};
+\draw[-latex,red!80!black] (-0.875,0.25) -- (-0.875,-0.625) %
+    node[pos=0,above] {$I_\downarrow$};
+\draw[-latex,blue!80!black] (+0.875,0.25) -- (+0.875,-0.625) %
+    node[pos=0,above] {$I_\uparrow$};
+\draw[-latex,ultra thick] (-0.25,+0.5) -- (+0.25,+0.5);
+\draw[latex-,ultra thick] (-0.25,-0.5) -- (+0.25,-0.5);
+\node[anchor=west] at (1,0) {$=R_{\uparrow\downarrow}$};
+\end{tikzpicture}
