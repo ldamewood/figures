@@ -1,15 +1,55 @@
-\begin{tikzpicture}
-\foreach \x in {-2,-1,0,1}{
-  \draw (\x,0) rectangle ++(1,1);
+\usetikzlibrary{3d}
+\begin{tikzpicture}[
+    x={(0.8in,0in)},
+    y={(0.1in,0.25in)},
+    z={(0,0.8in)},
+]
+\draw[thick] (0,0,0)--++(4,0,0);
+\draw[thick] (0,0,1)--++(4,0,0);
+\draw[thick] (0,1,0)--++(4,0,0);
+\draw[thick] (0,1,1)--++(4,0,0);
+\def\mtheta{15}
+\def\Length{4}
+\def\r{0.8}
+\edef\xs{0}
+\edef\ys{0}
+\edef\zs{0}
+\def\rotFactor{1.2}
+\def\angFactor{0.6}
+\foreach \x in {0,1,...,\Length} {
+\begin{scope}[shift={(\x,0,0)}]
+    \node[circle,inner sep=2pt,fill=black] at (0,0,0) {};
+    \node[circle,inner sep=2pt,fill=black] at (0,0,1) {};
+    \node[circle,inner sep=2pt,fill=black] at (0,1,0) {};
+    \node[circle,inner sep=2pt,fill=black] at (0,1,1) {};
+    \draw[thick] (0,0,0) -- (0,0,1) -- (0,1,1) -- (0,1,0) -- cycle;
+    \draw[dashed] (0,0,1) -- ++ (0,0,{\r*cos(\mtheta)});
+    \draw[] (0,0,1) -- ++ ({\r*sin(\mtheta)},0,{\r*cos(\mtheta)});
+    \draw[] (0,0,1) -- ++ ({-\r*sin(\mtheta)},0,{\r*cos(\mtheta)});
+    \draw[] ({\r*sin(\mtheta)},0,{1+\r*cos(\mtheta)}) % upper circle
+    \foreach \t in {5,10,...,360} {
+     --({\r*sin(\mtheta)*cos(\t)}, {\r*sin(\mtheta)*sin(\t)}, {1+\r*cos(\mtheta)})
+    } -- cycle;
+    \pgfmathparse{\r*sin(\mtheta)*cos(deg(2*pi*\x/\Length))}%
+    \xdef\xs{\pgfmathresult}%
+    \pgfmathparse{\r*sin(\mtheta)*sin(deg(2*pi*\x/\Length))}%
+    \xdef\ys{\pgfmathresult}%
+    \pgfmathparse{\r*cos(\mtheta)}%
+    \xdef\zs{\pgfmathresult}%
+    \draw[red,ultra thick,-latex] (0,0,1) -- ++ (\xs,\ys,\zs);%
+\end{scope}
 }
-\foreach \x in {-2,-1,0,1,2}
-{
-  \foreach \y in {0,1}
-  {
-    \node[circle,minimum width=1em,fill=blue!50,draw] at (\x,\y) {};
-    \draw[red!50!black,-latex,ultra thick] (\x,\y)
-      ++({-0.25*cos(deg(pi*\x/2)+30)},{-0.25*sin(deg(pi*\x/2)+30)}) -- 
-      ++({0.5*cos(deg(pi*\x/2)+30)},{0.5*sin(deg(pi*\x/2)+30)});
-  }
-}
+
+\draw[] ({\r*sin(0)*\angFactor},0,{1+\r*cos(0)*\angFactor}) % upper circle
+\foreach \t in {5,10,...,\mtheta} {
+ --({\r*sin(\t)*cos(180)*\angFactor}, {\r*sin(\t)*sin(180)*\angFactor}, {1+\r*cos(\t)*\angFactor})
+};
+\node at (-0.075,0,1.6) {$\theta$};
+
+\draw[latex-latex] (0,0,-0.1) -- ++ (1,0,0) node[midway,fill=white] {$a$};
+\draw[latex-latex] (0,0,-0.2) -- ++ (4,0,0) node[midway,fill=white] {$4a$};
+\draw (0,0,-0.075) -- (0,0,-0.25);
+\draw (1,0,-0.075) -- (1,0,-0.15);
+\draw (4,0,-0.075) -- (4,0,-0.25);
+
 \end{tikzpicture}
