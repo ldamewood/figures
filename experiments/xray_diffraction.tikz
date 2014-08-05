@@ -15,4 +15,5 @@
 \draw[dashed] (0,0) -- (-30:3);
 \draw[latex-latex] (0,0) + (30:1.5) arc (30:-30:1.5);
 \node[fill=white] at (1.5,0) {$2\theta$};
+\path (-2.2in,0) -- (2.2in,0);
 \end{tikzpicture}

@@ -19,4 +19,5 @@
 \draw (+2,0.125) node[right,anchor=west] {Detector} rectangle (+1.5,-0.125);
 \draw[material/electron beam,thick,-latex] (0,0) -- (1.5,0);
 \end{scope}
+\path (-2.2in,0) -- (2.2in,0);
 \end{tikzpicture}

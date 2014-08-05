@@ -1,4 +1,3 @@
-\usetikzlibrary{fadings}
 \tikzset{
   dim/.style = {
     help lines,
@@ -38,7 +37,7 @@
 \def\interface[#1]#2{
   \fill[blue!20] (-1.5,0) rectangle (1.5,-2);
   \path[fill=white] (0,-\scgap) rectangle (1.5,\scgap);
-  \shade[top color=white,bottom color=blue!20] (0,-\scgap) rectangle (-1.5,\scgap);
+  %\shade[top color=white,bottom color=blue!20] (0,-\scgap) rectangle (-1.5,\scgap);
   \draw[axis,-latex] (0,-1.5) -- (0,1.5) node[right] {$E$};
   \draw[dashed] (-1.5,0) -- (1.5,0);
   \draw (0,\scgap) -- +(1.5,0);

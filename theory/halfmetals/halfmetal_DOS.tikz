@@ -36,8 +36,8 @@
   % temperature fading
   \begin{scope}
     \clip (2,0)++(90:3) arc (90:270:3);
-    \shade[top color=white,bottom color=blue!20]
-      (0,-\fadewidth) rectangle (-2,\fadewidth);
+    %\shade[top color=white,bottom color=blue!20]
+    %  (0,-\fadewidth) rectangle (-2,\fadewidth);
   \end{scope}
   % Spin down circle
   \begin{scope}
@@ -78,8 +78,8 @@
 % temperature fading
 \begin{scope}
 \clip (2,0)++(90:3) arc (90:270:3);
-\shade[top color=white,bottom color=blue!20]
-  (0,-\fadewidth) rectangle (-2,\fadewidth);
+%\shade[top color=white,bottom color=blue!20]
+%  (0,-\fadewidth) rectangle (-2,\fadewidth);
 \end{scope}
 % Spin down circle
 \begin{scope}
@@ -94,8 +94,8 @@
 % temperature fading
 \begin{scope}
 \clip (-2,-1.75)++(90:3) arc (90:0:3) -- (-2,-1.75);
-\shade[top color=white,bottom color=blue!20]
-  (0,-\fadewidth) rectangle (2,\fadewidth);
+%\shade[top color=white,bottom color=blue!20]
+%  (0,-\fadewidth) rectangle (2,\fadewidth);
 \end{scope}
 \begin{scope}
 \clip (0,2.5) rectangle (2,-2.5);

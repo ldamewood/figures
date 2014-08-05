@@ -4,7 +4,7 @@
     x={(1cm,0cm)},
     y={(0.4cm,0.2cm)},
     z={(0cm,1cm)},
-    scale=0.6,
+    scale=0.5,
     color scheme=bytype,
 ]
 \addatom at site (+0.000,+5.430,+0.000) {Si};

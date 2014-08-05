@@ -11,13 +11,14 @@
   ytick={0},
   width=0.4\textwidth,
 ]
-\nextgroupplot
+\nextgroupplot[title=(a)]
 \addplot[domain=-2:-0.5] {x-0.5};
 \addplot[domain=-0.5:0.5] {2*x};
 \addplot[domain=0.5:2] {x+0.5};
-\nextgroupplot
+\nextgroupplot[title=(b)]
 \addplot[domain=-2:-1] {x+1};
 \addplot[domain=-1:1] {0};
 \addplot[domain=1:2] {x-1};
 \end{groupplot}
+\path ($(group c1r1.center)!0.5!(group c2r1.center)$)++(-2.2in,0) -- ++(4.4in,0);
 \end{tikzpicture}

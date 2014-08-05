@@ -40,6 +40,8 @@
 \node[anchor=west] at (30:3) {Effusion cell};
 
 \draw[material/insulator] (-0.5,-0.5) rectangle (+0.5,-0.25) %
-  node[pin=right:{Cryopanel or heating element},right,anchor=north west] {};
+  node[label=right:{Cryopanel or heating element},right,anchor=north west] {};
 \draw[material/metal] (-0.5,-0.25) node[left,anchor=east] {Sample} rectangle (+0.5,0.00);
+
+\path (-2.2in,0) -- (2.2in,0);
 \end{tikzpicture}

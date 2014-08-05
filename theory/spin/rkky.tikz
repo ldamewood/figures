@@ -17,6 +17,9 @@
         at={(current axis.right of origin)},anchor=west,
     },
     samples = 300,
+    after end axis/.code={
+      \path (axis description cs:0.5,0)++(-2.2in,0) -- ++(4.4in,0);
+    },
 ]
 \addplot[mark=none,smooth,domain=0.1:8*pi] {
 (deg(x) * cos(deg(x)) - sin(deg(x)))/x/x

@@ -47,7 +47,7 @@
 \def\stoptwox{4.5}
 \fill[blue!20]
   (0,\fermiE) rectangle (\lineendx,\verydeepE);
-\shade[bottom color=blue!20,top color=white]
+%\shade[bottom color=blue!20,top color=white]
 %\fill[blue!20,path fading=south]
   (0,\fermiE)+(0,-0.25) rectangle +(\lineendx,0.5);
 

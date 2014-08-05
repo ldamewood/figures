@@ -15,6 +15,9 @@
   axis x line=bottom,
   extra x ticks={0,1.25},
   extra x tick labels={0,$R_c$},
+  after end axis/.code={
+  \path (axis description cs:0.5,0)++(-2.2in,0) -- ++(4.4in,0);
+  },
 ]
 \addplot[domain=0:2,samples=100,dashed] {x*exp(-x*x)};
 \addplot[domain=0:2,samples=100] {x*exp(-x*x) + 5*x*exp(-5*x*x)};

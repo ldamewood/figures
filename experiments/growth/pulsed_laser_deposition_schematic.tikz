@@ -33,4 +33,6 @@
 
 \end{scope}
 \node[anchor=east] at (-1.7,0.6) {Focusing Lens};
+
+\path (-2.2in,0) -- (2.2in,0);
 \end{tikzpicture}

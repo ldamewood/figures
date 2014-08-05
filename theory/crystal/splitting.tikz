@@ -68,7 +68,7 @@
 \draw[interaction] (8,6) -- (9,3);
 \draw[interaction] (8,1) -- (9,3);
 
-\draw[blue!80!black,latex-latex] (8,1)++(1em,0) -- ++(0,5) node[very near end,right] {$\Delta_{\mathrm{bond}}$};
+\draw[blue!80!black,latex-latex] (8,1)++(1em,0) -- ++(0,5) node[very near end,right] {$\Delta_{\mathrm{bond-antibond}}$};
 \draw[shorten <= 0.25em,shorten >= 0.25em,blue!80!black] (8,1) -- ++(2em,0);
 \draw[shorten <= 0.25em,shorten >= 0.25em,blue!80!black] (8,6) -- ++(2em,0);
 

@@ -8,7 +8,7 @@
 \draw (-1,-2.25) rectangle (1,-2.5);
 \draw[decorate, draw=red, decoration={coil,amplitude=2pt, segment length=5pt}]
  (-0.75,-2.375) -- ++(1.5,0);
-\node[pin=below:Heating element] at (0,-2.5) {};
+\node[pin=below:Heating element] at (0,-2) {};
 % Vacuum chamber
 \draw (-1.5,-2.5) rectangle (1.5,0.5);
 
@@ -37,5 +37,7 @@
   to[bend right] (0.25,-1.875);
 
 \node[pin=right:Product] at (1,-1) {};
+
+\path (-2.2in,0) -- (2.2in,0);
 
 \end{tikzpicture}

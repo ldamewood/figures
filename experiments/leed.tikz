@@ -6,8 +6,8 @@
 \node[right,anchor=south west] at (45:2.00) {Screen};
 
 % Mesh
-\draw[dashed,thin] (0,0)++(0:1.75) arc (0:180:1.75);
-\draw[dashed,thin] (0,0)++(0:1.50) arc (0:180:1.50);
+\draw[dashed,thin] (0,0)++(0:1.75) arc (0:180:1.75) node[pos=1,below,anchor=north] {Grid 2, 1};
+\draw[dashed,thin] (0,0)++(0:1.50) arc (0:180:1.50) node[pos=1] {};
 \node[right,anchor=south west] at (45:2.00) {Screen};
 
 % Opening
@@ -28,5 +28,7 @@
 
 % Viewing port
 \draw[material/glass] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
+
+\path (-2.2in,0) -- (2.2in,0);
 
 \end{tikzpicture}

@@ -1,0 +1,42 @@
+\usepgfplotslibrary{morefunctions}
+\usepgfplotslibrary{groupplots}
+\begin{tikzpicture}
+\begin{groupplot}[
+    group style={rows=1,columns=2},
+    width=2.1in,
+],
+\nextgroupplot[
+    clip=false,
+    xlabel={$H$ [kOe]},
+    ylabel={$M$ [$\mu_B$/Mn]},
+    ymin=-0.3,
+    ymax=0.3,
+    xmin=-5,
+    xmax=5,
+    title={(a)},
+]
+\plot[ultra thick,no marks] coordinates{(0.1,0) (3,0.2) (5,0.21) %
+    (1,0.19) (0,0.15) (-0.1,0) (-3,-0.2) (-5,-0.21) (-1,-0.19) %
+    (0,-0.15) (0.1,0)};
+\plot[ultra thick,no marks,blue] coordinates{(-3,-0.01) (3,0.01)};
+\plot[ultra thick,no marks,red,samples=7,domain=-3:3] {0.18*tanh(x)};
+%\path (axis cs:0,0)++(-2.2in,0) -- ++(4.4in,0);
+\nextgroupplot[
+    clip=false,
+    xlabel={$T$ [K]},
+    ylabel={Moment},
+    ymin=0,
+    ymax=5,
+    ytick=\empty,
+    xmin=0,
+    xmax=300,
+    legend pos=north east,
+    title={(b)},
+]
+\plot[ultra thick,domain=0:300] {4*exp(-x/80)};
+\addlegendentry{\scriptsize 1E16 RTA FC}
+\plot[ultra thick,red,domain=0:300] {(sigmoid(x/10)-0.5)*8*exp(-x/80)};
+\addlegendentry{\scriptsize 1E16 RTA ZFC}
+\end{groupplot}
+\path ($(group c1r1.center)!0.5!(group c2r1.center)$)++(-2.2in,0) -- ++ (4.4in,0);
+\end{tikzpicture}

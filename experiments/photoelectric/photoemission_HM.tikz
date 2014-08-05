@@ -2,22 +2,19 @@
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{morefunctions}
 \begin{tikzpicture}
-\begin{groupplot}[
-  group style={%
-      group size={1 by 1},%
-      xlabels at={edge bottom},%
-  },
+\begin{axis}[
   domain=-3:3,
   xlabel={$E_{\mathrm{bind}}$ [arb. units.]},
   xtick={-2,-1,0,1,2},
   xticklabels={-2,-1,$E_{\mathrm{F}}$,1,2},
   x dir=reverse,
   samples=100,
-]
-\nextgroupplot[
   ylabel={Intensity [arb. units.]},
   ymin=-0.5,
   ymax=5,
+  after end axis/.code={
+\path (axis description cs:0.5,0)++(-2.2in,0) -- ++(4.4in,0);
+  }
 ]
 \addplot[red ,no marks] {x^2*sigmoid(10*x)};
 \node at (axis cs:2,3) {$\uparrow$};
@@ -30,5 +27,5 @@
 %   height=2in,
 % ]
 % \addplot[no marks] {(x+1)^2*sigmoid(10*(x+1)) - x^2*sigmoid(10*x)};
-\end{groupplot}
+\end{axis}
 \end{tikzpicture}

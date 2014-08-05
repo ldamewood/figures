@@ -1,0 +1,57 @@
+\usetikzlibrary{3d}
+\usetikzlibrary{shadows}
+\begin{tikzpicture}[
+    x={(1.5in,0.0in)},
+    y={(0.15in,0.55in)},
+    z={(0.0in,1.5in)},
+]
+\def\xycircle#1#2#3{
+    (#1,#2,#3) ++ (0.4,0,0) \foreach\t in {10,20,...,350}{
+        -- ({#1+0.4*cos(\t)},{#2+0.4*sin(\t)},#3)
+    } --cycle;
+}
+\def\xycircleclip#1#2#3{
+    (#1,#2,#3) ++ (0.4,0,0) \foreach\t in {10,20,...,350}{
+        -- ({#1+0.4*cos(\t)},{#2+0.4*sin(\t)},#3)
+    } --cycle;
+}
+% \begin{scope}[canvas is yx plane at z=0]
+% \draw (-0.5,-0.5) circle(0.4);
+% \draw (-0.5,+0.5) circle(0.4);
+% \draw (+0.5,-0.5) circle(0.4);
+% \draw (+0.5,+0.5) circle(0.4);
+% \end{scope}
+% \begin{scope}[canvas is yx plane at z=-0.25]
+% \draw (-0.5,-0.5) circle(0.4);
+% \draw (-0.5,+0.5) circle(0.4);
+% \draw (+0.5,-0.5) circle(0.4);
+% \draw (+0.5,+0.5) circle(0.4);
+% \end{scope}
+\begin{scope}
+\clip (-1,-1,0) -- (1,-1,0) -- (1,1,0) -- (1,1,-0.25) -- (1,-1,-0.25) -- (-1,-1,-0.25) -- cycle;
+\foreach\x in {-0.5,0.5}{
+    %\shade[right color=gray,left color=white] ({\x-0.4},-0.5,0) \foreach\t in {190,200,...,360}{
+    %    -- ({\x+0.4*cos(\t)},{-0.5+0.4*sin(\t)},-0.25)
+    %} -- ({\x+0.4},-0.5,0);
+    \draw ({\x-0.4},-0.5,0) \foreach\t in {190,200,...,360}{
+        -- ({\x+0.4*cos(\t)},{-0.5+0.4*sin(\t)},-0.25)
+    } -- ({\x+0.4},-0.5,0);
+}
+\end{scope}
+\draw[-latex] (-0.5,-0.5,0) -- (-0.1,-0.5,0) node[midway,fill=white] {$R_{\mathrm{MT}}$};
+\draw[-latex] (-1.1,-1.2,0) -- ++(0,0,0.5) node[pos=1.1] {$V(x,y)$};
+\draw[-latex] (-1.1,-1.2,0) -- ++(0.5,0,0) node[pos=1.1] {$x$};
+\draw[-latex] (-1.1,-1.2,0) -- ++(0,1,0) node[pos=1.1] {$y$};
+\draw (-1,-1,0) -- ++(2,0,0) -- ++(0,2,0) -- ++(-2,0,0) --cycle;
+\foreach\x in {-0.5,0.5}{
+\foreach\y in {-0.5,0.5}{
+    %\shade[right color=gray,left color=white]\xycircle{\x}{\y}{0}
+    \draw\xycircle{\x}{\y}{0}
+    \begin{scope}
+        \clip\xycircle{\x}{\y}{0}
+        \draw\xycircle{\x}{\y}{-0.25}
+    \end{scope}
+}
+}
+\path (0,0,0) -- ++(-2.2in,0) -- ++(4.4in,0);
+\end{tikzpicture}

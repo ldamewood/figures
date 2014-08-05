@@ -1,21 +1,21 @@
 \begingroup
 \begin{tikzpicture}
-\def\detectorR{8}
-\def\detectorT{5}
-\draw[-latex] (-0.25,0.00) -- (2.00,0.00);
-\draw[-latex] (0.00,-0.25) -- (0.00,2.50);
-\draw[-latex] (0,0) -- ([rotate=\detectorT]\detectorR,1.5) node[midway,below] {$\vec R$};
-\draw[rotate=\detectorT,fill=gray] (\detectorR,1) rectangle ++(0.25,1);
+\def\detectorT{10}
+\draw[-latex] (-0.25,0.00) -- (2.00,0.00) node[right] {$\hat{\mathbf{x}}$};
+\draw[-latex] (0.00,-0.25) -- (0.00,2.50) node[above] {$\hat{\mathbf{y}}$};
+\draw[-latex] (0,0) -- ++(\detectorT:5) node[right] {to detector at $\vec R$};
+%\draw[rotate=\detectorT,fill=gray] (\detectorR,1) rectangle ++(0.25,1);
 \foreach\x in {0.0,0.5,1.0}{
   \foreach\y in {0.0,0.5,1.0,1.5,2.0}{
     \node[draw=gray,circle,inner sep=2pt,fill=gray] at (\x,\y) {};
   }
 }
-\draw[-latex] (0,0) -- (0.5,1.5) node[midway,right] {$\vec\rho$};
-\draw[-latex,red] (-1,3) -- (0.5,1.5) node[pos=0,left,above] {$\vec k$};
-\draw[red] ([shift={(-25:0.5cm)}]0.5,1.5) arc (-25:30:0.5cm);
-\draw[red] ([shift={(-25:1.0cm)}]0.5,1.5) arc (-25:30:1.0cm);
-\draw[red] ([shift={(-25:1.5cm)}]0.5,1.5) arc (-25:30:1.5cm);
-\draw[-latex,red,shorten >=5cm] (0.5,1.5) -- ([rotate=\detectorT]\detectorR,1.5) node[pos=0.4] {$\sim k\hat R$};
+\coordinate (atom) at (0.5,1.5);
+\draw[-latex] (0,0) -- (atom) node[midway,right] {$\vec\rho$};
+\draw[latex-,red] (atom) -- (125:3) node[left,above] {$\vec k$};
+\foreach\r in {0.5cm,1.0cm,1.5cm}{
+    \draw[red] ([shift={(\detectorT-25:\r)}]atom) arc (\detectorT-25:\detectorT+25:\r);
+}
+\draw[-latex,red] (0.5,1.5) -- ++(\detectorT:3) node[right] {$\vec k'\approx k\hat{\vec{R}}$};
 \end{tikzpicture}
 \endgroup

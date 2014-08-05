@@ -1,12 +1,77 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[
+x={(0.9in,0.0in)},
+y={(0.3in,0.4in)},
+z={(0.0in,0.9in)},
+]
+\tikzset{
+    point/.style={draw,circle,inner sep=1pt,fill=black},
+}
+\begin{scope}[xshift=-0.9in]
+\node at (0.5,0.5,1.25) {(a)};
+\coordinate (A) at (0.5,0,0);
+\coordinate (B) at (0,-1,0);
+\coordinate (C) at (0,0,1);
 % Coordinate axis
-\draw[-latex] (0,0,0) -- (3,0,0) node[right] {$\hat b$};
-\draw[-latex] (0,0,0) -- (0,5,0) node[right] {$\hat c$};
-\draw[-latex] (0,0,0) -- (0,0,5) node[right] {$\hat a$};
-% Ticks
-\foreach \x in {1,...,2} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
-\foreach \x in {1,...,4} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
-\foreach \x in {1,...,3} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
+\draw[-latex] (0,0,0) -- (1.25,0,0) node[right] {$\hat{\vec a}_1$};
+\draw[-latex] (0,0,0) -- (0,1.25,0) node[right] {$\hat{\vec a}_2$};
+\draw[-latex] (0,0,0) -- (0,0,1.25) node[left] {$\hat{\vec a}_3$};
+\foreach \x in {1,...,1} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
+\foreach \x in {1,...,1} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
+\foreach \x in {1,...,1} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
+\begin{scope}[dashed]
+\clip (A) -- (B) -- (C) -- cycle;
+\fill[white] (A) -- (B) -- (C) -- cycle;
+\draw[-latex] (0,0,0) -- (1.25,0,0) node[right] {$\hat{\vec a}_1$};
+\draw[-latex] (0,0,0) -- (0,1.25,0) node[right] {$\hat{\vec a}_2$};
+\draw[-latex] (0,0,0) -- (0,0,1.25) node[left] {$\hat{\vec a}_3$};
+\foreach \x in {1,...,1} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
+\foreach \x in {1,...,1} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
+\foreach \x in {1,...,1} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
+\end{scope}
+% Points
+\coordinate (inter) at (0.25,-0.125,0.125);
+\draw[dashed] (0,0,0) -- (inter);
+\draw[-latex] (inter) -- (2,-1,1) node[above] {$[2\bar11]$};
+\node[point,label=below:$\vec a_1/2$] at (A) {};
+\node[point,label=below:$-\vec a_2$] at (B) {};
+\node[point,label=right:$\vec a_3$] at (C) {};
 % Plane
-\draw (2,0,0) node[below] {$2b$} -- (0,4,0) node[right] {$4c$} -- (0,0,3) node[left] {$3a$} -- (2,0,0);
+\fill[gray,opacity=0.5] (A) -- (B) -- (C) -- cycle;
+\draw (A) -- (B) -- (C) -- cycle;
+\node[yslant=0.5] at (0.1,-0.33,0) {$(2\bar11)$};
+%\draw (2,0,0) node[below] {$2b$} -- (0,4,0) node[right] {$4c$} -- (0,0,3) node[left] {$3a$} -- (2,0,0);
+\end{scope}
+\begin{scope}[xshift=0.9in]
+\node at (0.5,0.5,1.25) {(b)};
+\tikzset{
+    point/.style={draw,circle,inner sep=1pt,fill=black},
+}
+\draw[-latex] (0,0,0) -- (1.25,0,0) node[right] {$\hat{\vec a}_1$};
+\draw[-latex] (0,0,0) -- (0,1.25,0) node[right] {$\hat{\vec a}_2$};
+\draw[-latex] (0,0,0) -- (0,0,1.25) node[left] {$\hat{\vec a}_3$};
+\foreach \x in {1,...,1} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
+\foreach \x in {1,...,1} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
+\foreach \x in {1,...,1} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
+\draw[-latex] (0,0,0) -- (1,2,0) node[above] {$[210]$};
+\begin{scope}[dashed]
+\clip (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
+\fill[white] (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
+\draw[-latex] (0,0,0) -- (1.25,0,0) node[right] {$\hat{\vec a}_1$};
+\draw[-latex] (0,0,0) -- (0,1.25,0) node[right] {$\hat{\vec a}_2$};
+\draw[-latex] (0,0,0) -- (0,0,1.25) node[left] {$\hat{\vec a}_3$};
+\foreach \x in {1,...,1} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
+\foreach \x in {1,...,1} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
+\foreach \x in {1,...,1} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
+\draw[-latex] (0,0,0) -- (1,2,0);
+\end{scope}
+% Points
+\node[point,label=below:$\vec a_1$] at (1,0,0) {};
+\node[point,label=left:$\vec a_2/2$] at (0,0.5,0) {};
+\fill[gray,opacity=0.5] (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
+\draw (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
+\node[yslant=-0.2] at (0.5,0.25,0.75) {$(210)$};
+% Plane
+%\draw (2,0,0) node[below] {$2b$} -- (0,4,0) node[right] {$4c$} -- (0,0,3) node[left] {$3a$} -- (2,0,0);
+\end{scope}
+\path (0.5,0.5,0.5)++(-2.2in,0) -- ++(4.4in,0);
 \end{tikzpicture}

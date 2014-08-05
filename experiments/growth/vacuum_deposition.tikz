@@ -25,4 +25,7 @@
 % Vacuum chamber
 \draw (-1.5,-0.5) rectangle (1.5,2.5);
 \node[pin=right:Vacuum chamber] at (1.5,1) {};
+
+\path (-2.2in,0) -- (2.2in,0);
+
 \end{tikzpicture}
