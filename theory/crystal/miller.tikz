@@ -52,7 +52,7 @@ z={(0.0in,0.9in)},
 \foreach \x in {1,...,1} \draw (\x,0,0)++(0,-2pt) -- +(0,4pt);
 \foreach \x in {1,...,1} \draw (0,\x,0)++(-2pt,0) -- +(4pt,0);
 \foreach \x in {1,...,1} \draw (0,0,\x)++(-2pt,0) -- +(4pt,0);
-\draw[-latex] (0,0,0) -- (1,2,0) node[above] {$[210]$};
+\draw[-latex] (0,0,0) -- (1,2,0) node[above] {$[120]$};
 \begin{scope}[dashed]
 \clip (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
 \fill[white] (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
@@ -69,7 +69,7 @@ z={(0.0in,0.9in)},
 \node[point,label=left:$\vec a_2/2$] at (0,0.5,0) {};
 \fill[gray,opacity=0.5] (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
 \draw (1,0,0) -- (0,0.5,0) -- (0,0.5,1) -- (1,0,1) -- cycle;
-\node[yslant=-0.2] at (0.5,0.25,0.75) {$(210)$};
+\node[yslant=-0.2] at (0.5,0.25,0.75) {$(120)$};
 % Plane
 %\draw (2,0,0) node[below] {$2b$} -- (0,4,0) node[right] {$4c$} -- (0,0,3) node[left] {$3a$} -- (2,0,0);
 \end{scope}
