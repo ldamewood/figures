@@ -1,5 +1,5 @@
 \usepgfplotslibrary{groupplots}
-\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{tikzpicture}
 \begin{groupplot}[
 	width=4.5in,
 	height=1.5in,

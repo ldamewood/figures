@@ -21,7 +21,7 @@
   },
 }
 \draw (-4,-2) rectangle (4,2);
-\node (A) [draw,circle,inner sep=0em,red,] at (-2.5,-0.75) {$+$};
+\node (A) [draw,circle,inner sep=0em,red,] at (-2.5,-0.75) {$-$};
 \draw[dashed,blue] (A) circle(\radius);
 \foreach \i in {1,2,...,\segments}%
 {
@@ -34,7 +34,7 @@
   \edef\myy{\pgfmathresult}
   \draw[polarization] (A) edge ++(\myx\radius,\myy\radius);
 }
-\node (B) [draw,circle,inner sep=0em,red] at (1,0.25) {$+$};
+\node (B) [draw,circle,inner sep=0em,red] at (1,0.25) {$-$};
 \draw[dashed,blue] (B) circle(\radius) node[below=0.5em,right=\radius,black] {$\vec P$};
 \foreach \i in {1,2,...,\segments}%
 {

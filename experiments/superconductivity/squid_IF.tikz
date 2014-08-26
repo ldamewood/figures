@@ -1,4 +1,4 @@
-\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{tikzpicture}
 \begin{axis}[
   domain=0:2,
   samples=50,

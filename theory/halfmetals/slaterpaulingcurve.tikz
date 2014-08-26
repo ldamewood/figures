@@ -1,4 +1,4 @@
-\begin{tikzpicture}[trim axis left,trim axis right=0]
+\begin{tikzpicture}
 \pgfplotsset{
   data/.style={
     scatter,
@@ -13,8 +13,8 @@
   },
 }
 \begin{axis}[
-  xlabel={Magnetic valence per atom},
-  ylabel={Magnetic moment per atom [$\mu_B$]},
+  xlabel={Average valence per atom},
+  ylabel={Average magnetic moment per atom [$\mu_B$]},
   xmin=4,
   xmax=11,
   ymin=-0.5,

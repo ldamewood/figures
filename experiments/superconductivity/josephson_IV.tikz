@@ -1,4 +1,4 @@
-\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{tikzpicture}
 \usepgfplotslibrary{morefunctions}
 \begin{axis}[
   clip=false,

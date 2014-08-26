@@ -15,7 +15,7 @@
  node[midway,label={[label distance=-0.5em]-45:\tiny{+}}] {};
 \draw (0,1)++(-0.05,-0.1) -- ++(0,0.2) %
  node[midway,label={[label distance=-0.5em]-135:\tiny{-}}] {};
-\node at (0,1.5) {$V_a$};
+\node at (0,1.5) {$V_{12}$};
 
 \draw (0.05,1) -- (2,1) -- (2,0) -- (-2,0) -- (-2,1) -- (-0.05,1);
 

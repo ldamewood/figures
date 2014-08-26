@@ -1,5 +1,5 @@
 \usepgfplotslibrary{dos}
-\begin{tikzpicture}[trim axis left,trim axis right]
+\begin{tikzpicture}
 \begin{axis}[dos,xmin=-12.000000,xmax=+2.000000,ymin=-70.000000,ymax=+70.000000]
 \addplot coordinates{
 (-15.000000,NaN)
