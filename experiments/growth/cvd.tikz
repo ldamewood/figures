@@ -18,8 +18,8 @@
 \draw (-1.75,+0.125) -- (-1.5,+0.125);
 \draw (+1.75,-0.125) -- (+1.5,-0.125);
 \draw (+1.75,+0.125) -- (+1.5,+0.125);
-\draw[-latex] (-2.00,0.00) -- (-1.75,0.00) node[pos=0,left,anchor=east] {Source material};
-\draw[latex-] (2.00,0.00) -- (1.75,0.00) node[pos=0,right,anchor=west] {To pump};
+\draw[-latex] (-2.00,0.00) -- (-1.75,0.00) node[pos=0,left,anchor=east] {Reagent intake};
+\draw[latex-] (2.00,0.00) -- (1.75,0.00) node[pos=0,right,anchor=west] {Product exit};
 
 % Reagent
 \draw[yellow!50!black,-latex,fill=none] (-1,-1) %
