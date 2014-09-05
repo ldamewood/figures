@@ -9,4 +9,7 @@ TEX_BODY:=\PassOptionsToPackage{cmyk}{xcolor}\documentclass[tikz,border=1pt,conv
 %.pdf: %.tikz
 	lualatex -halt-on-error -interaction=batchmode -jobname $(<:.tikz=) "$(subst .EXT,.pdf,$(TEX_BODY))"
 
+%.eps: %.pdf
+	gs -dNOPAUSE -dBATCH -sDEVICE=epswrite -sOutputFile="$@" "$<"
+
 all: $(OBJ)
