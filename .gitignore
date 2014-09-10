@@ -78,6 +78,7 @@ docs/_build/
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdf
+*.eps
 *.bak
 *.fls
 *.fdb_latexmk
