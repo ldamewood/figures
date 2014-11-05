@@ -1,10 +1,11 @@
 \begingroup
+\usetikzlibrary{patterns}
 \tikzset{
   orbital/.style={
-      fill=blue!50,draw=blue!75!black,thick,
+      fill=white,draw=black,thick,
   },
   neighbor/.style={
-      fill=yellow!50,draw=yellow!75!black,thick,
+      fill=gray,draw=black,thick,
   },
 }
 \begin{tikzpicture}

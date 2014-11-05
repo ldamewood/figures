@@ -1,0 +1,154 @@
+\usepgfplotslibrary{groupplots}
+\begin{tikzpicture}
+\pgfplotstableset{
+  every table/.append style={
+    col sep=comma,
+    row sep=newline,
+  }
+}
+\pgfplotstableread{structures/limnsi/limnsi_beta.bands.csv}{\bands}
+\pgfplotstableread{structures/limnsi/limnsi_beta_hm.bands.csv}{\hmbands}
+\begin{groupplot}[
+  ymin = -9,
+  ymax = 3,
+  xmin = 0,
+  xmax = 18,
+  group style={
+    group size=2 by 2,
+    xlabels at=edge bottom,
+    ylabels at=edge left,
+    %xticklabels at=edge bottom,
+    yticklabels at=edge left,
+    horizontal sep = 1.5em,
+    vertical sep = 4em,
+  },
+  ylabel={$E-E_{\mathrm{F}}$ (eV)},
+  xticklabels={L,$\Gamma$,X},
+  xtick={0,9,18},
+  extra description/.code={
+    \draw (axis cs:0,0) -- (axis cs:18,0);
+  },
+  no markers,
+  grid=major,
+  cycle list={green,blue,blue,blue,red,red,black,black,black,black,black},
+  width = 1.8in,
+  height = 2in,
+]
+%\pgfplotsset{
+%  every axis plot post/.append style={black,mark=none}
+%}
+\nextgroupplot[title={(a) Optimized $\beta$-LiMnSi}]
+  \addplot table[x=ikpt,y= b0.up] {\bands};
+  \addplot table[x=ikpt,y= b1.up] {\bands};
+  \addplot table[x=ikpt,y= b2.up] {\bands};
+  \addplot table[x=ikpt,y= b3.up] {\bands};
+  \addplot table[x=ikpt,y= b4.up] {\bands};
+  \addplot table[x=ikpt,y= b5.up] {\bands};
+  \addplot table[x=ikpt,y= b6.up] {\bands};
+  \addplot table[x=ikpt,y= b7.up] {\bands};
+  \addplot table[x=ikpt,y= b8.up] {\bands};
+  \addplot table[x=ikpt,y= b9.up] {\bands};
+  \addplot table[x=ikpt,y=b10.up] {\bands};
+  \addplot table[x=ikpt,y=b11.up] {\bands};
+  \addplot table[x=ikpt,y=b12.up] {\bands};
+  \addplot table[x=ikpt,y=b13.up] {\bands};
+  \addplot table[x=ikpt,y=b14.up] {\bands};
+  \addplot table[x=ikpt,y=b15.up] {\bands};
+  \addplot table[x=ikpt,y=b16.up] {\bands};
+  \addplot table[x=ikpt,y=b17.up] {\bands};
+  \addplot table[x=ikpt,y=b18.up] {\bands};
+  \addplot table[x=ikpt,y=b19.up] {\bands};
+  \addplot table[x=ikpt,y=b20.up] {\bands};
+  \addplot table[x=ikpt,y=b21.up] {\bands};
+  \addplot table[x=ikpt,y=b22.up] {\bands};
+  \addplot table[x=ikpt,y=b23.up] {\bands};
+  \node[anchor=west] at (axis cs:9,-4) {t$_{2g}$};
+  \node[anchor=west] at (axis cs:9,-2) {e$_{g}$};
+  \node[anchor=north east] at (axis description cs:1,1) {$\mathbf{\uparrow}$};
+\nextgroupplot%[title={(b) Optimized $\beta$-LiMnSi spin down}]
+  \addplot table[x=ikpt,y= b0.dn] {\bands};
+  \addplot table[x=ikpt,y= b1.dn] {\bands};
+  \addplot table[x=ikpt,y= b2.dn] {\bands};
+  \addplot table[x=ikpt,y= b3.dn] {\bands};
+  \addplot table[x=ikpt,y= b4.dn] {\bands};
+  \addplot table[x=ikpt,y= b5.dn] {\bands};
+  \addplot table[x=ikpt,y= b6.dn] {\bands};
+  \addplot table[x=ikpt,y= b7.dn] {\bands};
+  \addplot table[x=ikpt,y= b8.dn] {\bands};
+  \addplot table[x=ikpt,y= b9.dn] {\bands};
+  \addplot table[x=ikpt,y=b10.dn] {\bands};
+  \addplot table[x=ikpt,y=b11.dn] {\bands};
+  \addplot table[x=ikpt,y=b12.dn] {\bands};
+  \addplot table[x=ikpt,y=b13.dn] {\bands};
+  \addplot table[x=ikpt,y=b14.dn] {\bands};
+  \addplot table[x=ikpt,y=b15.dn] {\bands};
+  \addplot table[x=ikpt,y=b16.dn] {\bands};
+  \addplot table[x=ikpt,y=b17.dn] {\bands};
+  \addplot table[x=ikpt,y=b18.dn] {\bands};
+  \addplot table[x=ikpt,y=b19.dn] {\bands};
+  \addplot table[x=ikpt,y=b20.dn] {\bands};
+  \addplot table[x=ikpt,y=b21.dn] {\bands};
+  \addplot table[x=ikpt,y=b22.dn] {\bands};
+  \addplot table[x=ikpt,y=b23.dn] {\bands};
+  \node[anchor=west] at (axis cs:9,-2) {t$_{2g}$};
+  \node[anchor=west] at (axis cs:9,1) {e$_{g}$};
+  \node[anchor=north east] at (axis description cs:1,1) {$\mathbf{\downarrow}$};
+\nextgroupplot[title={(b) Half-metallic $\beta$-LiMnSi}]
+  \addplot table[x=ikpt,y= b0.up] {\hmbands};
+  \addplot table[x=ikpt,y= b1.up] {\hmbands};
+  \addplot table[x=ikpt,y= b2.up] {\hmbands};
+  \addplot table[x=ikpt,y= b3.up] {\hmbands};
+  \addplot table[x=ikpt,y= b4.up] {\hmbands};
+  \addplot table[x=ikpt,y= b5.up] {\hmbands};
+  \addplot table[x=ikpt,y= b6.up] {\hmbands};
+  \addplot table[x=ikpt,y= b7.up] {\hmbands};
+  \addplot table[x=ikpt,y= b8.up] {\hmbands};
+  \addplot table[x=ikpt,y= b9.up] {\hmbands};
+  \addplot table[x=ikpt,y=b10.up] {\hmbands};
+  \addplot table[x=ikpt,y=b11.up] {\hmbands};
+  \addplot table[x=ikpt,y=b12.up] {\hmbands};
+  \addplot table[x=ikpt,y=b13.up] {\hmbands};
+  \addplot table[x=ikpt,y=b14.up] {\hmbands};
+  \addplot table[x=ikpt,y=b15.up] {\hmbands};
+  \addplot table[x=ikpt,y=b16.up] {\hmbands};
+  \addplot table[x=ikpt,y=b17.up] {\hmbands};
+  \addplot table[x=ikpt,y=b18.up] {\hmbands};
+  \addplot table[x=ikpt,y=b19.up] {\hmbands};
+  \addplot table[x=ikpt,y=b20.up] {\hmbands};
+  \addplot table[x=ikpt,y=b21.up] {\hmbands};
+  \addplot table[x=ikpt,y=b22.up] {\hmbands};
+  \addplot table[x=ikpt,y=b23.up] {\hmbands};
+  \node[anchor=west] at (axis cs:9,-4) {t$_{2g}$};
+  \node[anchor=west] at (axis cs:9,-2.25) {e$_{g}$};
+  \node[anchor=north east] at (axis description cs:1,1) {$\mathbf{\uparrow}$};
+\nextgroupplot%[title={(d) Half-metallic $\beta$-LiMnSi spin down}]
+  \addplot table[x=ikpt,y= b0.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b1.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b2.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b3.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b4.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b5.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b6.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b7.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b8.dn] {\hmbands};
+  \addplot table[x=ikpt,y= b9.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b10.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b11.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b12.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b13.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b14.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b15.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b16.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b17.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b18.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b19.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b20.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b21.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b22.dn] {\hmbands};
+  \addplot table[x=ikpt,y=b23.dn] {\hmbands};
+  \node[anchor=west] at (axis cs:9,-1.75) {t$_{2g}$};
+  \node[anchor=west] at (axis cs:9,1.25) {e$_{g}$};
+  \node[anchor=north east] at (axis description cs:1,1) {$\mathbf{\downarrow}$};
+\end{groupplot}
+\path ($(group c2r1.center)!0.5!(group c1r1.center)$)++(-1.625in,0) -- ++ (3.25in,0);
+\end{tikzpicture}

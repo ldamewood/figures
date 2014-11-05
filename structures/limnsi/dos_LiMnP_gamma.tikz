@@ -1,0 +1,41 @@
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dos}
+\begin{tikzpicture}
+\pgfplotstableset{
+  every table/.append style={
+    col sep=comma,
+    row sep=newline,
+  }
+}
+\pgfplotstableread{structures/limnsi/limnp_gamma.pdos.csv}{\dos}
+\begin{groupplot}[
+    dos,
+    xmin=-5,
+    xmax=5,
+    group style={
+        group size=1 by 1,
+        xlabels at=edge bottom,
+        ylabels at=edge left,
+        xticklabels at=edge bottom,
+        yticklabels at=edge left,
+	horizontal sep = 1em,
+    },
+    width=3in,
+    height=1.5in,
+    ylabel={},
+    xlabel={$E-E_{\mathrm{F}}$ [eV]},
+    every axis legend/.append style={
+      at={(1.0,-0.5)},
+      anchor=north}
+]
+\tikzset{
+  s orbital/.style={red},
+  p orbital/.style={blue},
+  eg orbital/.style={green},
+  t2g orbital/.style={magenta},
+}
+\nextgroupplot[title={(a) $\gamma$-LiMnP total DOS}]
+\addplot table[dos up, x=energy,y=total.up] {\dos};
+\addplot table[dos dn, x=energy,y=total.dn] {\dos};
+\end{groupplot}
+\end{tikzpicture}

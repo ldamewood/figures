@@ -27,18 +27,18 @@
     clip=false,
 ]
 \nextgroupplot[title=(a) Incident]
-\draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0,0.80);
+\draw[solid,-latex,ultra thick] (axis cs:0,0) -- (axis cs:0,0.80);
 \nextgroupplot[title=(b) Reflected]
-% \draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0.200,0.775);
-% \draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- (axis cs:0.258,-0.067);
+% \draw[solid,-latex,ultra thick] (axis cs:0,0) -- (axis cs:0.200,0.775);
+% \draw[solid,-latex,ultra thick] (axis cs:0,0) -- (axis cs:0.258,-0.067);
 \begin{scope}[rotate around={-30:(axis cs:0,0)}]
 %\draw[gray] (axis cs:0,0) ellipse (0.3 and 0.8);
-\draw[-latex,thick,red,dashed]
-     (axis cs:0,0)++(45:0.33 and 0.88) arc (45:25:0.33 and 0.88);
+\draw[-latex,thick,dashed]
+     (axis cs:0,0)++(-120:0.33 and 0.88) arc (-120:-150:0.33 and 0.88);
 \draw[gray] (axis cs:0,0)++(15:0.3 and 0.8) arc (15:-360+15:0.3 and 0.8);
-\draw[solid,-latex,thin,blue] (axis cs:0,0) -- (axis cs:0,0.8);
-\draw[solid,-latex,thin,blue] (axis cs:0,0) -- (axis cs:0.3,0.0);
-\draw[solid,-latex,ultra thick,red] (axis cs:0,0) -- ++ (45:0.3 and 0.8);
+\draw[solid,-latex,thin,gray] (axis cs:0,0) -- (axis cs:0,0.8);
+\draw[solid,-latex,thin,gray] (axis cs:0,0) -- (axis cs:0.3,0.0);
+\draw[solid,-latex,ultra thick] (axis cs:0,0) -- ++ (-120:0.3 and 0.8);
 %-- (axis cs:0.21213203435,0.56568542494);
 \draw[dashed] (axis cs:0,0.8) -- (axis cs:0.3,0);
 \draw[latex-latex,ultra thin] (axis cs:0,0.4) arc (90:120:0.4) %

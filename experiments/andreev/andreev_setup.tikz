@@ -9,10 +9,10 @@
 \node at (-2.5,0) {$V_b$};
 \node[circle,fill=white,draw] at (-2,1) {A};
 
-\draw[material/superconductor] (0,0.25) -- (0.25,0.5) -- (0.25,1.0) -- (-0.25,1.0) %
+\draw[fill=gray,] (0,0.25) -- (0.25,0.5) -- (0.25,1.0) -- (-0.25,1.0) %
  -- (-0.25,0.5) -- cycle;
 \node at (0,0.75) {Nb};
-\draw[material/metal] (-1,-0.25) rectangle (1,+0.25);
+\draw[fill=gray] (-1,-0.25) rectangle (1,+0.25);
 \node at (0,0) {Sample};
 
 \end{tikzpicture}

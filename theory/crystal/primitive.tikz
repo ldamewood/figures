@@ -1,3 +1,4 @@
+\usetikzlibrary{shapes}
 \begin{tikzpicture}[scale=2]%,x={(1,0)},y={(0.4,0.87)}]
 \foreach \y in {-1.00,0.00,1.00,2.00}
   \draw[thin,gray!50] (-1.20,\y) -- ++(3.40,0.00);
@@ -6,7 +7,7 @@
 \foreach \x in {-1.00,0.00,1.00,2.00} {
   \foreach \y in {-1.00,0.00,1.00,2.00} {
     \begin{scope}[shift={(\x,\y)}]
-      \node[inner sep=0pt,draw,green,circle,minimum size=2pt,fill=green!50] at (0,0) {};
+      \node[inner sep=0pt,draw,circle,cross out,minimum size=5pt,fill=green!50] at (0,0) {};
     \end{scope}
   }
 }
@@ -19,11 +20,11 @@
   }
 }
 \draw[thin] (0.0,0.0) -- ++(1.0,0.0) -- ++(0.0,1.0) -- ++(-1.0,0.0) --cycle;
-\draw[red,thick,-latex] (0.0,0.0) -- ++(1.0,0.0) node[right,black] {$\vec a_1$};
-\draw[red,thick,-latex] (0.0,0.0) -- ++(0.0,1.0) node[above,black] {$\vec a_2$};
-\draw[thin,-latex] (0.0,0.0) -- ++(-1.0,2.0) node[above,black] {$\vec R$};
-\node[inner sep=0pt,draw,blue,circle,minimum size=8pt,fill=blue!50,label=$\vec\tau_1$] (T1) at (0.25,0.5) {};
-\node[inner sep=0pt,draw,blue,circle,minimum size=4pt,fill=blue!50,label=$\vec\tau_2$] (T2) at (0.75,0.5) {};
+\draw[ultra thick,-latex] (0.0,0.0) -- ++(1.0,0.0) node[right,black] {$\vec a_1$};
+\draw[ultra thick,-latex] (0.0,0.0) -- ++(0.0,1.0) node[above,black] {$\vec a_2$};
+\draw[thin,-latex] (0.0,0.0) -- ++(-1.0,1.0) node[above,black] {$\vec R$};
+\node[inner sep=0pt,draw,circle,minimum size=8pt,label=$\vec\tau_1$] (T1) at (0.25,0.5) {};
+\node[inner sep=0pt,draw,circle,minimum size=4pt,label=$\vec\tau_2$] (T2) at (0.75,0.5) {};
 \draw[thin,-latex] (0.0,0.0) -- (T1.south west);
 \draw[thin,-latex] (0.0,0.0) -- (T2.south west);
 

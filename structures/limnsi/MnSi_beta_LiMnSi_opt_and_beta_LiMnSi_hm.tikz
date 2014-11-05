@@ -3,27 +3,24 @@
 \usepgfplotslibrary{dos}
 \begin{groupplot}[
     dos,
-    ymin = -10,
-    ymax = 10,
-    xmin=-2.7,
-    xmax=2.7,
+    xmin=-2.5,
+    xmax=2.5,
+    ymin=-10,
+    ymax=10,
     group style={
         group size=1 by 2,
         xlabels at=edge bottom,
         ylabels at=edge left,
-        vertical sep=0pt,
         xticklabels at=edge bottom,
+        yticklabels at=edge left,
+        horizontal sep = 1em,
     },
-    width=6in,
-    height=1.75in,
-    ylabel={DOS [states/eV-unit-cell]},
+    width=3.25in,
+    height=2in,
+    ylabel={DOS [eV$^{-1}$ per unit cell]},
     xlabel={$E-E_{\mathrm{F}}$ [eV]},
-    every axis y label/.append style={
-        at={(axis cs:-3,25)},
-        anchor=east,
-    },
 ]
-\nextgroupplot[ylabel={}]
+\nextgroupplot[title=(a) ZB MnSi]
 \addplot coordinates{
 (-2.709168,5.497037)
 (-2.695568,6.992676)
@@ -828,8 +825,8 @@
 (2.703632,1.108430)
 (2.717232,1.099735)
 } \closedcycle;
-\draw[latex-latex] (axis cs:-0.75,2.5) -- (axis cs:0.3,2.5) node[midway,above] {bonding-antibonding gap};
-\nextgroupplot
+\draw[latex-latex] (axis cs:-0.75,2.5) -- (axis cs:0.3,2.5) node[pos=1.0,above] {bonding--antibonding gap};
+\nextgroupplot[title=(b) $\beta$-LiMnSi]
 \addplot coordinates{
 (-2.718583,1.393746)
 (-2.704983,1.482757)
@@ -1634,6 +1631,7 @@
 (2.694217,0.734673)
 (2.707817,0.704978)
 } \closedcycle;
-\draw[latex-latex] (axis cs:-1.4,2.5) -- (axis cs:-0.1,2.5) node[midway,above] {bonding-antibonding gap};
+\draw[latex-latex] (axis cs:-1.4,2.5) -- (axis cs:-0.1,2.5) node[pos=1.0,above] {bonding--antibonding gap};
 \end{groupplot}
+\path (group c1r1.center)++(-1.625in,0) -- ++ (3.25in,0);
 \end{tikzpicture}

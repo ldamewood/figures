@@ -36,7 +36,7 @@
     \xdef\ys{\pgfmathresult}%
     \pgfmathparse{\r*cos(\mtheta)}%
     \xdef\zs{\pgfmathresult}%
-    \draw[red,ultra thick,-latex] (0,0,1) -- ++ (\xs,\ys,\zs);%
+    \draw[ultra thick,-latex] (0,0,1) -- ++ (\xs,\ys,\zs);%
 \end{scope}
 }
 

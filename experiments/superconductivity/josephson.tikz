@@ -21,8 +21,8 @@
 
 \node[draw,fill=white,circle] at (1,1) {A};
 
-\draw[material/metal] (-1.5,-0.25) rectangle (1.5,0.25);
-\draw[material/insulator] (-0.05,-0.25) rectangle (0.05,0.25);
+\draw[fill=gray!50] (-1.5,-0.25) rectangle (1.5,0.25);
+\draw[fill=white] (-0.05,-0.25) rectangle (0.05,0.25);
 \node at (-0.75,0) {SC1};
 \node at (+0.75,0) {SC2};
 \node[pin=below:{Insulating layer}] at (0,0) {};

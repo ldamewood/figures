@@ -1,19 +1,19 @@
 \tikzset{
   ion/.style = {
-    draw,blue,inner sep=1pt,circle,pos=0,fill=blue!50,
+    draw,inner sep=1pt,circle,pos=0,fill=gray!50,
   },
   electron/.style={
-    draw,red,inner sep=0pt,circle,pos=0,fill=red!50,minimum size=3pt,
+    draw,inner sep=0pt,circle,pos=0,minimum size=3pt,
   },
 }
 \begin{tikzpicture}[domain=-4.5:4.5]
 \draw[-latex] (-4.5,-1.1) -- ++(0.0,2.2) node[at end,anchor=east] {$v_x$};
 \draw[-latex] (-4.6, 0.0) -- ++(9.3,0.0) node[at end,anchor=west] {$x$};
-\draw[samples=150,blue] plot (\x,{sin((\x+4.5)*40*5)});
-\draw[blue,-latex] ( 3.15,2.00) -- ++( 0.5,0) node[ion] {$+$} node[anchor=west,at end] {$ \vec v$};
-\draw[blue,-latex] (-3.15,2.00) -- ++(-0.5,0) node[ion] {$+$} node[anchor=east,at end] {$-\vec v$};
-\draw[red,-latex] (-3.0,2.5) -- ++( 0.5,0) node[electron] {}   node[anchor=west,at end] {$ \vec k$};
-\draw[red,-latex] ( 3.0,2.5) -- ++(-0.5,0) node[electron] {} node[anchor=east,at end] {$-\vec k$};
+\draw[samples=150] plot (\x,{sin((\x+4.5)*40*5)});
+\draw[-latex] ( 3.15,2.00) -- ++( 0.5,0) node[ion] {$+$} node[anchor=west,at end] {$ \vec v$};
+\draw[-latex] (-3.15,2.00) -- ++(-0.5,0) node[ion] {$+$} node[anchor=east,at end] {$-\vec v$};
+\draw[-latex] (-3.0,2.5) -- ++( 0.5,0) node[electron] {}   node[anchor=west,at end] {$ \vec k$};
+\draw[-latex] ( 3.0,2.5) -- ++(-0.5,0) node[electron] {} node[anchor=east,at end] {$-\vec k$};
 \node at (-3.0,2.5) {$\uparrow$};
 \node at ( 3.0,2.5) {$\downarrow$};
 \end{tikzpicture}

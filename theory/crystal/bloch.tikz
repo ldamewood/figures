@@ -22,7 +22,7 @@
 \nextgroupplot[ylabel={$e^{ikx}$}]
 \addplot[mark=none] {-sin(0.5*deg(x-0.5))};
 \node at (axis cs: -3.5,0.6) {(a)};
-\nextgroupplot[ylabel={$u_E(x)$}]
+\nextgroupplot[ylabel={$u_k(x)$}]
 \addplot[mark=none] {
 	((x-3)*exp(-75*(x-3)*(x-3))+
 	(x-2)*exp(-75*(x-2)*(x-2))+

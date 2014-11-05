@@ -1,0 +1,30 @@
+\begingroup
+\begin{tikzpicture}
+\begin{axis}[
+  clip=false,
+  height=3in,
+  width=3in,
+  xlabel={},
+  ylabel={Frequency (cm$^{-1}$)},
+  cycle list={},
+  xtick={1, 58, 86, 106, 166, 215, 250, 270, 310, 345},
+  xticklabels={$\Gamma$, X, W, K, $\Gamma$, L, U, W, L, K},
+  ytick={0,50,100,150,200,250},
+  ymajorgrids=true,
+  xmajorgrids=true,
+  ymin=0,ymax=250,xmin=1,xmax=345,
+]
+\pgfplotstableread{structures/limnsi/phonon_LiMnP_full.dat}\phonon
+\addplot table[x index=0,y index=1,y expr=\thisrow{1}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=2,y expr=\thisrow{2}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=3,y expr=\thisrow{3}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=4,y expr=\thisrow{4}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=5,y expr=\thisrow{5}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=6,y expr=\thisrow{6}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=7,y expr=\thisrow{7}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=8,y expr=\thisrow{8}*219474.6313705] {\phonon};
+\addplot table[x index=0,y index=9,y expr=\thisrow{9}*219474.6313705] {\phonon};
+\path (axis description cs:0.5,0.5)++(-1.625in,0) -- ++(3.25in,0);
+\end{axis}
+\end{tikzpicture}
+\endgroup

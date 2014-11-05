@@ -16,9 +16,9 @@
 \path (axis description cs:0.5,0)++(-2.2in,0) -- ++(4.4in,0);
   }
 ]
-\addplot[red ,no marks] {x^2*sigmoid(10*x)};
+\addplot[black ,no marks] {x^2*sigmoid(10*x)};
 \node at (axis cs:2,3) {$\uparrow$};
-\addplot[blue,no marks] {(x+1)^2*sigmoid(10*(x+1))};
+\addplot[black,no marks] {(x+1)^2*sigmoid(10*(x+1))};
 \node at (axis cs:0,3) {$\downarrow$};
 % \nextgroupplot[
 %   ylabel={Spin difference},

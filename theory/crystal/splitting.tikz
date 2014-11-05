@@ -45,9 +45,9 @@
 
 \node at (1,0) {3d Atom};
 \node at (4,0) {Crystal Field};
-\node at (7,0) {Bond};
-\node at (10,0) {Hybrid};
-\node at (13,0) {3p Atom};
+\node at (7,0) {Overlap};
+\node at (10,0) {Crystal Field};
+\node at (13,0) {4p Atom};
 
 \draw[state 5] (0,3) -- ++(2,0) node[state label] {3d};
 
@@ -77,8 +77,8 @@
 \draw[interaction] (11,3) -- (12,3);
 \draw[interaction] (11,3) -- (12,2);
 
-\draw[state 3] (12,3) -- ++(2,0) node[state label] {3p};
-\draw[state 1] (12,2) -- ++(2,0) node[state label] {3s};
+\draw[state 3] (12,3) -- ++(2,0) node[state label] {4p};
+\draw[state 1] (12,2) -- ++(2,0) node[state label] {4s};
 
 \end{tikzpicture}
 \endgroup

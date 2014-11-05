@@ -1,12 +1,11 @@
 \begin{tikzpicture}
 \usetikzlibrary{shapes}
-\usetikzlibrary{material}
 % Target
-\draw[material/metal] (-1,-2) rectangle (1,-2.25);
+\draw[fill=gray] (-1,-2) rectangle (1,-2.25);
 \node[pin=right:Target] at (1,-2.125) {};
 % Heating element
 \draw (-1,-2.25) rectangle (1,-2.5);
-\draw[decorate, draw=red, decoration={coil,amplitude=2pt, segment length=5pt}]
+\draw[decorate, decoration={coil,amplitude=2pt, segment length=5pt}]
  (-0.75,-2.375) -- ++(1.5,0);
 \node[pin=below:Heating element] at (0,-2) {};
 % Vacuum chamber
@@ -22,18 +21,16 @@
 \draw[latex-] (2.00,0.00) -- (1.75,0.00) node[pos=0,right,anchor=west] {Product exit};
 
 % Reagent
-\draw[yellow!50!black,-latex,fill=none] (-1,-1) %
+\draw[-latex,fill=none] (-1,-1) %
   node[
-      draw=yellow!50!black,
-      fill=yellow!50,circle,
       inner sep=0.1em
   ] {} %
   to[bend left] (-0.25,-1.875);
 
 \node[pin=left:Reagent] at (-1,-1) {};
 
-\draw[green,latex-,fill=none] (1,-1) %
-  node[draw=green,fill=green!50,circle,inner sep=0.1em] {} %
+\draw[latex-,fill=none] (1,-1) %
+  node[circle,inner sep=0.1em] {} %
   to[bend right] (0.25,-1.875);
 
 \node[pin=right:Product] at (1,-1) {};

@@ -11,6 +11,18 @@
 \def\@dos@dn@fillcolor{white}
 %\fi
 \pgfplotsset{
+  dos up/.style={
+    %draw=\@dos@up@linecolor,
+    %fill=\@dos@up@fillcolor,
+    line join=bevel,
+    y filter/.code=\pgfmathparse{abs(\pgfmathresult)},
+  },
+  dos dn/.style={
+    %draw=\@dos@dn@linecolor,
+    %fill=\@dos@dn@fillcolor,
+    line join=bevel,
+    y filter/.code=\pgfmathparse{-abs(\pgfmathresult)},
+  },
   dos/label/.style={
     inner sep=1em,
   },
@@ -35,19 +47,8 @@
       \draw (axis cs:0,\pgfkeysvalueof{/pgfplots/ymin}) %
          -- (axis cs:0,\pgfkeysvalueof{/pgfplots/ymax});
     },
-    cycle list={%
-      {
-        draw=\@dos@up@linecolor,
-        fill=\@dos@up@fillcolor,
-        line join=bevel,
-        y filter/.code=\pgfmathparse{abs(\pgfmathresult)},
-      },
-      {
-        draw=\@dos@dn@linecolor,
-        fill=\@dos@dn@fillcolor,
-        line join=bevel,
-        y filter/.code=\pgfmathparse{-abs(\pgfmathresult)},
-      },
+    cycle list={
+      {dos up},{dos dn}
     },
   },
 }

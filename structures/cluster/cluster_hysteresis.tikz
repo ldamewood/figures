@@ -18,7 +18,7 @@
 \plot[ultra thick,no marks] coordinates{(0.1,0) (3,0.2) (5,0.21) %
     (1,0.19) (0,0.15) (-0.1,0) (-3,-0.2) (-5,-0.21) (-1,-0.19) %
     (0,-0.15) (0.1,0)};
-\plot[ultra thick,no marks,blue] coordinates{(-3,-0.01) (3,0.01)};
+\plot[ultra thick,no marks,green] coordinates{(-3,-0.01) (3,0.01)};
 \plot[ultra thick,no marks,red,samples=7,domain=-3:3] {0.18*tanh(x)};
 %\path (axis cs:0,0)++(-2.2in,0) -- ++(4.4in,0);
 \nextgroupplot[

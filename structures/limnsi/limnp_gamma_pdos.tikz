@@ -1,0 +1,65 @@
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dos}
+\usetikzlibrary{patterns}
+\begin{tikzpicture}
+\pgfplotstableset{
+  every table/.append style={
+    col sep=comma,
+    row sep=newline,
+  }
+}
+\pgfplotstableread{structures/limnsi/limnp_full.csv}{\full}
+\pgfplotstableread{structures/limnsi/limnp_norelax.csv}{\norelax}
+\pgfplotstableread{structures/limnsi/limnp_relax.csv}{\dosrelax}
+\begin{groupplot}[
+    dos,
+    xmin=-4,
+    xmax=3,
+    ymin=-20,
+    ymax=20,
+    group style={
+        group size=1 by 3,
+        xlabels at=edge bottom,
+        ylabels at=edge left,
+        xticklabels at=edge bottom,
+        yticklabels at=edge left,
+	horizontal sep = 0.25em,
+    },
+    width=3.25in,
+    height=2in,
+    ylabel={DOS [eV$^{-1}$ per unit cell]},
+    xlabel={$E-E_{\mathrm{F}}$ [eV]},
+]
+\tikzset{
+  s orbital/.style={red},
+  p orbital/.style={blue},
+  eg orbital/.style={red},
+  t2g orbital/.style={blue},
+}
+\nextgroupplot[title={(a) $\gamma$-Li$_4$Mn$_4$P$_4$}]
+\addplot table[dos up, x=energy,y=total.up] {\full};
+\addplot[eg orbital]  table[dos up, x=energy,y expr=\thisrow{Mn.e_g.up}*4] {\full};
+\addplot[t2g orbital] table[dos up, x=energy,y expr=\thisrow{Mn.t2g.up}*4] {\full};
+\addlegendentry{Total};
+\addlegendentry{Mn e$_g$};
+\addlegendentry{Mn t$_{2g}$};
+\addplot table[dos dn, x=energy,y=total.dn] {\full};
+\addplot[eg orbital]  table[dos dn, x=energy,y expr=\thisrow{Mn.e_g.dn}*4] {\full};
+\addplot[t2g orbital] table[dos dn, x=energy,y expr=\thisrow{Mn.t2g.dn}*4] {\full};
+\nextgroupplot[title={(b) $\gamma$-Li$_3$Mn$_4$P$_4$ before relaxation}]
+\addplot table[dos up, x=energy,y=total.up] {\norelax};
+\addplot[eg orbital]  table[dos up, x=energy,y expr=\thisrow{Mn.e_g.up}*4]  {\norelax};
+\addplot[t2g orbital] table[dos up, x=energy,y expr=\thisrow{Mn.t2g.up}*4]  {\norelax};
+\addplot table[dos dn, x=energy,y=total.dn] {\norelax};
+\addplot[eg orbital]  table[dos dn, x=energy,y expr=\thisrow{Mn.e_g.dn}*4]  {\norelax};
+\addplot[t2g orbital] table[dos dn, x=energy,y expr=\thisrow{Mn.t2g.dn}*4]  {\norelax};
+\nextgroupplot[title={(c) $\gamma$-Li$_3$Mn$_4$P$_4$ after relaxation}]
+\addplot table[dos up, x=energy,y=total.up] {\dosrelax};
+\addplot[eg orbital]  table[dos up, x=energy,y expr=\thisrow{Mn.e_g.up}*4]  {\dosrelax};
+\addplot[t2g orbital] table[dos up, x=energy,y expr=\thisrow{Mn.t2g.up}*4]  {\dosrelax};
+\addplot table[dos dn, x=energy,y=total.dn] {\dosrelax};
+\addplot[eg orbital]  table[dos dn, x=energy,y expr=\thisrow{Mn.e_g.dn}*4]  {\dosrelax};
+\addplot[t2g orbital] table[dos dn, x=energy,y expr=\thisrow{Mn.t2g.dn}*4]  {\dosrelax};
+\end{groupplot}
+\path (group c1r1.center)++(-1.625in,0) -- ++(3.25in,0);
+\end{tikzpicture}

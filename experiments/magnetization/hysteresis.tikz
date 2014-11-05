@@ -32,9 +32,9 @@
     },
     samples=100,
 ]
-\addplot[arrowline,domain=0:8,no marks,red] {tanh(x/2)};
-\addplot+[arrowline,domain=-8:8,no marks,red] {tanh(x/2-1)};
-\addplot+[arrowline,domain=8:-8,no marks,red] {tanh(x/2+1)};
+\addplot[black,arrowline,domain=0:8,no marks] {tanh(x/2)};
+\addplot+[black,arrowline,domain=-8:8,no marks] {tanh(x/2-1)};
+\addplot+[black,arrowline,domain=8:-8,no marks] {tanh(x/2+1)};
 \draw[dashed] (axis cs:0,1) -- (axis cs:8,1);
 \path (xticklabel cs:-0.1) -- (xticklabel cs:1.1);
 \end{axis}

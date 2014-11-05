@@ -1,0 +1,33 @@
+\usepgfplotslibrary{groupplots}
+\begin{tikzpicture}
+\pgfplotsset{
+  spin up/.style={dashed,gray},
+  spin dn/.style={},
+  every axis/.style={
+    grid=major,
+    xmin=0,xmax=133,
+    ymin=-4.5,ymax=2,
+    xtick={0,19,38,57,76,95,114,133},
+    xticklabels={$\Gamma$,X,M,$\Gamma$,Z,R,A,Z},
+  },
+}
+\begin{groupplot}[
+  group style={
+    group size=2 by 1,
+    xlabels at=edge bottom,
+    ylabels at=edge left,
+    vertical sep=1.0em,
+    xticklabels at=edge bottom,
+  },
+  ylabel={$E-E_{\mathrm{F}}$ [eV]},
+  width=3in,
+  height=3in,
+]
+\nextgroupplot
+\input structures/cu2sb/li3mnsb2_li0_bands.tex
+\draw (axis cs:0,0) -- (axis cs:133,0);
+\nextgroupplot
+\input structures/cu2sb/li3mnsb2_li3_bands.tex
+\draw (axis cs:0,0) -- (axis cs:133,0);
+\end{groupplot}
+\end{tikzpicture}

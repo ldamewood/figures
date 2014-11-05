@@ -1,0 +1,56 @@
+\usepgfplotslibrary{groupplots}
+\begin{tikzpicture}
+\usepgfplotslibrary{dos}
+\pgfplotstableset{
+  every table/.append style={
+    col sep=comma,
+    row sep=newline,
+  }
+}
+\pgfplotstableread{structures/cu2sb/li3mnas2_li0_dos.csv}{\lizero}
+\pgfplotstableread{structures/cu2sb/li3mnas2_li3_dos.csv}{\lithree}
+\begin{groupplot}[
+    dos,
+    %ymin = -10,
+    %ymax = 10,
+    xmin=-4.5,
+    xmax=2.0,
+    group style={
+        group size=2 by 4,
+        xlabels at=edge bottom,
+        ylabels at=edge left,
+        vertical sep=1.0em,
+        xticklabels at=edge bottom,
+    },
+    ylabel={},
+    xlabel={$E-E_{\mathrm{F}}$ [eV]},
+    width=3in,
+    height=1.5in,
+    every axis title/.append style={at={(1,0.9)},anchor=north east},
+]
+\nextgroupplot[ymin=-10,ymax=10,title=(a) Li$_0$ DOS]
+  \addplot table[x=energy,y=total.up, dos up] {\lizero};
+  \addplot table[x=energy,y=total.dn, dos dn] {\lizero};
+\nextgroupplot[ymin=-10,ymax=10,title=(e) Li$_3$ DOS]
+  \addplot table[x=energy,y=total.up, dos up] {\lithree};
+  \addplot table[x=energy,y=total.dn, dos dn] {\lithree};
+\nextgroupplot[ymin=-1.5,ymax=1.5,title=(b) Li$_0$ As p]
+  \addplot table[x=energy,y=As.p.up,dos up] {\lizero};
+  \addplot table[x=energy,y=As.p.dn,dos dn] {\lizero};
+\nextgroupplot[ymin=-1.5,ymax=1.5,title=(f) Li$_3$ As p]
+  \addplot table[x=energy,y=As.p.up,dos up] {\lithree};
+  \addplot table[x=energy,y=As.p.dn,dos dn] {\lithree};
+\nextgroupplot[ymin=-0.15,ymax=0.15,title=(c) Li$_0$ Mn p]
+  \addplot table[x=energy,y=Mn.p.up,dos up] {\lizero};
+  \addplot table[x=energy,y=Mn.p.dn,dos dn] {\lizero};
+\nextgroupplot[ymin=-0.15,ymax=0.15,title=(g) Li$_3$ Mn p]
+  \addplot table[x=energy,y=Mn.p.up,dos up] {\lithree};
+  \addplot table[x=energy,y=Mn.p.dn,dos dn] {\lithree};
+\nextgroupplot[ymin=-10,ymax=10,title=(d) Li$_0$ Mn d]
+  \addplot table[x=energy,y=Mn.d.up,dos up] {\lizero};
+  \addplot table[x=energy,y=Mn.d.dn,dos dn] {\lizero};
+\nextgroupplot[ymin=-10,ymax=10,title=(h) Li$_3$ Mn d]
+  \addplot table[x=energy,y=Mn.d.up,dos up] {\lithree};
+  \addplot table[x=energy,y=Mn.d.dn,dos dn] {\lithree};
+\end{groupplot}
+\end{tikzpicture}

@@ -1,4 +1,4 @@
-\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
 \def\DOS{\mathrm{DOS}}
 \def\fermi{0}
 \def\fadewidth{0.15}
@@ -31,7 +31,7 @@
   % Spin down fill
   \begin{scope}
     \clip (0,\fermi) rectangle (-2,-2.5);
-    \fill[blue!20] (2,0)++(90:3) arc (90:270:3);
+    \fill[pattern=north west lines] (2,0)++(90:3) arc (90:270:3);
   \end{scope}
   % temperature fading
   \begin{scope}
@@ -47,7 +47,7 @@
   % Spin up occupied fill and circle
   \begin{scope}
     \clip (0,0) rectangle (2,-2.5);
-    \fill[blue!20] (-2,-2.5)++(60:3) arc (60:0:3) -- (-2,-2.5);
+    \fill[pattern=north west lines] (-2,-2.5)++(60:3) arc (60:0:3) -- (-2,-2.5);
     \draw (-2,-2.5)++(90:3) arc (90:0:3);
   \end{scope}
   % Spin up unoccupied circle
@@ -73,7 +73,7 @@
 % Spin down fill
 \begin{scope}
 \clip (0,\fermi) rectangle (-2,-2.5);
-\fill[blue!20] (2,0)++(90:3) arc (90:270:3);
+\fill[pattern=north west lines] (2,0)++(90:3) arc (90:270:3);
 \end{scope}
 % temperature fading
 \begin{scope}
@@ -89,7 +89,7 @@
 % Spin up occupied fill and circle
 \begin{scope}
 \clip (0,0) rectangle (2,-2.5);
-\fill[blue!20] (-2,-1.75)++(90:3) arc (90:-30:3) -- (-2,-1.75);
+\fill[pattern=north west lines] (-2,-1.75)++(90:3) arc (90:-30:3) -- (-2,-1.75);
 \end{scope}
 % temperature fading
 \begin{scope}

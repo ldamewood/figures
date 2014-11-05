@@ -19,15 +19,15 @@
 
 % Ebeam
 \foreach \theta in {30,60,120,150}{
-  \draw[material/electron beam,-latex] (0,2.25) -- (0,0) -- (\theta:2);
+  \draw[ultra thick,-latex] (0,2.25) -- (0,0) -- (\theta:2);
 }
 
 % Target
-\draw[material/metal] (-0.25,-0.125) rectangle (0.25,0) %
+\draw[fill=gray] (-0.25,-0.125) rectangle (0.25,0) %
     node[right,anchor=north west,black] {Target};
 
 % Viewing port
-\draw[material/glass] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
+\draw[fill=gray!20] (-1.75,-0.75) node[black,left,anchor=east,opacity=1] {Viewport} rectangle (1.75,-0.50);
 
 \path (-2.2in,0) -- (2.2in,0);
 
